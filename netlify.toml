@@ -1,0 +1,6 @@
+[build]
+  publish = "."
+
+# Clean URLs (optional)
+[build.processing]
+  skip_processing = false

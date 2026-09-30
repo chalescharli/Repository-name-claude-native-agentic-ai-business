@@ -26,6 +26,11 @@ ENV/
 env.bak/
 venv.bak/
 
+# Node / React
+node_modules/
+frontend/node_modules/
+frontend/dist/
+
 # Logs and scratch
 logs/
 scratch/

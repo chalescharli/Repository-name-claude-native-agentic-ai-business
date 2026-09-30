@@ -1,0 +1,2871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explore 9,000+ Connected Apps | Rishan AI Agents</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    function closeModal(id) {
+      const el = document.getElementById(id);
+      if (el) el.classList.add('hidden');
+    }
+    function markActiveMegaSubItem(el) {
+      if (typeof closeMegaMenus === 'function') closeMegaMenus();
+    }
+    function markActiveMegaItem(el) {
+      if (typeof closeMegaMenus === 'function') closeMegaMenus();
+    }
+  </script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+    };
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+    body { font-family: 'Inter', system-ui, -apple-system, sans-serif; transition: background-color 0.3s ease, color 0.3s ease; }
+    .bg-grid {
+      background-image: radial-gradient(#E8E4DB 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+
+    /* Universal Dark Mode Overrides */
+    html.dark, html.dark body {
+      background-color: #121212 !important;
+      color: #F3F4F6 !important;
+    }
+
+    html.dark *, html.dark *::before, html.dark *::after {
+      border-color: #2D2D30 !important;
+    }
+
+    /* Universal Dark Backgrounds for White & Light Surfaces */
+    html.dark .bg-\[\#FFFDF9\], 
+    html.dark .bg-\[\#FAF8F5\],
+    html.dark .bg-white,
+    html.dark .bg-gray-50,
+    html.dark .bg-gray-100,
+    html.dark header,
+    html.dark footer,
+    html.dark nav,
+    html.dark main,
+    html.dark section,
+    html.dark article,
+    html.dark .app-card,
+    html.dark .agent-card,
+    html.dark .res-card,
+    html.dark .hitl-card,
+    html.dark .pricing-card,
+    html.dark .stat-card,
+    html.dark #productsMegaMenu,
+    html.dark #solutionsMegaMenu,
+    html.dark #resourcesMegaMenu,
+    html.dark #mobileDrawerNav {
+      background-color: #1E1E1E !important;
+      color: #F3F4F6 !important;
+    }
+
+    /* Universal Dark Text Colors */
+    html.dark .text-\[\#1E1E1E\],
+    html.dark .text-\[\#4A4740\],
+    html.dark .text-\[\#5A574F\],
+    html.dark .text-\[\#6E6A60\],
+    html.dark .text-\[\#7A756B\],
+    html.dark .text-gray-900,
+    html.dark .text-gray-800,
+    html.dark .text-gray-700,
+    html.dark h1, html.dark h2, html.dark h3, html.dark h4, html.dark h5, html.dark h6 {
+      color: #F9FAFB !important;
+    }
+
+    html.dark .text-\[\#858075\],
+    html.dark .text-gray-600,
+    html.dark .text-gray-500 {
+      color: #9CA3AF !important;
+    }
+
+    /* Inputs, Textareas, Selects */
+    html.dark input,
+    html.dark textarea,
+    html.dark select {
+      background-color: #2A2A2D !important;
+      color: #FFFFFF !important;
+      border-color: #3F3F46 !important;
+    }
+
+    /* Hover States in Dark Mode */
+    html.dark .hover\:bg-sky-50\/60:hover,
+    html.dark .hover\:bg-sky-50:hover,
+    html.dark .hover\:bg-\[\#FAF8F5\]:hover,
+    html.dark .hover\:bg-gray-100:hover,
+    html.dark .hover\:bg-gray-50:hover,
+    html.dark .hover\:bg-gray-200:hover {
+      background-color: #2D2D30 !important;
+    }
+
+    /* Brand Light Blue & Accent Colors */
+    html.dark .text-\[\#0EA5E9\], html.dark .group-hover\:text-\[\#0EA5E9\]:hover {
+      color: #0EA5E9 !important;
+    }
+    html.dark .bg-\[\#0EA5E9\] {
+      background-color: #0EA5E9 !important;
+      color: #FFFFFF !important;
+    }
+    html.dark .bg-sky-50\/60,
+    html.dark .bg-sky-50,
+    html.dark .bg-amber-50,
+    html.dark .bg-emerald-50 {
+      background-color: rgba(255, 79, 0, 0.12) !important;
+    }
+
+    /* Theme Switch Knob & Track in Dark Mode */
+    html.dark .theme-switch-knob {
+      transform: translateX(1.25rem) !important;
+      background-color: #0EA5E9 !important;
+    }
+    html.dark .theme-switch-track {
+      background-color: #3F3F46 !important;
+      border-color: #52525B !important;
+    }
+
+    /* Modals in Dark Mode */
+    html.dark #appOAuthModal > div,
+    html.dark #connectModal > div,
+    html.dark #featureModal > div,
+    html.dark #googleAccountModal > div,
+    html.dark #helpModal > div,
+    html.dark #salesModal > div {
+      background-color: #1E1E1E !important;
+      border-color: #3F3F46 !important;
+      color: #F3F4F6 !important;
+    }
+  </style>
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('rishan_theme');
+      if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+  </script>
+</head>
+<body class="bg-[#FFFDF9] text-[#1E1E1E] antialiased min-h-screen flex flex-col justify-between">
+
+  <!-- Header Bar -->
+  <header class="border-b border-[#E8E4DB] bg-[#FFFDF9] sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      
+      <!-- Brand Logo & Main Nav -->
+      <div class="flex items-center space-x-4 sm:space-x-8">
+        <button onclick="toggleMobileDrawer()" class="md:hidden p-1.5 text-[#1E1E1E] text-xl font-bold focus:outline-none hover:text-[#0EA5E9] transition">
+          ☰
+        </button>
+
+        <a href="dashboard.html" class="flex items-center space-x-1 text-2xl font-black tracking-tighter">
+          <span class="text-[#0EA5E9] font-black text-3xl">_</span><span class="text-2xl font-black">rishan</span>
+          <span class="text-[10px] bg-[#0EA5E9]/10 text-[#0EA5E9] px-2 py-0.5 rounded-full font-bold ml-1">Agents</span>
+        </a>
+
+        <nav id="mainHeaderNav" class="hidden md:flex items-center space-x-6 text-xs font-semibold text-[#4A4740]">
+          <div class="relative group">
+            <button id="navBtn-products" onclick="toggleMegaMenu('products', event)" class="hover:text-[#0EA5E9] transition py-5 font-semibold flex items-center space-x-1 focus:outline-none">
+              <span>Products</span> <span class="text-[10px]">▾</span>
+            </button>
+          </div>
+
+          <div class="relative group">
+            <button id="navBtn-solutions" onclick="toggleMegaMenu('solutions', event)" class="hover:text-[#0EA5E9] transition py-5 font-semibold flex items-center space-x-1 focus:outline-none">
+              <span>Solutions</span> <span class="text-[10px]">▾</span>
+            </button>
+          </div>
+
+          <div class="relative group">
+            <button id="navBtn-resources" onclick="toggleMegaMenu('resources', event)" class="hover:text-[#0EA5E9] transition py-5 font-semibold flex items-center space-x-1 focus:outline-none">
+              <span>Resources</span> <span class="text-[10px]">▾</span>
+            </button>
+          </div>
+
+          <a id="navBtn-explore" href="explore.html" onclick="setActiveNav('explore')" class="hover:text-[#0EA5E9] transition font-bold text-[#0EA5E9] py-5">Explore apps</a>
+          <a id="navBtn-enterprise" href="enterprise.html" onclick="setActiveNav('enterprise')" class="hover:text-[#0EA5E9] transition py-5 font-semibold">Enterprise</a>
+          <a id="navBtn-pricing" href="dashboard.html#pricing" onclick="setActiveNav('pricing')" class="hover:text-[#0EA5E9] transition py-5 font-semibold">Pricing</a>
+        </nav>
+      </div>
+
+      <!-- Right Nav Buttons (Dynamic User Header) -->
+      <div id="userHeaderNav" class="flex items-center space-x-4 text-xs font-bold">
+        <!-- Rendered dynamically via renderUserNavHeader() -->
+      </div>
+
+    </div>
+
+    <!-- Responsive Mobile Drawer Navigation -->
+    <div id="mobileDrawerNav" class="hidden md:hidden bg-[#FFFDF9] border-b border-[#E8E4DB] px-6 py-4 space-y-3 font-semibold text-xs text-[#1E1E1E] animate-fadeIn">
+      <div class="flex flex-col space-y-2.5">
+        <div onclick="toggleDarkMode()" class="flex items-center justify-between py-2 border-b border-[#E8E4DB] cursor-pointer">
+          <span class="font-extrabold text-xs text-[#1E1E1E]">Theme Mode (Dark / Light)</span>
+          <div class="theme-switch-track w-11 h-6 rounded-full bg-[#E8E4DB] dark:bg-[#3F3F46] p-0.5 flex items-center transition-colors duration-300 relative border border-[#D5D0C5]">
+            <div class="theme-switch-knob w-5 h-5 rounded-full bg-white dark:bg-[#0EA5E9] shadow-md transform transition-transform duration-300 flex items-center justify-center text-[10px] text-[#1E1E1E] dark:text-white">
+              <span class="darkModeIcon">☀️</span>
+            </div>
+          </div>
+        </div>
+        <button onclick="toggleMegaMenu('products', event)" class="text-left font-bold text-[#0EA5E9] py-1">Products ▾</button>
+        <button onclick="toggleMegaMenu('solutions', event)" class="text-left font-bold text-[#0EA5E9] py-1">Solutions ▾</button>
+        <button onclick="toggleMegaMenu('resources', event)" class="text-left font-bold text-[#0EA5E9] py-1">Resources ▾</button>
+        <a href="explore.html" class="hover:text-[#0EA5E9] py-1 font-bold">Explore apps</a>
+        <a href="dashboard.html#workspace" onclick="toggleMobileDrawer()" class="hover:text-[#0EA5E9] py-1">Enterprise</a>
+        <a href="dashboard.html#pricing" onclick="toggleMobileDrawer()" class="hover:text-[#0EA5E9] py-1">Pricing</a>
+      </div>
+    </div>
+
+    <!-- Mega Menu 1: Products ▾ Dropdown -->
+    <div id="productsMegaMenu" onmouseleave="closeMegaMenus()" class="hidden absolute top-full left-0 w-full max-h-[85vh] overflow-y-auto bg-[#FFFDF9] border-b border-[#E8E4DB] shadow-2xl z-50 py-6 sm:py-8 px-4 sm:px-6 transition-all duration-200">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Left 2 Columns: Main Products & Capabilities (Col Span 8) -->
+        <div class="lg:col-span-8 space-y-6">
+          
+          <div class="border-b border-[#E8E4DB] pb-3">
+            <h3 class="text-2xl font-black text-[#1E1E1E]">Rishan Automation Platform</h3>
+            <p class="text-xs text-[#6E6A60] font-medium mt-1">No-code automation across 9,000+ apps</p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            
+            <!-- MOST POPULAR Column -->
+            <div class="space-y-3">
+              <div class="text-[10px] font-extrabold text-[#858075] uppercase tracking-wider">MOST POPULAR</div>
+
+              <a href="#" onclick="openFeatureModal('agent-workflows'); closeMegaMenus(); return false;" class="flex items-start space-x-3 p-2.5 rounded-xl hover:bg-sky-50/60 transition group">
+                <div class="w-8 h-8 rounded-lg bg-sky-100 text-[#0EA5E9] flex items-center justify-center font-bold text-sm shrink-0 group-hover:bg-[#0EA5E9] group-hover:text-white transition">⚡</div>
+                <div>
+                  <div class="font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Agent Workflows</div>
+                  <div class="text-[11px] text-[#6E6A60] leading-snug">Do-it-yourself automation for SME workflows</div>
+                </div>
+              </a>
+
+              <a href="#" onclick="openFeatureModal('mcp'); closeMegaMenus(); return false;" class="flex items-start space-x-3 p-2.5 rounded-xl hover:bg-sky-50/60 transition group">
+                <div class="w-8 h-8 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center font-bold text-sm shrink-0 group-hover:bg-[#0EA5E9] group-hover:text-white transition">🪢</div>
+                <div>
+                  <div class="font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Rishan MCP</div>
+                  <div class="text-[11px] text-[#6E6A60] leading-snug">Add Rishan tools to your AI chat & desktop</div>
+                </div>
+              </a>
+
+              <a href="#" onclick="openFeatureModal('sdk'); closeMegaMenus(); return false;" class="flex items-start space-x-3 p-2.5 rounded-xl hover:bg-sky-50/60 transition group">
+                <div class="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-sm shrink-0 group-hover:bg-[#0EA5E9] group-hover:text-white transition">🛠️</div>
+                <div>
+                  <div class="font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Rishan SDK</div>
+                  <div class="text-[11px] text-[#6E6A60] leading-snug">Install Rishan to your AI coding agent</div>
+                </div>
+              </a>
+
+              <a href="#" onclick="openFeatureModal('tables'); closeMegaMenus(); return false;" class="flex items-start space-x-3 p-2.5 rounded-xl hover:bg-sky-50/60 transition group">
+                <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-sm shrink-0 group-hover:bg-[#0EA5E9] group-hover:text-white transition">📊</div>
+                <div>
+                  <div class="font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Tables</div>
+                  <div class="text-[11px] text-[#6E6A60] leading-snug">Store data your agent workflows can read and update</div>
+                </div>
+              </a>
+            </div>
+
+            <!-- CAPABILITIES Column -->
+            <div class="space-y-3">
+              <div class="text-[10px] font-extrabold text-[#858075] uppercase tracking-wider">CAPABILITIES</div>
+
+              <a href="#" onclick="openFeatureModal('integrations'); closeMegaMenus(); return false;" class="flex items-start space-x-3 p-2.5 rounded-xl hover:bg-sky-50/60 transition group">
+                <div class="w-8 h-8 rounded-lg bg-purple-100 text-purple-700 flex items-center justify-center font-bold text-sm shrink-0 group-hover:bg-[#0EA5E9] group-hover:text-white transition">🎛️</div>
+                <div>
+                  <div class="font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">App integrations</div>
+                  <div class="text-[11px] text-[#6E6A60] leading-snug">Explore 9,000+ app connections</div>
+                </div>
+              </a>
+
+              <a href="#" onclick="openFeatureModal('ai-automation'); closeMegaMenus(); return false;" class="flex items-start space-x-3 p-2.5 rounded-xl hover:bg-sky-50/60 transition group">
+                <div class="w-8 h-8 rounded-lg bg-rose-100 text-rose-700 flex items-center justify-center font-bold text-sm shrink-0 group-hover:bg-[#0EA5E9] group-hover:text-white transition">✨</div>
+                <div>
+                  <div class="font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">AI automation ✨</div>
+                  <div class="text-[11px] text-[#6E6A60] leading-snug">Cutting-edge AI to upgrade your workflows</div>
+                </div>
+              </a>
+
+              <a href="#" onclick="openFeatureModal('security'); closeMegaMenus(); return false;" class="flex items-start space-x-3 p-2.5 rounded-xl hover:bg-sky-50/60 transition group">
+                <div class="w-8 h-8 rounded-lg bg-teal-100 text-teal-700 flex items-center justify-center font-bold text-sm shrink-0 group-hover:bg-[#0EA5E9] group-hover:text-white transition">🛡️</div>
+                <div>
+                  <div class="font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Security</div>
+                  <div class="text-[11px] text-[#6E6A60] leading-snug">Enterprise-grade safety & HITL governance</div>
+                </div>
+              </a>
+            </div>
+
+          </div>
+
+          <!-- Bottom Action Bar -->
+          <div class="border-t border-[#E8E4DB] pt-4 flex flex-wrap items-center gap-6 text-xs font-bold text-[#5A574F]">
+            <a href="#" onclick="openFeatureModal('templates'); closeMegaMenus(); return false;" class="hover:text-[#0EA5E9] transition flex items-center space-x-1"><span>🧩</span><span>Explore templates</span></a>
+            <a href="#" onclick="openFeatureModal('use-cases'); closeMegaMenus(); return false;" class="hover:text-[#0EA5E9] transition flex items-center space-x-1"><span>💼</span><span>Explore use cases</span></a>
+            <a href="login.html" onclick="closeMegaMenus()" class="hover:text-[#0EA5E9] transition flex items-center space-x-1 text-[#0EA5E9]"><span>⚡</span><span>Join Rishan Early Access</span></a>
+            <a href="#" onclick="openFeatureModal('comparisons'); closeMegaMenus(); return false;" class="hover:text-[#0EA5E9] transition flex items-center space-x-1"><span>🔍</span><span>Industry comparisons</span></a>
+          </div>
+
+        </div>
+
+        <!-- Right Panel: MORE PRODUCTS (Col Span 4) -->
+        <div class="lg:col-span-4 bg-[#FAF8F5] border border-[#E8E4DB] rounded-2xl p-6 space-y-4">
+          <div class="text-[10px] font-extrabold text-[#858075] uppercase tracking-wider">MORE PRODUCTS</div>
+
+          <a href="#" onclick="openFeatureModal('forms'); closeMegaMenus(); return false;" class="flex items-start space-x-3 p-2.5 rounded-xl hover:bg-white transition group">
+            <div class="w-8 h-8 rounded-lg bg-gray-200 text-[#1E1E1E] flex items-center justify-center font-bold text-sm shrink-0 group-hover:bg-[#0EA5E9] group-hover:text-white transition">📋</div>
+            <div>
+              <div class="font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Forms</div>
+              <div class="text-[11px] text-[#6E6A60]">Capture inputs that trigger workflows</div>
+            </div>
+          </a>
+
+          <a href="#" onclick="openFeatureModal('canvas'); closeMegaMenus(); return false;" class="flex items-start space-x-3 p-2.5 rounded-xl hover:bg-white transition group">
+            <div class="w-8 h-8 rounded-lg bg-gray-200 text-[#1E1E1E] flex items-center justify-center font-bold text-sm shrink-0 group-hover:bg-[#0EA5E9] group-hover:text-white transition">🗺️</div>
+            <div>
+              <div class="font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Canvas</div>
+              <div class="text-[11px] text-[#6E6A60]">Plan and map your workflows with AI</div>
+            </div>
+          </a>
+
+          <a href="#" onclick="openFeatureModal('agents'); closeMegaMenus(); return false;" class="flex items-start space-x-3 p-2.5 rounded-xl hover:bg-white transition group">
+            <div class="w-8 h-8 rounded-lg bg-gray-200 text-[#1E1E1E] flex items-center justify-center font-bold text-sm shrink-0 group-hover:bg-[#0EA5E9] group-hover:text-white transition">✴️</div>
+            <div>
+              <div class="font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Agents</div>
+              <div class="text-[11px] text-[#6E6A60]">Create your own AI assistants for any task</div>
+            </div>
+          </a>
+
+          <a href="#" onclick="openFeatureModal('chatbots'); closeMegaMenus(); return false;" class="flex items-start space-x-3 p-2.5 rounded-xl hover:bg-white transition group">
+            <div class="w-8 h-8 rounded-lg bg-gray-200 text-[#1E1E1E] flex items-center justify-center font-bold text-sm shrink-0 group-hover:bg-[#0EA5E9] group-hover:text-white transition">💬</div>
+            <div>
+              <div class="font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Chatbots</div>
+              <div class="text-[11px] text-[#6E6A60]">Answer customer questions with AI chatbots</div>
+            </div>
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mega Menu 2: Solutions ▾ Dropdown (1:1 Exact Zapier Solutions Layout) -->
+    <div id="solutionsMegaMenu" onmouseleave="closeMegaMenus()" class="hidden absolute top-full left-0 w-full max-h-[85vh] overflow-y-auto bg-[#FFFDF9] border-b border-[#E8E4DB] shadow-2xl z-50 py-6 sm:py-8 px-4 sm:px-6 transition-all duration-200">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Left 3-Column Section (Col Span 8) -->
+        <div class="lg:col-span-8 space-y-6">
+          <div class="border-b border-[#E8E4DB] pb-3">
+            <h3 class="text-3xl font-black text-[#1E1E1E]">Solutions</h3>
+            <p class="text-xs text-[#6E6A60] font-medium mt-1">How Rishan AI can help you automate your work across teams</p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            
+            <!-- Column 1: BY TEAM -->
+            <div class="space-y-3">
+              <div class="text-[10px] font-extrabold text-[#858075] uppercase tracking-wider">BY TEAM</div>
+
+              <a href="team.html?team=revops" onclick="closeMegaMenus()" class="flex items-start space-x-2.5 p-1.5 rounded-xl hover:bg-sky-50/60 transition group">
+                <div class="w-6 h-6 rounded bg-purple-100 text-purple-700 flex items-center justify-center font-bold text-xs shrink-0 group-hover:bg-[#0EA5E9] group-hover:text-white transition">💳</div>
+                <div>
+                  <div class="font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">RevOps</div>
+                  <div class="text-[10px] text-[#6E6A60] leading-tight">Drive revenue through automation</div>
+                </div>
+              </a>
+
+              <a href="team.html?team=marketing" onclick="closeMegaMenus()" class="flex items-start space-x-2.5 p-1.5 rounded-xl hover:bg-sky-50/60 transition group">
+                <div class="w-6 h-6 rounded bg-rose-100 text-rose-700 flex items-center justify-center font-bold text-xs shrink-0 group-hover:bg-[#0EA5E9] group-hover:text-white transition">🎨</div>
+                <div>
+                  <div class="font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Marketing</div>
+                  <div class="text-[10px] text-[#6E6A60] leading-tight">Multiply campaign effectiveness and ROI</div>
+                </div>
+              </a>
+
+              <a href="team.html?team=it" onclick="closeMegaMenus()" class="flex items-start space-x-2.5 p-1.5 rounded-xl hover:bg-sky-50/60 transition group">
+                <div class="w-6 h-6 rounded bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-xs shrink-0 group-hover:bg-[#0EA5E9] group-hover:text-white transition">⚙️</div>
+                <div>
+                  <div class="font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">IT</div>
+                  <div class="text-[10px] text-[#6E6A60] leading-tight">Better manage systems with automation</div>
+                </div>
+              </a>
+
+              <a href="team.html?team=hr" onclick="closeMegaMenus()" class="flex items-start space-x-2.5 p-1.5 rounded-xl hover:bg-sky-50/60 transition group">
+                <div class="w-6 h-6 rounded bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold text-xs shrink-0 group-hover:bg-[#0EA5E9] group-hover:text-white transition">👥</div>
+                <div>
+                  <div class="font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">HR</div>
+                  <div class="text-[10px] text-[#6E6A60] leading-tight">Empower your HR team with AI automation</div>
+                </div>
+              </a>
+
+              <a href="team.html?team=sales" onclick="closeMegaMenus()" class="flex items-start space-x-2.5 p-1.5 rounded-xl hover:bg-sky-50/60 transition group">
+                <div class="w-6 h-6 rounded bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xs shrink-0 group-hover:bg-[#0EA5E9] group-hover:text-white transition">📊</div>
+                <div>
+                  <div class="font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Sales</div>
+                  <div class="text-[10px] text-[#6E6A60] leading-tight">Close more deals</div>
+                </div>
+              </a>
+
+              <a href="team.html?team=support" onclick="closeMegaMenus()" class="flex items-start space-x-2.5 p-1.5 rounded-xl hover:bg-sky-50/60 transition group">
+                <div class="w-6 h-6 rounded bg-amber-100 text-amber-700 flex items-center justify-center font-bold text-xs shrink-0 group-hover:bg-[#0EA5E9] group-hover:text-white transition">🎧</div>
+                <div>
+                  <div class="font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Customer Support</div>
+                  <div class="text-[10px] text-[#6E6A60] leading-tight">Elevate customer satisfaction</div>
+                </div>
+              </a>
+
+              <a href="team.html?team=leaders" onclick="closeMegaMenus()" class="flex items-start space-x-2.5 p-1.5 rounded-xl hover:bg-sky-50/60 transition group">
+                <div class="w-6 h-6 rounded bg-gray-100 text-gray-800 flex items-center justify-center font-bold text-xs shrink-0 group-hover:bg-[#0EA5E9] group-hover:text-white transition">👨‍💼</div>
+                <div>
+                  <div class="font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Leaders</div>
+                  <div class="text-[10px] text-[#6E6A60] leading-tight">Streamline decision-making processes</div>
+                </div>
+              </a>
+
+              <a href="team.html?team=ea" onclick="closeMegaMenus()" class="flex items-start space-x-2.5 p-1.5 rounded-xl hover:bg-sky-50/60 transition group">
+                <div class="w-6 h-6 rounded bg-teal-100 text-teal-800 flex items-center justify-center font-bold text-xs shrink-0 group-hover:bg-[#0EA5E9] group-hover:text-white transition">📋</div>
+                <div>
+                  <div class="font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Executive Assistants</div>
+                  <div class="text-[10px] text-[#6E6A60] leading-tight">Eliminate repetitive admin tasks</div>
+                </div>
+              </a>
+            </div>
+
+            <!-- Column 2: BY APP -->
+            <div class="space-y-2.5">
+              <div class="text-[10px] font-extrabold text-[#858075] uppercase tracking-wider">BY APP</div>
+
+              <a href="#" onclick="openAppOAuthLogin('netsuite'); closeMegaMenus(); return false;" class="flex items-center space-x-2.5 p-1 rounded-lg hover:bg-sky-50/60 transition group">
+                <span class="text-sm">☁️</span>
+                <span class="font-bold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">NetSuite</span>
+              </a>
+
+              <a href="#" onclick="openAppOAuthLogin('salesforce'); closeMegaMenus(); return false;" class="flex items-center space-x-2.5 p-1 rounded-lg hover:bg-sky-50/60 transition group">
+                <span class="text-sm text-sky-500">☁️</span>
+                <span class="font-bold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Salesforce</span>
+              </a>
+
+              <a href="#" onclick="openAppOAuthLogin('hubspot'); closeMegaMenus(); return false;" class="flex items-center space-x-2.5 p-1 rounded-lg hover:bg-sky-50/60 transition group">
+                <span class="text-sm text-sky-500">🟦</span>
+                <span class="font-bold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">HubSpot</span>
+              </a>
+
+              <a href="#" onclick="openAppOAuthLogin('slack'); closeMegaMenus(); return false;" class="flex items-center space-x-2.5 p-1 rounded-lg hover:bg-sky-50/60 transition group">
+                <span class="text-sm">💬</span>
+                <span class="font-bold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Slack</span>
+              </a>
+
+              <a href="#" onclick="openAppOAuthLogin('openai'); closeMegaMenus(); return false;" class="flex items-center space-x-2.5 p-1 rounded-lg hover:bg-sky-50/60 transition group">
+                <span class="text-sm text-emerald-600">🤖</span>
+                <span class="font-bold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">ChatGPT (OpenAI)</span>
+              </a>
+
+              <a href="#" onclick="openAppOAuthLogin('dynamics'); closeMegaMenus(); return false;" class="flex items-center space-x-2.5 p-1 rounded-lg hover:bg-sky-50/60 transition group">
+                <span class="text-sm text-blue-600">🔷</span>
+                <span class="font-bold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Microsoft Dynamics CRM</span>
+              </a>
+
+              <a href="#" onclick="openAppOAuthLogin('msteams'); closeMegaMenus(); return false;" class="flex items-center space-x-2.5 p-1 rounded-lg hover:bg-sky-50/60 transition group">
+                <span class="text-sm text-indigo-600">👥</span>
+                <span class="font-bold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Microsoft Teams</span>
+              </a>
+
+              <a href="#" onclick="openAppOAuthLogin('zendesk'); closeMegaMenus(); return false;" class="flex items-center space-x-2.5 p-1 rounded-lg hover:bg-sky-50/60 transition group">
+                <span class="text-sm text-teal-600">✳️</span>
+                <span class="font-bold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Zendesk</span>
+              </a>
+
+              <a href="#" onclick="openAppOAuthLogin('jira'); closeMegaMenus(); return false;" class="flex items-center space-x-2.5 p-1 rounded-lg hover:bg-sky-50/60 transition group">
+                <span class="text-sm text-blue-500">🔷</span>
+                <span class="font-bold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Jira Software Cloud</span>
+              </a>
+
+              <a href="explore.html" onclick="closeMegaMenus()" class="flex items-center space-x-2.5 p-1 rounded-lg hover:bg-sky-50/60 transition group">
+                <span class="text-xs text-[#0EA5E9] font-bold">▦</span>
+                <span class="font-extrabold text-xs text-[#0EA5E9] transition">View all apps →</span>
+              </a>
+            </div>
+
+            <!-- Column 3: BY USE CASE -->
+            <div class="space-y-3">
+              <div class="text-[10px] font-extrabold text-[#858075] uppercase tracking-wider">BY USE CASE</div>
+
+              <a href="#" onclick="openFeatureModal('sales'); closeMegaMenus(); return false;" class="block p-1.5 rounded-xl hover:bg-sky-50/60 transition group">
+                <div class="font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Lead management</div>
+                <div class="text-[10px] text-[#6E6A60] leading-tight">Automate your way to more conversions</div>
+              </a>
+
+              <a href="#" onclick="openFeatureModal('sales'); closeMegaMenus(); return false;" class="block p-1.5 rounded-xl hover:bg-sky-50/60 transition group">
+                <div class="font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Sales pipeline</div>
+                <div class="text-[10px] text-[#6E6A60] leading-tight">Automate handoffs and streamline sales</div>
+              </a>
+
+              <a href="#" onclick="openFeatureModal('marketing'); closeMegaMenus(); return false;" class="block p-1.5 rounded-xl hover:bg-sky-50/60 transition group">
+                <div class="font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Marketing campaigns</div>
+                <div class="text-[10px] text-[#6E6A60] leading-tight">Boost your marketing campaign's impact</div>
+              </a>
+
+              <a href="#" onclick="openFeatureModal('sop-rag'); closeMegaMenus(); return false;" class="block p-1.5 rounded-xl hover:bg-sky-50/60 transition group">
+                <div class="font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Customer support</div>
+                <div class="text-[10px] text-[#6E6A60] leading-tight">Quickly route tickets and responses</div>
+              </a>
+
+              <a href="#" onclick="openFeatureModal('mcp'); closeMegaMenus(); return false;" class="block p-1.5 rounded-xl hover:bg-sky-50/60 transition group">
+                <div class="font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Data management</div>
+                <div class="text-[10px] text-[#6E6A60] leading-tight">Connect app data for more insights</div>
+              </a>
+
+              <a href="#" onclick="openFeatureModal('agent-workflows'); closeMegaMenus(); return false;" class="block p-1.5 rounded-xl hover:bg-sky-50/60 transition group">
+                <div class="font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Project management</div>
+                <div class="text-[10px] text-[#6E6A60] leading-tight">Deliver projects seamlessly</div>
+              </a>
+
+              <a href="#" onclick="openFeatureModal('sop-rag'); closeMegaMenus(); return false;" class="block p-1.5 rounded-xl hover:bg-sky-50/60 transition group">
+                <div class="font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Tickets and incidents</div>
+                <div class="text-[10px] text-[#6E6A60] leading-tight">Resolve issues and incidents faster</div>
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Right Side Soft Card Panel (Matching Zapier Right Panel Layout) -->
+        <div class="lg:col-span-4 bg-[#FAF8F5] border border-[#E8E4DB] rounded-2xl p-6 space-y-6">
+          
+          <div class="bg-white border border-[#E8E4DB] rounded-2xl p-4 shadow-sm flex items-start space-x-3.5">
+            <div class="w-12 h-12 rounded-xl bg-sky-100 text-[#0EA5E9] flex items-center justify-center font-black text-xl shrink-0">
+              ⚡
+            </div>
+            <div>
+              <h4 class="font-extrabold text-xs text-[#1E1E1E]">Automation you can govern</h4>
+              <p class="text-[11px] text-[#6E6A60] mt-1 leading-relaxed">
+                See how Rishan AI helps you manage, secure, and scale automation across your organization.
+              </p>
+            </div>
+          </div>
+
+          <div class="space-y-3 pt-2">
+            <div class="text-[10px] font-extrabold text-[#858075] uppercase tracking-wider">RISHAN AI FOR</div>
+            <ul class="space-y-2.5 text-xs font-bold text-[#1E1E1E]">
+              <li><a href="dashboard.html" onclick="closeMegaMenus()" class="hover:text-[#0EA5E9] transition flex items-center space-x-2"><span>🚀</span><span>Startups</span></a></li>
+              <li><a href="dashboard.html" onclick="closeMegaMenus()" class="hover:text-[#0EA5E9] transition flex items-center space-x-2"><span>🏢</span><span>Small and medium businesses</span></a></li>
+              <li><a href="dashboard.html" onclick="closeMegaMenus()" class="hover:text-[#0EA5E9] transition flex items-center space-x-2"><span>🛡️</span><span>Enterprise</span></a></li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mega Menu 3: Resources ▾ Dropdown -->
+    <div id="resourcesMegaMenu" onmouseleave="closeMegaMenus()" class="hidden absolute top-full left-0 w-full max-h-[85vh] overflow-y-auto bg-[#FFFDF9] border-b border-[#E8E4DB] shadow-2xl z-50 py-6 sm:py-8 px-4 sm:px-6 transition-all duration-200">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Left 3 Columns: Educational Resources (Col Span 8) -->
+        <div class="lg:col-span-8 space-y-6">
+          
+          <div class="border-b border-[#E8E4DB] pb-3">
+            <h3 class="text-2xl font-black text-[#1E1E1E]">Resources</h3>
+            <p class="text-xs text-[#6E6A60] font-medium mt-1">Educational resources to move your work forward</p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            
+            <!-- Column 1: GET INSPIRED -->
+            <div class="space-y-4">
+              <div class="text-[10px] font-extrabold text-[#858075] uppercase tracking-wider">GET INSPIRED</div>
+
+              <a href="resources.html?id=ai-orchestration-guide" onclick="markActiveMegaItem(this)" class="block group space-y-0.5">
+                <div class="mega-sub-title font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">⭐ 3-Phase AI Orchestration Guide</div>
+                <div class="text-[11px] text-[#6E6A60]">Strategic playbook by Sara McNamara</div>
+              </a>
+
+              <a href="resources.html?id=res-automate-5" onclick="markActiveMegaItem(this)" class="block group space-y-0.5">
+                <div class="mega-sub-title font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">5 things to automate today</div>
+                <div class="text-[11px] text-[#6E6A60]">Popular workflows to save time</div>
+              </a>
+
+              <a href="resources.html?id=chatbots" onclick="markActiveMegaItem(this)" class="block group space-y-0.5">
+                <div class="mega-sub-title font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Create custom chatbots</div>
+                <div class="text-[11px] text-[#6E6A60]">Build an AI chatbot in minutes</div>
+              </a>
+
+              <a href="resources.html?id=res-guides" onclick="markActiveMegaSubItem(this)" class="block group space-y-0.5">
+                <div class="mega-sub-title font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Guides</div>
+                <div class="text-[11px] text-[#6E6A60]">Go deep with dedicated guidance</div>
+              </a>
+
+              <a href="resources.html?id=res-webinars" onclick="markActiveMegaItem(this)" class="block group space-y-0.5">
+                <div class="mega-sub-title font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Webinars</div>
+                <div class="text-[11px] text-[#6E6A60]">Join live or watch on demand</div>
+              </a>
+
+              <a href="resources.html?id=res-blog" onclick="markActiveMegaItem(this)" class="block group space-y-0.5">
+                <div class="mega-sub-title font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Blog</div>
+                <div class="text-[11px] text-[#6E6A60]">Read all about apps and automation</div>
+              </a>
+            </div>
+
+            <!-- Column 2: HOW TO USE RISHAN -->
+            <div class="space-y-4">
+              <div class="text-[10px] font-extrabold text-[#858075] uppercase tracking-wider">HOW TO USE RISHAN</div>
+
+              <a href="resources.html?id=res-quickstart" onclick="markActiveMegaItem(this)" class="block group space-y-0.5">
+                <div class="mega-sub-title font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Rishan quick-start guide</div>
+                <div class="text-[11px] text-[#6E6A60]">Automate with confidence</div>
+              </a>
+
+              <a href="resources.html?id=res-webhooks" onclick="markActiveMegaItem(this)" class="block group space-y-0.5">
+                <div class="mega-sub-title font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Webhooks and Rishan</div>
+                <div class="text-[11px] text-[#6E6A60]">Connect your favorite apps with Rishan webhooks</div>
+              </a>
+
+              <a href="resources.html?id=res-academy" onclick="markActiveMegaItem(this)" class="block group space-y-0.5">
+                <div class="mega-sub-title font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Rishan Academy</div>
+                <div class="text-[11px] text-[#6E6A60]">Build AI skills to transform work</div>
+              </a>
+
+              <a href="resources.html?id=res-help" onclick="markActiveMegaItem(this)" class="block group space-y-0.5">
+                <div class="mega-sub-title font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Help Center</div>
+                <div class="text-[11px] text-[#6E6A60]">Find answers to your questions</div>
+              </a>
+
+              <a href="resources.html?id=res-support" onclick="markActiveMegaItem(this)" class="block group space-y-0.5">
+                <div class="mega-sub-title font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Rishan Support</div>
+                <div class="text-[11px] text-[#6E6A60]">Get help and find support options</div>
+              </a>
+            </div>
+
+            <!-- Column 3: AI & RISHAN -->
+            <div class="space-y-4">
+              <div class="text-[10px] font-extrabold text-[#858075] uppercase tracking-wider">AI & RISHAN</div>
+
+              <a href="resources.html?id=ai-orchestration-guide" onclick="markActiveMegaItem(this)" class="block group space-y-0.5">
+                <div class="mega-sub-title font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">AI orchestration at work</div>
+                <div class="text-[11px] text-[#6E6A60]">Your guide to intelligent systems</div>
+              </a>
+
+              <a href="resources.html?id=mcp" onclick="markActiveMegaItem(this)" class="block group space-y-0.5">
+                <div class="mega-sub-title font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">How to use Rishan MCP</div>
+                <div class="text-[11px] text-[#6E6A60]">Connect AI to thousands of apps—code-free</div>
+              </a>
+
+              <a href="resources.html?id=sdk" onclick="markActiveMegaItem(this)" class="block group space-y-0.5">
+                <div class="mega-sub-title font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Rishan Python SDK</div>
+                <div class="text-[11px] text-[#6E6A60]">Install Rishan SDK for developers</div>
+              </a>
+            </div>
+
+          </div>
+
+          <!-- Bottom Action Bar -->
+          <div class="border-t border-[#E8E4DB] pt-4 flex flex-wrap items-center gap-6 text-xs font-bold text-[#5A574F]">
+            <a href="resources.html" onclick="markActiveMegaItem(this)" class="mega-sub-link hover:text-[#0EA5E9] transition flex items-center space-x-1"><span>📚</span><span>All Resources Hub</span></a>
+            <a href="resources.html?id=ai-orchestration-guide" onclick="markActiveMegaItem(this)" class="mega-sub-link hover:text-[#0EA5E9] transition flex items-center space-x-1"><span>⚡</span><span>3-Phase AI Playbook</span></a>
+            <a href="resources.html?id=res-guides" onclick="markActiveMegaItem(this)" class="mega-sub-link hover:text-[#0EA5E9] transition flex items-center space-x-1"><span>🧩</span><span>Explore templates</span></a>
+            <a href="resources.html?id=res-automate-5" onclick="markActiveMegaItem(this)" class="mega-sub-link hover:text-[#0EA5E9] transition flex items-center space-x-1"><span>💼</span><span>Explore use cases</span></a>
+            <a href="resources.html?id=ai-orchestration-guide" onclick="markActiveMegaItem(this)" class="mega-sub-link hover:text-[#0EA5E9] transition flex items-center space-x-1"><span>🔍</span><span>Industry comparisons</span></a>
+          </div>
+
+        </div>
+
+        <!-- Right Panel: DEVELOPER RESOURCES (Col Span 4) -->
+        <div class="lg:col-span-4 bg-[#FAF8F5] border border-[#E8E4DB] rounded-2xl p-6 space-y-5">
+          <a href="resources.html?id=ai-orchestration-guide" onclick="markActiveMegaItem(this)" class="block p-4 bg-sky-50 border border-sky-200 rounded-xl space-y-2 cursor-pointer hover:border-[#0EA5E9] transition group">
+            <h4 class="mega-sub-title font-black text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] flex items-center space-x-1">
+              <span>🚀</span><span>Implement AI orchestration</span>
+            </h4>
+            <p class="text-[11px] text-[#6E6A60] leading-relaxed">Three phases to move from disconnected AI pilots to orchestrated systems that scale. Click to read playbook →</p>
+          </a>
+
+          <div class="space-y-3">
+            <div class="text-[10px] font-extrabold text-[#858075] uppercase tracking-wider">DEVELOPER RESOURCES</div>
+
+            <a href="resources.html?id=sdk" onclick="markActiveMegaItem(this)" class="mega-sub-link block font-bold text-xs text-[#1E1E1E] hover:text-[#0EA5E9] transition">Powered by Rishan</a>
+            <a href="resources.html?id=mcp" onclick="markActiveMegaItem(this)" class="mega-sub-link block font-bold text-xs text-[#1E1E1E] hover:text-[#0EA5E9] transition">Build an integration</a>
+            <a href="resources.html?id=res-webhooks" onclick="markActiveMegaItem(this)" class="mega-sub-link block font-bold text-xs text-[#1E1E1E] hover:text-[#0EA5E9] transition">Embed an integration</a>
+            <a href="resources.html?id=res-academy" onclick="markActiveMegaItem(this)" class="mega-sub-link block font-bold text-xs text-[#1E1E1E] hover:text-[#0EA5E9] transition">Integration Partner Program</a>
+            <a href="resources.html?id=res-guides" onclick="markActiveMegaItem(this)" class="mega-sub-link block font-bold text-xs text-[#1E1E1E] hover:text-[#0EA5E9] transition">Documentation</a>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </header>
+
+  <!-- Notification Toast -->
+  <div id="toastNotification" class="hidden fixed bottom-6 right-6 z-50 bg-[#1E1E1E] text-white px-5 py-3.5 rounded-2xl shadow-2xl flex items-center space-x-3 transition-all duration-300 transform">
+    <span id="toastIcon" class="text-emerald-400 text-lg">✓</span>
+    <span id="toastMessage" class="text-xs font-semibold">App successfully connected!</span>
+  </div>
+
+  <!-- Hero & Search Banner -->
+  <section class="bg-[#FFFDF9] bg-grid border-b border-[#E8E4DB] py-14 px-6 text-center">
+    <div class="max-w-4xl mx-auto space-y-6">
+      
+      <h1 class="text-3xl sm:text-5xl font-black text-[#1E1E1E] tracking-tight leading-tight">
+        The world's most connected AI platform
+      </h1>
+
+      <p class="text-sm sm:text-base text-[#5A574F] max-w-2xl mx-auto leading-relaxed font-medium">
+        Over 10,000+ connections to empower teams to build fast with speed, security, and control all in one platform.
+      </p>
+
+      <!-- Enterprise Badges -->
+      <div class="flex items-center justify-center space-x-2 text-[11px] font-bold text-[#0EA5E9]">
+        <span class="inline-block w-2 h-2 rounded-full bg-[#0EA5E9] animate-pulse"></span>
+        <span class="uppercase tracking-wider">Enterprise Grade</span>
+      </div>
+
+      <!-- Feature Tags Scroll -->
+      <div class="flex flex-wrap justify-center gap-2 max-w-3xl mx-auto pt-1">
+        <button onclick="filterByTag('Outage detection', this)" class="feature-tag-btn bg-white hover:bg-[#FAF8F5] border border-[#E8E4DB] px-3 py-1 rounded-lg text-xs font-semibold text-[#5A574F] transition">Outage detection</button>
+        <button onclick="filterByTag('Data checkpoints', this)" class="feature-tag-btn bg-white hover:bg-[#FAF8F5] border border-[#E8E4DB] px-3 py-1 rounded-lg text-xs font-semibold text-[#5A574F] transition">Data checkpoints</button>
+        <button onclick="filterByTag('Intelligent throttling', this)" class="feature-tag-btn bg-white hover:bg-[#FAF8F5] border border-[#E8E4DB] px-3 py-1 rounded-lg text-xs font-semibold text-[#5A574F] transition">Intelligent throttling</button>
+        <button onclick="filterByTag('Horizontal scalability', this)" class="feature-tag-btn bg-white hover:bg-[#FAF8F5] border border-[#E8E4DB] px-3 py-1 rounded-lg text-xs font-semibold text-[#5A574F] transition">Horizontal scalability</button>
+        <button onclick="filterByTag('API change management', this)" class="feature-tag-btn bg-white hover:bg-[#FAF8F5] border border-[#E8E4DB] px-3 py-1 rounded-lg text-xs font-semibold text-[#5A574F] transition">API change management</button>
+        <button onclick="filterByTag('AWS cloud security', this)" class="feature-tag-btn bg-white hover:bg-[#FAF8F5] border border-[#E8E4DB] px-3 py-1 rounded-lg text-xs font-semibold text-[#5A574F] transition">AWS cloud security</button>
+        <button onclick="filterByTag('Custom data retention', this)" class="feature-tag-btn bg-white hover:bg-[#FAF8F5] border border-[#E8E4DB] px-3 py-1 rounded-lg text-xs font-semibold text-[#5A574F] transition">Custom data retention</button>
+      </div>
+
+      <!-- Search Connections Bar -->
+      <div class="max-w-2xl mx-auto pt-4 relative">
+        <div class="relative">
+          <input 
+            type="text" 
+            id="appSearchInput"
+            onkeyup="filterApps()"
+            placeholder="Search connections (e.g. ChatGPT, TrekkSoft, Outlook, Gmail, Slack, HubSpot)..." 
+            class="w-full bg-white border border-[#D5D0C5] rounded-2xl py-4 pl-12 pr-4 text-sm font-medium focus:outline-none focus:border-[#0EA5E9] shadow-sm text-[#1E1E1E]"
+          />
+          <span class="absolute left-4 top-4 text-lg text-[#858075]">🔍</span>
+        </div>
+      </div>
+
+      <!-- Complete Toolkit Tabs -->
+      <div class="pt-6">
+        <p class="text-xs text-[#858075] uppercase tracking-wider font-bold mb-4">Your complete toolkit for AI automation</p>
+
+        <div class="grid grid-cols-2 sm:grid-cols-5 gap-3 max-w-4xl mx-auto">
+          
+          <button onclick="setCategoryFilter('all', this)" class="top-tab-btn active bg-[#0EA5E9] text-white p-4 rounded-2xl text-left border-2 border-[#0EA5E9] shadow-lg transition">
+            <div class="text-xl mb-1">🎛️</div>
+            <div class="font-black text-xs">Integrations</div>
+            <div class="text-[10px] opacity-90">9,000+</div>
+          </button>
+
+          <button onclick="setCategoryFilter('ai', this)" class="top-tab-btn bg-white hover:bg-[#FAF8F5] text-[#1E1E1E] p-4 rounded-2xl text-left border border-[#E8E4DB] shadow-sm transition">
+            <div class="text-xl mb-1">✨</div>
+            <div class="font-extrabold text-xs">AI</div>
+            <div class="text-[10px] bg-gray-100 text-[#0EA5E9] px-1.5 py-0.5 rounded w-max mt-0.5 font-bold tab-badge">477 Apps</div>
+          </button>
+
+          <button onclick="setCategoryFilter('custom', this)" class="top-tab-btn bg-white hover:bg-[#FAF8F5] text-[#1E1E1E] p-4 rounded-2xl text-left border border-[#E8E4DB] shadow-sm transition">
+            <div class="text-xl mb-1">⚙️</div>
+            <div class="font-extrabold text-xs">Custom</div>
+            <div class="text-[10px] opacity-75">Unlimited</div>
+          </button>
+
+          <button onclick="setCategoryFilter('rishan', this)" class="top-tab-btn bg-white hover:bg-[#FAF8F5] text-[#1E1E1E] p-4 rounded-2xl text-left border border-[#E8E4DB] shadow-sm transition">
+            <div class="text-xl mb-1">✴️</div>
+            <div class="font-extrabold text-xs">Rishan AI</div>
+            <div class="text-[10px] text-[#0EA5E9] font-bold tab-badge">Agents Built-in</div>
+          </button>
+
+          <button onclick="setCategoryFilter('tools', this)" class="top-tab-btn bg-white hover:bg-[#FAF8F5] text-[#1E1E1E] p-4 rounded-2xl text-left border border-[#E8E4DB] shadow-sm transition">
+            <div class="text-xl mb-1">🛠️</div>
+            <div class="font-extrabold text-xs">Rishan Tools</div>
+            <div class="text-[10px] opacity-75">MCP Native</div>
+          </button>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Main Directory Section -->
+  <main class="max-w-7xl mx-auto px-6 py-12 w-full flex-1">
+    
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+      <div>
+        <h2 class="text-2xl font-black text-[#1E1E1E]">Apps and Software Integrations</h2>
+        <p id="appCountText" class="text-xs text-[#7A756B] font-semibold mt-1">Showing 26 connected apps</p>
+      </div>
+
+      <!-- Quick Action: Connect All Apps -->
+      <div class="flex items-center space-x-3">
+        <button onclick="connectAllApps()" class="bg-[#0EA5E9] hover:bg-[#E04500] text-white px-4 py-2.5 rounded-xl text-xs font-extrabold transition shadow-md flex items-center space-x-2">
+          <span>⚡</span>
+          <span>Connect All Apps with 1-Click</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      
+      <!-- Left Sidebar Filters -->
+      <aside class="lg:col-span-3 space-y-6">
+        
+        <!-- Sort Apps By -->
+        <div class="bg-white border border-[#E8E4DB] p-5 rounded-2xl space-y-3">
+          <h3 class="text-xs font-bold text-[#1E1E1E] uppercase tracking-wider">Sort Apps By</h3>
+          <ul class="space-y-2 text-xs font-semibold">
+            <li><button onclick="sortApps('popular', this)" class="sort-btn text-[#0EA5E9] font-bold hover:underline flex items-center justify-between w-full"><span>Most Popular</span> <span>✓</span></button></li>
+            <li><button onclick="sortApps('premium', this)" class="sort-btn text-[#5A574F] hover:text-[#0EA5E9] flex items-center justify-between w-full"><span>Premium Apps</span></button></li>
+            <li><button onclick="sortApps('beta', this)" class="sort-btn text-[#5A574F] hover:text-[#0EA5E9] flex items-center justify-between w-full"><span>Beta Integrations</span></button></li>
+            <li><button onclick="sortApps('recent', this)" class="sort-btn text-[#5A574F] hover:text-[#0EA5E9] flex items-center justify-between w-full"><span>Recently Launched</span></button></li>
+          </ul>
+        </div>
+
+        <!-- Categories Accordion -->
+        <div class="bg-white border border-[#E8E4DB] p-5 rounded-2xl space-y-3">
+          <h3 class="text-xs font-bold text-[#1E1E1E] uppercase tracking-wider">Categories</h3>
+          <ul class="space-y-2 text-xs font-semibold">
+            <li><button onclick="setCategoryFilter('all', this)" class="cat-sidebar-btn text-[#0EA5E9] font-bold hover:underline">All Categories (9,000+)</button></li>
+            <li><button onclick="setCategoryFilter('ai', this)" class="cat-sidebar-btn text-[#5A574F] hover:text-[#0EA5E9]">Artificial Intelligence (477)</button></li>
+            <li><button onclick="setCategoryFilter('business', this)" class="cat-sidebar-btn text-[#5A574F] hover:text-[#0EA5E9]">Business Intelligence</button></li>
+            <li><button onclick="setCategoryFilter('commerce', this)" class="cat-sidebar-btn text-[#5A574F] hover:text-[#0EA5E9]">Commerce & Sales</button></li>
+            <li><button onclick="setCategoryFilter('comm', this)" class="cat-sidebar-btn text-[#5A574F] hover:text-[#0EA5E9]">Communication & Email</button></li>
+            <li><button onclick="setCategoryFilter('content', this)" class="cat-sidebar-btn text-[#5A574F] hover:text-[#0EA5E9]">Content & Files</button></li>
+            <li><button onclick="setCategoryFilter('hr', this)" class="cat-sidebar-btn text-[#5A574F] hover:text-[#0EA5E9]">Human Resources</button></li>
+            <li><button onclick="setCategoryFilter('it', this)" class="cat-sidebar-btn text-[#5A574F] hover:text-[#0EA5E9]">IT Operations</button></li>
+            <li><button onclick="setCategoryFilter('marketing', this)" class="cat-sidebar-btn text-[#5A574F] hover:text-[#0EA5E9]">Marketing & Leads</button></li>
+            <li><button onclick="setCategoryFilter('productivity', this)" class="cat-sidebar-btn text-[#5A574F] hover:text-[#0EA5E9]">Productivity & Workflows</button></li>
+            <li><button onclick="setCategoryFilter('crm', this)" class="cat-sidebar-btn text-[#5A574F] hover:text-[#0EA5E9]">Sales & CRM</button></li>
+            <li><button onclick="setCategoryFilter('support', this)" class="cat-sidebar-btn text-[#5A574F] hover:text-[#0EA5E9]">Customer Support</button></li>
+            <li><button onclick="setCategoryFilter('web', this)" class="cat-sidebar-btn text-[#5A574F] hover:text-[#0EA5E9]">Website & App Building</button></li>
+          </ul>
+        </div>
+
+      </aside>
+
+      <!-- Apps Grid (Right Side) -->
+      <div class="lg:col-span-9 space-y-6">
+        
+        <!-- App Cards Grid -->
+        <div id="appsGrid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          
+          <!-- OpenAI ChatGPT -->
+          <div onclick="openConnectModal('openai', 'OpenAI ChatGPT', '🤖', 'GPT-4o & LLM Reasoning API', 'ai content productivity', false)" class="app-card cursor-pointer bg-white border border-[#E8E4DB] p-5 rounded-2xl hover:border-[#0EA5E9] transition shadow-sm hover:shadow flex items-start space-x-4" data-id="openai" data-name="openai chatgpt gpt-4o ai intelligence" data-cat="ai content productivity">
+            <div class="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center font-bold text-emerald-600 text-xl shrink-0">🤖</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between">
+                <h4 class="font-extrabold text-sm text-[#1E1E1E]">OpenAI ChatGPT</h4>
+                <span class="status-badge text-[10px] bg-[#0EA5E9] text-white px-2 py-0.5 rounded-full font-bold">Connect App →</span>
+              </div>
+              <p class="text-xs text-[#5A574F] mt-1 leading-relaxed line-clamp-2">GPT-4o model integration. Generates responses, content creation, reasoning, and customer query resolution.</p>
+            </div>
+          </div>
+
+          <!-- Claude Anthropic -->
+          <div onclick="openConnectModal('claude', 'Claude Anthropic', '🧠', 'Claude 3.5 Sonnet & AI Reasoning', 'ai content productivity', false)" class="app-card cursor-pointer bg-white border border-[#E8E4DB] p-5 rounded-2xl hover:border-[#0EA5E9] transition shadow-sm hover:shadow flex items-start space-x-4" data-id="claude" data-name="claude anthropic sonnet ai reasoning" data-cat="ai content productivity">
+            <div class="w-12 h-12 rounded-xl bg-amber-50 border border-amber-100 flex items-center justify-center font-bold text-amber-700 text-xl shrink-0">🧠</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between">
+                <h4 class="font-extrabold text-sm text-[#1E1E1E]">Claude Anthropic</h4>
+                <span class="status-badge text-[10px] bg-[#0EA5E9] text-white px-2 py-0.5 rounded-full font-bold">Connect App →</span>
+              </div>
+              <p class="text-xs text-[#5A574F] mt-1 leading-relaxed line-clamp-2">Claude 3.5 Sonnet integration for complex reasoning, long document processing, and coding workflows.</p>
+            </div>
+          </div>
+
+          <!-- Rishan AI Agents -->
+          <div onclick="openConnectModal('rishan_agent', 'Rishan AI Agents Team', '✴️', 'Enterprise Multi-Agent SME Workforce', 'ai rishan productivity crm', true)" class="app-card cursor-pointer bg-white border border-[#E8E4DB] p-5 rounded-2xl hover:border-[#0EA5E9] transition shadow-sm hover:shadow flex items-start space-x-4" data-id="rishan_agent" data-name="rishan ai agents orchestrator workflow" data-cat="ai rishan productivity crm">
+            <div class="w-12 h-12 rounded-xl bg-sky-50 border border-sky-100 flex items-center justify-center font-bold text-[#0EA5E9] text-xl shrink-0">✴️</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between">
+                <h4 class="font-extrabold text-sm text-[#1E1E1E]">Rishan AI Agents</h4>
+                <span class="status-badge text-[10px] bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full font-bold">● Connected (Native)</span>
+              </div>
+              <p class="text-xs text-[#5A574F] mt-1 leading-relaxed line-clamp-2">Specialized SME workforce: Sales, Booking, Operations, Marketing, and Management AI Agents.</p>
+            </div>
+          </div>
+
+          <!-- TrekkSoft -->
+          <div onclick="openConnectModal('trekksoft', 'TrekkSoft', '📅', 'Swiss tour booking API', 'ai productivity crm business', true)" class="app-card cursor-pointer bg-white border border-[#E8E4DB] p-5 rounded-2xl hover:border-[#0EA5E9] transition shadow-sm hover:shadow flex items-start space-x-4" data-id="trekksoft" data-name="trekksoft Swiss tour booking" data-cat="ai productivity crm business">
+            <div class="w-12 h-12 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center font-bold text-blue-600 text-xl shrink-0">📅</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between">
+                <h4 class="font-extrabold text-sm text-[#1E1E1E]">TrekkSoft</h4>
+                <span class="status-badge text-[10px] bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full font-bold">● Connected (API)</span>
+              </div>
+              <p class="text-xs text-[#5A574F] mt-1 leading-relaxed line-clamp-2">Leading Swiss tour booking software for activity providers. Real-time availability, bookings, and customer scheduling.</p>
+            </div>
+          </div>
+
+          <!-- SharePoint -->
+          <div onclick="openConnectModal('sharepoint', 'Microsoft SharePoint', '📋', 'Enterprise RAG SOP Knowledge Store', 'ai content productivity it', true)" class="app-card cursor-pointer bg-white border border-[#E8E4DB] p-5 rounded-2xl hover:border-[#0EA5E9] transition shadow-sm hover:shadow flex items-start space-x-4" data-id="sharepoint" data-name="sharepoint microsoft sop rag" data-cat="ai content productivity it">
+            <div class="w-12 h-12 rounded-xl bg-teal-50 border border-teal-100 flex items-center justify-center font-bold text-teal-600 text-xl shrink-0">📋</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between">
+                <h4 class="font-extrabold text-sm text-[#1E1E1E]">Microsoft SharePoint</h4>
+                <span class="status-badge text-[10px] bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full font-bold">● Connected (RAG)</span>
+              </div>
+              <p class="text-xs text-[#5A574F] mt-1 leading-relaxed line-clamp-2">Enterprise SOP knowledge store. Powers Vector RAG document search across company guidelines and manuals.</p>
+            </div>
+          </div>
+
+          <!-- Outlook Mail -->
+          <div onclick="openConnectModal('outlook', 'Microsoft Outlook', '✉️', 'M365 Email & Calendar', 'ai comm hr', true)" class="app-card cursor-pointer bg-white border border-[#E8E4DB] p-5 rounded-2xl hover:border-[#0EA5E9] transition shadow-sm hover:shadow flex items-start space-x-4" data-id="outlook" data-name="outlook email microsoft m365" data-cat="ai comm hr">
+            <div class="w-12 h-12 rounded-xl bg-sky-50 border border-sky-100 flex items-center justify-center font-bold text-sky-600 text-xl shrink-0">✉️</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between">
+                <h4 class="font-extrabold text-sm text-[#1E1E1E]">Microsoft Outlook</h4>
+                <span class="status-badge text-[10px] bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full font-bold">● Connected (M365)</span>
+              </div>
+              <p class="text-xs text-[#5A574F] mt-1 leading-relaxed line-clamp-2">Web-based email, contacts, tasks, and calendar services. Draft and send automated emails via AI agents.</p>
+            </div>
+          </div>
+
+          <!-- bexio -->
+          <div onclick="openConnectModal('bexio', 'bexio', '📊', 'Swiss Business & Invoicing API', 'ai commerce business', true)" class="app-card cursor-pointer bg-white border border-[#E8E4DB] p-5 rounded-2xl hover:border-[#0EA5E9] transition shadow-sm hover:shadow flex items-start space-x-4" data-id="bexio" data-name="bexio invoice Swiss accounting" data-cat="ai commerce business">
+            <div class="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center font-bold text-emerald-600 text-xl shrink-0">📊</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between">
+                <h4 class="font-extrabold text-sm text-[#1E1E1E]">bexio</h4>
+                <span class="status-badge text-[10px] bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full font-bold">● Connected (Invoicing)</span>
+              </div>
+              <p class="text-xs text-[#5A574F] mt-1 leading-relaxed line-clamp-2">Swiss business software for automated invoicing, accounting, contact management, and order processing.</p>
+            </div>
+          </div>
+
+          <!-- Brevo -->
+          <div onclick="openConnectModal('brevo', 'Brevo', '🚀', 'Marketing & Email Campaigns API', 'ai marketing comm', true)" class="app-card cursor-pointer bg-white border border-[#E8E4DB] p-5 rounded-2xl hover:border-[#0EA5E9] transition shadow-sm hover:shadow flex items-start space-x-4" data-id="brevo" data-name="brevo sendinblue marketing email" data-cat="ai marketing comm">
+            <div class="w-12 h-12 rounded-xl bg-purple-50 border border-purple-100 flex items-center justify-center font-bold text-purple-600 text-xl shrink-0">🚀</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between">
+                <h4 class="font-extrabold text-sm text-[#1E1E1E]">Brevo</h4>
+                <span class="status-badge text-[10px] bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full font-bold">● Connected (Marketing)</span>
+              </div>
+              <p class="text-xs text-[#5A574F] mt-1 leading-relaxed line-clamp-2">All-in-one marketing platform for email campaigns, transactional messaging, and customer automation.</p>
+            </div>
+          </div>
+
+          <!-- Wix Website -->
+          <div onclick="openConnectModal('wix', 'Wix Website', '🌐', 'Webhooks & Lead Listener', 'ai web marketing', true)" class="app-card cursor-pointer bg-white border border-[#E8E4DB] p-5 rounded-2xl hover:border-[#0EA5E9] transition shadow-sm hover:shadow flex items-start space-x-4" data-id="wix" data-name="wix website webhooks leads" data-cat="ai web marketing">
+            <div class="w-12 h-12 rounded-xl bg-amber-50 border border-amber-100 flex items-center justify-center font-bold text-amber-600 text-xl shrink-0">🌐</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between">
+                <h4 class="font-extrabold text-sm text-[#1E1E1E]">Wix Website</h4>
+                <span class="status-badge text-[10px] bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full font-bold">● Connected (Webhooks)</span>
+              </div>
+              <p class="text-xs text-[#5A574F] mt-1 leading-relaxed line-clamp-2">Website builder platform connecting form inquiries, landing page leads, and web bookings directly into AI agents.</p>
+            </div>
+          </div>
+
+          <!-- Google Sheets -->
+          <div onclick="openConnectModal('gsheets', 'Google Sheets', '🟩', 'Spreadsheets & Automated Sync', 'ai productivity content business', false)" class="app-card cursor-pointer bg-white border border-[#E8E4DB] p-5 rounded-2xl hover:border-[#0EA5E9] transition shadow-sm hover:shadow flex items-start space-x-4" data-id="gsheets" data-name="google sheets excel data" data-cat="ai productivity content business">
+            <div class="w-12 h-12 rounded-xl bg-green-50 border border-green-100 flex items-center justify-center font-bold text-green-600 text-xl shrink-0">🟩</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between">
+                <h4 class="font-extrabold text-sm text-[#1E1E1E]">Google Sheets</h4>
+                <span class="status-badge text-[10px] bg-[#0EA5E9] text-white px-2 py-0.5 rounded-full font-bold">Connect App →</span>
+              </div>
+              <p class="text-xs text-[#5A574F] mt-1 leading-relaxed line-clamp-2">Create, edit, and share spreadsheets wherever you are with Google Sheets, and get automated insights.</p>
+            </div>
+          </div>
+
+          <!-- Gmail -->
+          <div onclick="openConnectModal('gmail', 'Gmail', '✉️', 'Google Email & Messaging', 'ai comm support', false)" class="app-card cursor-pointer bg-white border border-[#E8E4DB] p-5 rounded-2xl hover:border-[#0EA5E9] transition shadow-sm hover:shadow flex items-start space-x-4" data-id="gmail" data-name="gmail google email mail" data-cat="ai comm support">
+            <div class="w-12 h-12 rounded-xl bg-red-50 border border-red-100 flex items-center justify-center font-bold text-red-500 text-xl shrink-0">✉️</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between">
+                <h4 class="font-extrabold text-sm text-[#1E1E1E]">Gmail</h4>
+                <span class="status-badge text-[10px] bg-[#0EA5E9] text-white px-2 py-0.5 rounded-full font-bold">Connect App →</span>
+              </div>
+              <p class="text-xs text-[#5A574F] mt-1 leading-relaxed line-clamp-2">One of the most popular email services, Gmail keeps track of all your emails with threaded conversations.</p>
+            </div>
+          </div>
+
+          <!-- Slack -->
+          <div onclick="openConnectModal('slack', 'Slack', '💬', 'Team Communication & Bot Trigger', 'ai comm productivity', false)" class="app-card cursor-pointer bg-white border border-[#E8E4DB] p-5 rounded-2xl hover:border-[#0EA5E9] transition shadow-sm hover:shadow flex items-start space-x-4" data-id="slack" data-name="slack team chat communication" data-cat="ai comm productivity">
+            <div class="w-12 h-12 rounded-xl bg-purple-50 border border-purple-100 flex items-center justify-center font-bold text-purple-600 text-xl shrink-0">💬</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between">
+                <h4 class="font-extrabold text-sm text-[#1E1E1E]">Slack</h4>
+                <span class="status-badge text-[10px] bg-[#0EA5E9] text-white px-2 py-0.5 rounded-full font-bold">Connect App →</span>
+              </div>
+              <p class="text-xs text-[#5A574F] mt-1 leading-relaxed line-clamp-2">Platform for team communication: everything in one place, instantly searchable, available wherever you go.</p>
+            </div>
+          </div>
+
+          <!-- Google Calendar -->
+          <div onclick="openConnectModal('gcal', 'Google Calendar', '📆', 'Events & Automated Booking', 'ai productivity hr', false)" class="app-card cursor-pointer bg-white border border-[#E8E4DB] p-5 rounded-2xl hover:border-[#0EA5E9] transition shadow-sm hover:shadow flex items-start space-x-4" data-id="gcal" data-name="google calendar schedule events" data-cat="ai productivity hr">
+            <div class="w-12 h-12 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center font-bold text-blue-600 text-xl shrink-0">📆</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between">
+                <h4 class="font-extrabold text-sm text-[#1E1E1E]">Google Calendar</h4>
+                <span class="status-badge text-[10px] bg-[#0EA5E9] text-white px-2 py-0.5 rounded-full font-bold">Connect App →</span>
+              </div>
+              <p class="text-xs text-[#5A574F] mt-1 leading-relaxed line-clamp-2">Organize your schedule and share events with co-workers and friends seamlessly with AI triggers.</p>
+            </div>
+          </div>
+
+          <!-- Google Drive -->
+          <div onclick="openConnectModal('gdrive', 'Google Drive', '📁', 'Cloud Files & Folder Watcher', 'ai content it', false)" class="app-card cursor-pointer bg-white border border-[#E8E4DB] p-5 rounded-2xl hover:border-[#0EA5E9] transition shadow-sm hover:shadow flex items-start space-x-4" data-id="gdrive" data-name="google drive storage sync" data-cat="ai content it">
+            <div class="w-12 h-12 rounded-xl bg-yellow-50 border border-yellow-100 flex items-center justify-center font-bold text-yellow-600 text-xl shrink-0">📁</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between">
+                <h4 class="font-extrabold text-sm text-[#1E1E1E]">Google Drive</h4>
+                <span class="status-badge text-[10px] bg-[#0EA5E9] text-white px-2 py-0.5 rounded-full font-bold">Connect App →</span>
+              </div>
+              <p class="text-xs text-[#5A574F] mt-1 leading-relaxed line-clamp-2">File sync app that lets you store all of your files online alongside your Google Docs and Sheets.</p>
+            </div>
+          </div>
+
+          <!-- HubSpot -->
+          <div onclick="openConnectModal('hubspot', 'HubSpot', '🧡', 'CRM & Inbound Sales', 'ai crm marketing sales', false)" class="app-card cursor-pointer bg-white border border-[#E8E4DB] p-5 rounded-2xl hover:border-[#0EA5E9] transition shadow-sm hover:shadow flex items-start space-x-4" data-id="hubspot" data-name="hubspot crm marketing sales" data-cat="ai crm marketing sales">
+            <div class="w-12 h-12 rounded-xl bg-sky-50 border border-sky-100 flex items-center justify-center font-bold text-sky-600 text-xl shrink-0">🧡</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between">
+                <h4 class="font-extrabold text-sm text-[#1E1E1E]">HubSpot</h4>
+                <span class="status-badge text-[10px] bg-[#0EA5E9] text-white px-2 py-0.5 rounded-full font-bold">Connect App →</span>
+              </div>
+              <p class="text-xs text-[#5A574F] mt-1 leading-relaxed line-clamp-2">All-in-one stop for all of your marketing software, sales CRM, and customer service needs.</p>
+            </div>
+          </div>
+
+          <!-- Facebook Lead Ads -->
+          <div onclick="openConnectModal('fbleads', 'Facebook Lead Ads', '👤', 'Social Media Lead Capture', 'ai marketing crm', false)" class="app-card cursor-pointer bg-white border border-[#E8E4DB] p-5 rounded-2xl hover:border-[#0EA5E9] transition shadow-sm hover:shadow flex items-start space-x-4" data-id="fbleads" data-name="facebook lead ads meta marketing" data-cat="ai marketing crm">
+            <div class="w-12 h-12 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center font-bold text-blue-600 text-xl shrink-0">👤</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between">
+                <h4 class="font-extrabold text-sm text-[#1E1E1E]">Facebook Lead Ads</h4>
+                <span class="status-badge text-[10px] bg-[#0EA5E9] text-white px-2 py-0.5 rounded-full font-bold">Connect App →</span>
+              </div>
+              <p class="text-xs text-[#5A574F] mt-1 leading-relaxed line-clamp-2">Facebook lead ads make signing up for business information easy for people and more valuable for businesses.</p>
+            </div>
+          </div>
+
+          <!-- Notion -->
+          <div onclick="openConnectModal('notion', 'Notion', '📝', 'All-in-one Workspace & Notes', 'ai productivity content', false)" class="app-card cursor-pointer bg-white border border-[#E8E4DB] p-5 rounded-2xl hover:border-[#0EA5E9] transition shadow-sm hover:shadow flex items-start space-x-4" data-id="notion" data-name="notion docs wiki notes" data-cat="ai productivity content">
+            <div class="w-12 h-12 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center font-bold text-slate-800 text-xl shrink-0">📝</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between">
+                <h4 class="font-extrabold text-sm text-[#1E1E1E]">Notion</h4>
+                <span class="status-badge text-[10px] bg-[#0EA5E9] text-white px-2 py-0.5 rounded-full font-bold">Connect App →</span>
+              </div>
+              <p class="text-xs text-[#5A574F] mt-1 leading-relaxed line-clamp-2">A tool that blends your everyday work apps into one. The all-in-one workspace for you and your team.</p>
+            </div>
+          </div>
+
+          <!-- Stripe -->
+          <div onclick="openConnectModal('stripe', 'Stripe', '💳', 'Online Payments & Invoicing', 'ai commerce business', false)" class="app-card cursor-pointer bg-white border border-[#E8E4DB] p-5 rounded-2xl hover:border-[#0EA5E9] transition shadow-sm hover:shadow flex items-start space-x-4" data-id="stripe" data-name="stripe payments finance commerce" data-cat="ai commerce business">
+            <div class="w-12 h-12 rounded-xl bg-indigo-50 border border-indigo-100 flex items-center justify-center font-bold text-indigo-600 text-xl shrink-0">💳</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between">
+                <h4 class="font-extrabold text-sm text-[#1E1E1E]">Stripe</h4>
+                <span class="status-badge text-[10px] bg-[#0EA5E9] text-white px-2 py-0.5 rounded-full font-bold">Connect App →</span>
+              </div>
+              <p class="text-xs text-[#5A574F] mt-1 leading-relaxed line-clamp-2">Developer-friendly way to accept payments online and in mobile apps. Suite of APIs powering online commerce.</p>
+            </div>
+          </div>
+
+          <!-- Calendly -->
+          <div onclick="openConnectModal('calendly', 'Calendly', '⏳', 'Appointment Scheduling Sync', 'ai productivity hr', false)" class="app-card cursor-pointer bg-white border border-[#E8E4DB] p-5 rounded-2xl hover:border-[#0EA5E9] transition shadow-sm hover:shadow flex items-start space-x-4" data-id="calendly" data-name="calendly meetings schedule" data-cat="ai productivity hr">
+            <div class="w-12 h-12 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center font-bold text-blue-500 text-xl shrink-0">⏳</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between">
+                <h4 class="font-extrabold text-sm text-[#1E1E1E]">Calendly</h4>
+                <span class="status-badge text-[10px] bg-[#0EA5E9] text-white px-2 py-0.5 rounded-full font-bold">Connect App →</span>
+              </div>
+              <p class="text-xs text-[#5A574F] mt-1 leading-relaxed line-clamp-2">Connects the entire meeting workflow—scheduling, payments, meeting notes, contacts, and AI follow-ups.</p>
+            </div>
+          </div>
+
+          <!-- Airtable -->
+          <div onclick="openConnectModal('airtable', 'Airtable', '📊', 'Relational Database Tables', 'ai productivity content business', false)" class="app-card cursor-pointer bg-white border border-[#E8E4DB] p-5 rounded-2xl hover:border-[#0EA5E9] transition shadow-sm hover:shadow flex items-start space-x-4" data-id="airtable" data-name="airtable database table grid" data-cat="ai productivity content business">
+            <div class="w-12 h-12 rounded-xl bg-amber-50 border border-amber-100 flex items-center justify-center font-bold text-amber-500 text-xl shrink-0">📊</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between">
+                <h4 class="font-extrabold text-sm text-[#1E1E1E]">Airtable</h4>
+                <span class="status-badge text-[10px] bg-[#0EA5E9] text-white px-2 py-0.5 rounded-full font-bold">Connect App →</span>
+              </div>
+              <p class="text-xs text-[#5A574F] mt-1 leading-relaxed line-clamp-2">Organize anything with Airtable, a modern database created for everyone. Fast, flexible relational tables.</p>
+            </div>
+          </div>
+
+          <!-- Trello -->
+          <div onclick="openConnectModal('trello', 'Trello', '📌', 'Kanban Board Sync', 'ai productivity it', false)" class="app-card cursor-pointer bg-white border border-[#E8E4DB] p-5 rounded-2xl hover:border-[#0EA5E9] transition shadow-sm hover:shadow flex items-start space-x-4" data-id="trello" data-name="trello kanban project task" data-cat="ai productivity it">
+            <div class="w-12 h-12 rounded-xl bg-sky-50 border border-sky-100 flex items-center justify-center font-bold text-sky-600 text-xl shrink-0">📌</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between">
+                <h4 class="font-extrabold text-sm text-[#1E1E1E]">Trello</h4>
+                <span class="status-badge text-[10px] bg-[#0EA5E9] text-white px-2 py-0.5 rounded-full font-bold">Connect App →</span>
+              </div>
+              <p class="text-xs text-[#5A574F] mt-1 leading-relaxed line-clamp-2">Team collaboration tool that lets you organize anything and everything to keep your projects on task.</p>
+            </div>
+          </div>
+
+          <!-- Salesforce -->
+          <div onclick="openConnectModal('salesforce', 'Salesforce', '☁️', 'Enterprise Sales CRM', 'ai crm commerce', false)" class="app-card cursor-pointer bg-white border border-[#E8E4DB] p-5 rounded-2xl hover:border-[#0EA5E9] transition shadow-sm hover:shadow flex items-start space-x-4" data-id="salesforce" data-name="salesforce enterprise crm leads" data-cat="ai crm commerce">
+            <div class="w-12 h-12 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center font-bold text-blue-700 text-xl shrink-0">☁️</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between">
+                <h4 class="font-extrabold text-sm text-[#1E1E1E]">Salesforce</h4>
+                <span class="status-badge text-[10px] bg-[#0EA5E9] text-white px-2 py-0.5 rounded-full font-bold">Connect App →</span>
+              </div>
+              <p class="text-xs text-[#5A574F] mt-1 leading-relaxed line-clamp-2">Leading enterprise customer relationship management system connecting sales, service, and marketing.</p>
+            </div>
+          </div>
+
+          <!-- monday.com -->
+          <div onclick="openConnectModal('monday', 'monday.com', '📈', 'Work OS Project Manager', 'ai productivity business', false)" class="app-card cursor-pointer bg-white border border-[#E8E4DB] p-5 rounded-2xl hover:border-[#0EA5E9] transition shadow-sm hover:shadow flex items-start space-x-4" data-id="monday" data-name="monday work os management" data-cat="ai productivity business">
+            <div class="w-12 h-12 rounded-xl bg-rose-50 border border-rose-100 flex items-center justify-center font-bold text-rose-600 text-xl shrink-0">📈</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between">
+                <h4 class="font-extrabold text-sm text-[#1E1E1E]">monday.com</h4>
+                <span class="status-badge text-[10px] bg-[#0EA5E9] text-white px-2 py-0.5 rounded-full font-bold">Connect App →</span>
+              </div>
+              <p class="text-xs text-[#5A574F] mt-1 leading-relaxed line-clamp-2">Helps you move projects forward fast, letting everyone know what's been done on a task.</p>
+            </div>
+          </div>
+
+          <!-- NetSuite -->
+          <div onclick="openConnectModal('netsuite', 'NetSuite ERP', '☁️', 'Enterprise Cloud ERP & Finance', 'ai crm commerce business', false)" class="app-card cursor-pointer bg-white border border-[#E8E4DB] p-5 rounded-2xl hover:border-[#0EA5E9] transition shadow-sm hover:shadow flex items-start space-x-4" data-id="netsuite" data-name="netsuite erp oracle finance enterprise" data-cat="ai crm commerce business">
+            <div class="w-12 h-12 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center font-bold text-blue-700 text-xl shrink-0">☁️</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between">
+                <h4 class="font-extrabold text-sm text-[#1E1E1E]">NetSuite ERP</h4>
+                <span class="status-badge text-[10px] bg-[#0EA5E9] text-white px-2 py-0.5 rounded-full font-bold">Connect App →</span>
+              </div>
+              <p class="text-xs text-[#5A574F] mt-1 leading-relaxed line-clamp-2">Enterprise ERP cloud platform connecting accounting, inventory, financial operations, and CRM automation.</p>
+            </div>
+          </div>
+
+          <!-- Microsoft Dynamics CRM -->
+          <div onclick="openConnectModal('dynamics', 'Microsoft Dynamics CRM', '🔷', 'Enterprise CRM & Customer Service', 'ai crm comm sales', false)" class="app-card cursor-pointer bg-white border border-[#E8E4DB] p-5 rounded-2xl hover:border-[#0EA5E9] transition shadow-sm hover:shadow flex items-start space-x-4" data-id="dynamics" data-name="microsoft dynamics crm sales 365" data-cat="ai crm comm sales">
+            <div class="w-12 h-12 rounded-xl bg-indigo-50 border border-indigo-100 flex items-center justify-center font-bold text-indigo-600 text-xl shrink-0">🔷</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between">
+                <h4 class="font-extrabold text-sm text-[#1E1E1E]">Microsoft Dynamics CRM</h4>
+                <span class="status-badge text-[10px] bg-[#0EA5E9] text-white px-2 py-0.5 rounded-full font-bold">Connect App →</span>
+              </div>
+              <p class="text-xs text-[#5A574F] mt-1 leading-relaxed line-clamp-2">Intelligent business applications for customer insights, automated sales pipelines, and support workflows.</p>
+            </div>
+          </div>
+
+          <!-- Microsoft Teams -->
+          <div onclick="openConnectModal('msteams', 'Microsoft Teams', '👥', 'Enterprise Messaging & Meetings', 'ai comm productivity', false)" class="app-card cursor-pointer bg-white border border-[#E8E4DB] p-5 rounded-2xl hover:border-[#0EA5E9] transition shadow-sm hover:shadow flex items-start space-x-4" data-id="msteams" data-name="microsoft teams m365 chat video" data-cat="ai comm productivity">
+            <div class="w-12 h-12 rounded-xl bg-purple-50 border border-purple-100 flex items-center justify-center font-bold text-purple-600 text-xl shrink-0">👥</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between">
+                <h4 class="font-extrabold text-sm text-[#1E1E1E]">Microsoft Teams</h4>
+                <span class="status-badge text-[10px] bg-[#0EA5E9] text-white px-2 py-0.5 rounded-full font-bold">Connect App →</span>
+              </div>
+              <p class="text-xs text-[#5A574F] mt-1 leading-relaxed line-clamp-2">Workspace for real-time collaboration, agent bot notifications, and automated channel updates.</p>
+            </div>
+          </div>
+
+          <!-- Zendesk -->
+          <div onclick="openConnectModal('zendesk', 'Zendesk', '✳️', 'Customer Service & Ticketing', 'ai support comm crm', false)" class="app-card cursor-pointer bg-white border border-[#E8E4DB] p-5 rounded-2xl hover:border-[#0EA5E9] transition shadow-sm hover:shadow flex items-start space-x-4" data-id="zendesk" data-name="zendesk support ticketing customer service" data-cat="ai support comm crm">
+            <div class="w-12 h-12 rounded-xl bg-teal-50 border border-teal-100 flex items-center justify-center font-bold text-teal-600 text-xl shrink-0">✳️</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between">
+                <h4 class="font-extrabold text-sm text-[#1E1E1E]">Zendesk</h4>
+                <span class="status-badge text-[10px] bg-[#0EA5E9] text-white px-2 py-0.5 rounded-full font-bold">Connect App →</span>
+              </div>
+              <p class="text-xs text-[#5A574F] mt-1 leading-relaxed line-clamp-2">Customer service software and sales CRM platform powering automated ticket routing and AI responses.</p>
+            </div>
+          </div>
+
+          <!-- Jira Software Cloud -->
+          <div onclick="openConnectModal('jira', 'Jira Software Cloud', '🔷', 'Agile Issue & Incident Management', 'ai productivity it', false)" class="app-card cursor-pointer bg-white border border-[#E8E4DB] p-5 rounded-2xl hover:border-[#0EA5E9] transition shadow-sm hover:shadow flex items-start space-x-4" data-id="jira" data-name="jira atlassian software agile incident bug" data-cat="ai productivity it">
+            <div class="w-12 h-12 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center font-bold text-blue-600 text-xl shrink-0">🔷</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between">
+                <h4 class="font-extrabold text-sm text-[#1E1E1E]">Jira Software Cloud</h4>
+                <span class="status-badge text-[10px] bg-[#0EA5E9] text-white px-2 py-0.5 rounded-full font-bold">Connect App →</span>
+              </div>
+              <p class="text-xs text-[#5A574F] mt-1 leading-relaxed line-clamp-2">Issue tracking and project management tool for agile software teams to plan, track, and release software.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Featured Banner -->
+        <div class="bg-[#FFF8F5] border border-[#FFD8C5] p-6 rounded-2xl flex items-center space-x-5">
+          <div class="w-12 h-12 rounded-xl bg-[#0EA5E9] text-white flex items-center justify-center font-extrabold text-2xl shrink-0">
+            ✴️
+          </div>
+          <div>
+            <div class="flex items-center space-x-2">
+              <span class="bg-[#0EA5E9] text-white text-[10px] px-2 py-0.5 rounded font-bold uppercase">Featured</span>
+              <h4 class="font-extrabold text-sm text-[#1E1E1E]">Rishan Forms & AI Agents</h4>
+            </div>
+            <p class="text-xs text-[#5A574F] mt-1 leading-relaxed">
+              Rishan Forms is an automated way to collect data and integrate your form with workflows that can connect to 9,000+ apps.
+            </p>
+          </div>
+        </div>
+
+        <!-- Load More Button -->
+        <div class="text-center pt-4">
+          <button id="loadMoreBtn" onclick="loadMoreApps()" class="bg-[#EFECE6] hover:bg-[#E2DDD3] text-[#1E1E1E] w-full py-4 rounded-xl text-xs font-extrabold transition shadow-sm hover:shadow flex items-center justify-center space-x-2">
+            <span>📦</span>
+            <span id="loadMoreText">Load more integrations... (20+ available)</span>
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Interactive App Connection Modal -->
+  <div id="connectModal" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-[#FFFDF9] border border-[#E8E4DB] w-full max-w-md rounded-3xl shadow-2xl p-6 sm:p-8 space-y-6 relative">
+      <button onclick="closeConnectModal()" class="absolute top-5 right-5 text-[#858075] hover:text-[#1E1E1E] p-1.5 rounded-full hover:bg-[#F5F2EB] transition">
+        ✕
+      </button>
+
+      <div class="flex items-center space-x-4 border-b border-[#E8E4DB] pb-4">
+        <div id="modalAppIcon" class="w-14 h-14 rounded-2xl bg-white border border-[#E8E4DB] flex items-center justify-center font-bold text-2xl shadow-sm">
+          📱
+        </div>
+        <div>
+          <h3 id="modalAppName" class="text-xl font-black text-[#1E1E1E]">App Name</h3>
+          <p id="modalAppDesc" class="text-xs text-[#6E6A60] mt-0.5">App Description</p>
+        </div>
+      </div>
+
+      <div class="space-y-4">
+        <div class="bg-white p-4 rounded-2xl border border-[#E8E4DB] space-y-2">
+          <div class="flex items-center justify-between text-xs font-bold">
+            <span class="text-[#5A574F]">Connection Status:</span>
+            <span id="modalAppStatus" class="text-amber-600 font-extrabold">Not Connected</span>
+          </div>
+          <p class="text-[11px] text-[#7A756B] leading-relaxed">
+            Granting access allows Rishan AI Agents to send automated events, sync data, and trigger workflows for your account.
+          </p>
+        </div>
+
+        <!-- OAuth Scope List -->
+        <div class="space-y-2 text-xs font-medium text-[#4A4740]">
+          <div class="flex items-center space-x-2">
+            <span class="text-emerald-500 font-bold">✓</span>
+            <span>Read & write data securely via encrypted OAuth 2.0</span>
+          </div>
+          <div class="flex items-center space-x-2">
+            <span class="text-emerald-500 font-bold">✓</span>
+            <span>Real-time webhook events and trigger listeners</span>
+          </div>
+          <div class="flex items-center space-x-2">
+            <span class="text-emerald-500 font-bold">✓</span>
+            <span>Human-in-the-Loop approval for sensitive operations</span>
+          </div>
+        </div>
+
+        <!-- Connection Button -->
+        <button id="modalConnectBtn" onclick="toggleAppConnection()" class="w-full bg-[#0EA5E9] hover:bg-[#E04500] text-white py-3.5 rounded-xl font-extrabold text-xs transition shadow-md flex items-center justify-center space-x-2">
+          <span>⚡</span>
+          <span>Connect with 1-Click (OAuth 2.0)</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Dark "LOOKING FOR SOMETHING ELSE?" Section -->
+  <section class="bg-[#181715] text-white py-14 px-6 border-t border-[#2B2A27]">
+    <div class="max-w-7xl mx-auto space-y-8">
+      
+      <div class="flex items-center space-x-2 text-[#0EA5E9] text-xs font-black uppercase tracking-widest">
+        <span class="w-3 h-0.5 bg-[#0EA5E9]"></span>
+        <span>Looking for something else?</span>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        
+        <div class="bg-[#24221F] border border-[#33302B] p-6 rounded-2xl space-y-3 hover:border-[#0EA5E9] transition">
+          <div class="text-2xl">🖐️</div>
+          <h4 class="font-extrabold text-base text-white">Request an app</h4>
+          <p class="text-xs text-gray-400 leading-relaxed">Let us know which apps you'd like added to the Rishan AI directory next.</p>
+        </div>
+
+        <div class="bg-[#24221F] border border-[#33302B] p-6 rounded-2xl space-y-3 hover:border-[#0EA5E9] transition">
+          <div class="text-2xl">🎛️</div>
+          <h4 class="font-extrabold text-base text-white">Add an app</h4>
+          <p class="text-xs text-gray-400 leading-relaxed">Scale your app's impact by joining Rishan's ecosystem of integrations.</p>
+        </div>
+
+        <div class="bg-[#24221F] border border-[#33302B] p-6 rounded-2xl space-y-3 hover:border-[#0EA5E9] transition">
+          <div class="text-2xl">🧑‍💻</div>
+          <h4 class="font-extrabold text-base text-white">Find experts</h4>
+          <p class="text-xs text-gray-400 leading-relaxed">Our Certified Solution Partners are here to guide your AI deployment.</p>
+        </div>
+
+        <div class="bg-[#24221F] border border-[#33302B] p-6 rounded-2xl space-y-3 hover:border-[#0EA5E9] transition">
+          <div class="text-2xl">🔔</div>
+          <h4 class="font-extrabold text-base text-white">Get guidance</h4>
+          <p class="text-xs text-gray-400 leading-relaxed">Get personalized recommendations and workflow setup support from our team.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-[#11100F] text-gray-400 text-xs border-t border-[#262421] py-12 px-6">
+    <div class="max-w-7xl mx-auto space-y-10">
+      
+      <!-- Alphabet Index -->
+      <div class="text-center space-y-2 border-b border-[#24221F] pb-8">
+        <div class="text-[11px] font-bold text-gray-500 uppercase">Apps by title</div>
+        <div class="flex flex-wrap justify-center gap-3 text-xs font-semibold text-gray-300">
+          <a href="#" class="hover:text-[#0EA5E9]">0-9</a>
+          <a href="#" class="hover:text-[#0EA5E9]">A</a><a href="#" class="hover:text-[#0EA5E9]">B</a>
+          <a href="#" class="hover:text-[#0EA5E9]">C</a><a href="#" class="hover:text-[#0EA5E9]">D</a>
+          <a href="#" class="hover:text-[#0EA5E9]">E</a><a href="#" class="hover:text-[#0EA5E9]">F</a>
+          <a href="#" class="hover:text-[#0EA5E9]">G</a><a href="#" class="hover:text-[#0EA5E9]">H</a>
+          <a href="#" class="hover:text-[#0EA5E9]">I</a><a href="#" class="hover:text-[#0EA5E9]">J</a>
+          <a href="#" class="hover:text-[#0EA5E9]">K</a><a href="#" class="hover:text-[#0EA5E9]">L</a>
+          <a href="#" class="hover:text-[#0EA5E9]">M</a><a href="#" class="hover:text-[#0EA5E9]">N</a>
+          <a href="#" class="hover:text-[#0EA5E9]">O</a><a href="#" class="hover:text-[#0EA5E9]">P</a>
+          <a href="#" class="hover:text-[#0EA5E9]">Q</a><a href="#" class="hover:text-[#0EA5E9]">R</a>
+          <a href="#" class="hover:text-[#0EA5E9]">S</a><a href="#" class="hover:text-[#0EA5E9]">T</a>
+          <a href="#" class="hover:text-[#0EA5E9]">U</a><a href="#" class="hover:text-[#0EA5E9]">V</a>
+          <a href="#" class="hover:text-[#0EA5E9]">W</a><a href="#" class="hover:text-[#0EA5E9]">X</a>
+          <a href="#" class="hover:text-[#0EA5E9]">Y</a><a href="#" class="hover:text-[#0EA5E9]">Z</a>
+        </div>
+      </div>
+
+      <!-- Links Grid -->
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-6 text-[11px]">
+        <div>
+          <div class="font-bold text-white mb-2 uppercase">Top searches</div>
+          <ul class="space-y-1.5">
+            <li><a href="#" class="hover:text-white">Slack integrations</a></li>
+            <li><a href="#" class="hover:text-white">Salesforce integrations</a></li>
+            <li><a href="#" class="hover:text-white">HubSpot CRM integrations</a></li>
+            <li><a href="#" class="hover:text-white">TrekkSoft integrations</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="font-bold text-white mb-2 uppercase">Popular apps</div>
+          <ul class="space-y-1.5">
+            <li><a href="#" class="hover:text-white">Dropbox</a></li>
+            <li><a href="#" class="hover:text-white">Google Sheets</a></li>
+            <li><a href="#" class="hover:text-white">DocuSign</a></li>
+            <li><a href="#" class="hover:text-white">WordPress</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="font-bold text-white mb-2 uppercase">Trending apps</div>
+          <ul class="space-y-1.5">
+            <li><a href="#" class="hover:text-white">Twitch</a></li>
+            <li><a href="#" class="hover:text-white">Calendly</a></li>
+            <li><a href="#" class="hover:text-white">Microsoft To-Do</a></li>
+            <li><a href="#" class="hover:text-white">Microsoft Outlook</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="font-bold text-white mb-2 uppercase">Top categories</div>
+          <ul class="space-y-1.5">
+            <li><a href="#" class="hover:text-white">Project management</a></li>
+            <li><a href="#" class="hover:text-white">Calendar</a></li>
+            <li><a href="#" class="hover:text-white">Email</a></li>
+            <li><a href="#" class="hover:text-white">CRM & Invoicing</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="font-bold text-white mb-2 uppercase">Our best content</div>
+          <ul class="space-y-1.5">
+            <li><a href="#" class="hover:text-white">Best AI Agents Apps</a></li>
+            <li><a href="#" class="hover:text-white">Best Email Apps</a></li>
+            <li><a href="#" class="hover:text-white">Best CRM Apps</a></li>
+            <li><a href="#" class="hover:text-white">Best Task Apps</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Copyright Bar -->
+      <div class="flex flex-col sm:flex-row items-center justify-between pt-6 border-t border-[#24221F] text-[11px] text-gray-500">
+        <div class="flex items-center space-x-1 font-bold text-white text-base">
+          <span class="text-[#0EA5E9]">_</span><span>rishan</span>
+        </div>
+
+        <div>
+          © 2026 Rishan AI Agents Inc. | Manage cookies | Legal | Privacy Policy
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Universal App OAuth 2.0 Login / Consent Modal Component -->
+  <div id="appOAuthModal" onclick="closeAppOAuthModal()" class="hidden fixed inset-0 z-[110] bg-black/75 backdrop-blur-md flex items-center justify-center p-4 animate-fade-in">
+    <div onclick="event.stopPropagation()" class="bg-[#FFFDF9] border border-[#E8E4DB] rounded-3xl max-w-lg w-full shadow-2xl overflow-hidden flex flex-col">
+      
+      <!-- Top Browser URL Header Bar -->
+      <div class="bg-[#1E1E1E] text-white px-4 py-2.5 flex items-center justify-between text-xs">
+        <div class="flex items-center space-x-2 text-gray-400 font-mono text-[11px] truncate">
+          <span class="text-emerald-400">🔒</span>
+          <span id="oauthUrlText" class="truncate">https://login.salesforce.com/oauth2/authorize</span>
+        </div>
+        <button onclick="closeAppOAuthModal()" class="text-gray-400 hover:text-white font-bold ml-2">✕</button>
+      </div>
+
+      <!-- Step 1: Login Credentials Screen -->
+      <div id="oauthStep1" class="p-6 sm:p-8 space-y-5">
+        <div class="flex items-center space-x-3 border-b border-[#E8E4DB] pb-4">
+          <div id="oauthAppIcon" class="w-12 h-12 rounded-2xl bg-[#0EA5E9]/10 text-[#0EA5E9] flex items-center justify-center font-black text-2xl shrink-0">
+            ☁️
+          </div>
+          <div>
+            <h3 id="oauthAppName" class="text-lg font-black text-[#1E1E1E]">Salesforce CRM</h3>
+            <p class="text-xs text-[#6E6A60] font-medium">OAuth 2.0 Enterprise Authentication</p>
+          </div>
+        </div>
+
+        <form onsubmit="submitOAuthStep1(event)" class="space-y-4 text-xs font-semibold">
+          <div>
+            <label id="oauthSubdomainLabel" class="block text-[#5A574F] mb-1">Salesforce Domain / Subdomain</label>
+            <input id="oauthSubdomainInput" type="text" placeholder="company.my.salesforce.com" class="w-full px-3.5 py-2.5 border border-[#D5D0C5] rounded-xl focus:outline-none focus:border-[#0EA5E9] bg-white font-mono text-xs" required>
+          </div>
+
+          <div>
+            <label class="block text-[#5A574F] mb-1">Username / Email</label>
+            <input id="oauthUserInput" type="email" placeholder="user@company.com" value="rishi.raj@enterprise.ch" class="w-full px-3.5 py-2.5 border border-[#D5D0C5] rounded-xl focus:outline-none focus:border-[#0EA5E9] bg-white text-xs" required>
+          </div>
+
+          <div>
+            <label class="block text-[#5A574F] mb-1">Password / Access Token</label>
+            <input type="password" value="••••••••••••••••" class="w-full px-3.5 py-2.5 border border-[#D5D0C5] rounded-xl focus:outline-none focus:border-[#0EA5E9] bg-white text-xs" required>
+          </div>
+
+          <div class="pt-2">
+            <button type="submit" id="oauthSubmitBtn" class="w-full bg-[#0EA5E9] hover:bg-[#E04500] text-white py-3 rounded-xl font-bold text-xs shadow-md transition">
+              Log In to App →
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Step 2: Permissions Scope Consent Screen -->
+      <div id="oauthStep2" class="hidden p-6 sm:p-8 space-y-5">
+        <div class="text-center space-y-2">
+          <div class="flex items-center justify-center space-x-3 text-2xl font-black">
+            <span class="text-[#0EA5E9]">_rishan</span>
+            <span class="text-gray-400">↔️</span>
+            <span id="oauthStep2Icon">☁️</span>
+          </div>
+          <h3 class="text-lg font-black text-[#1E1E1E]">Permissions Requested</h3>
+          <p class="text-xs text-[#6E6A60] font-medium">
+            Rishan AI Agents is requesting access to your <strong id="oauthStep2AppName">Salesforce Account</strong>:
+          </p>
+        </div>
+
+        <div class="bg-sky-50/60 border border-sky-200 p-4 rounded-2xl space-y-2.5 text-xs text-[#1E1E1E]">
+          <div class="font-extrabold text-[#0EA5E9] text-[11px] uppercase tracking-wider">Authorized Scopes</div>
+          <ul id="oauthScopeList" class="space-y-1.5 font-medium">
+            <!-- Rendered dynamically -->
+          </ul>
+        </div>
+
+        <div class="flex items-center space-x-3 pt-2">
+          <button onclick="closeAppOAuthModal()" class="w-1/2 border border-[#D5D0C5] text-[#5A574F] py-3 rounded-xl font-bold text-xs hover:bg-gray-100 transition">
+            Cancel
+          </button>
+          <button onclick="confirmOAuthConnection()" class="w-1/2 bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-xl font-bold text-xs shadow-md transition">
+            Allow & Authorize →
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- State & Interactive Script -->
+  <script>
+    let activeModalAppId = null;
+    let activeModalAppName = '';
+    let additionalLoaded = false;
+
+    const extraApps = [
+      { id: 'whatsapp', name: 'WhatsApp Business API', icon: '💬', desc: 'Customer messaging, notification webhooks, & automated support', cat: 'comm support ai' },
+      { id: 'zoom', name: 'Zoom Meetings', icon: '📹', desc: 'Video conferencing, transcript parsing, and AI summary sync', cat: 'comm productivity ai' },
+      { id: 'linkedin', name: 'LinkedIn Lead Gen', icon: '💼', desc: 'B2B lead generation, sponsored campaign sync, & profile webhooks', cat: 'marketing crm' },
+      { id: 'shopify', name: 'Shopify E-Commerce', icon: '🛍️', desc: 'Online store, order webhook triggers, and inventory tracking', cat: 'commerce web' },
+      { id: 'quickbooks', name: 'QuickBooks Online', icon: '📗', desc: 'Financial accounting, expense sync, and invoice automation', cat: 'commerce business' },
+      { id: 'discord', name: 'Discord Server Bot', icon: '👾', desc: 'Community server notifications and interactive bot commands', cat: 'comm IT' },
+      { id: 'intercom', name: 'Intercom Support', icon: '💬', desc: 'Customer support chat, lead capture, and AI agent handoff', cat: 'support comm ai' },
+      { id: 'zendesk', name: 'Zendesk Helpdesk', icon: '🎫', desc: 'Customer ticketing platform, escalation triggers, & AI answers', cat: 'support IT' },
+      { id: 'jira', name: 'Jira Software', icon: '🎯', desc: 'Agile sprint tracking, issue creation, & engineering workflows', cat: 'productivity IT' },
+      { id: 'confluence', name: 'Confluence Wiki', icon: '📚', desc: 'Team documentation, SOP knowledge sync, & vector search', cat: 'content productivity' },
+      { id: 'github', name: 'GitHub CI/CD Actions', icon: '🐙', desc: 'Code repository webhooks, pull request automation, & CI/CD', cat: 'IT productivity' },
+      { id: 'gitlab', name: 'GitLab DevOps', icon: '🦊', desc: 'DevOps pipelines, repository sync, and issue tracking', cat: 'IT productivity' },
+      { id: 'asana', name: 'Asana Project Manager', icon: '💮', desc: 'Team project tracking, milestone webhooks, & task automation', cat: 'productivity' },
+      { id: 'clickup', name: 'ClickUp Work OS', icon: '🎯', desc: 'All-in-one task management, docs, & workflow triggers', cat: 'productivity' },
+      { id: 'linear', name: 'Linear Issue Tracker', icon: '📐', desc: 'Streamlined issue tracking built for software teams', cat: 'productivity IT' },
+      { id: 'twilio', name: 'Twilio SMS Gateway', icon: '📱', desc: 'Programmable SMS, voice calls, & WhatsApp API triggers', cat: 'comm IT' },
+      { id: 'snowflake', name: 'Snowflake Data Warehouse', icon: '❄️', desc: 'Cloud data warehouse analytics and automated SQL queries', cat: 'business IT' },
+      { id: 'bigquery', name: 'Google BigQuery', icon: '🔍', desc: 'Enterprise data warehouse for machine learning and AI insights', cat: 'business IT' },
+      { id: 's3', name: 'Amazon S3 Bucket', icon: '🪣', desc: 'Cloud object storage for files, backups, and media assets', cat: 'content IT' },
+      { id: 'postgre', name: 'PostgreSQL Database', icon: '🐘', desc: 'Relational database connector for direct SQL triggers', cat: 'IT content' }
+    ];
+
+    // Load saved connection state & render user nav
+    window.addEventListener('DOMContentLoaded', () => {
+      renderUserNavHeader();
+
+      const connectedApps = JSON.parse(localStorage.getItem('rishan_connected_apps') || '{}');
+      document.querySelectorAll('.app-card').forEach(card => {
+        const id = card.getAttribute('data-id');
+        if (connectedApps[id]) {
+          updateCardToConnected(card);
+        }
+      });
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const appTarget = urlParams.get('app');
+      if (appTarget) {
+        setTimeout(() => {
+          const card = document.querySelector(`.app-card[data-id="${appTarget}"]`);
+          if (card) {
+            card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            card.click();
+          }
+        }, 400);
+      }
+    });
+
+    function renderUserNavHeader() {
+      const container = document.getElementById('userHeaderNav');
+      if (!container) return;
+
+      const isLoggedIn = localStorage.getItem('rishan_user_logged_in') === 'true';
+      const userName = localStorage.getItem('rishan_user_name') || 'Rishan';
+
+      const darkModeBtnHtml = `
+        <div onclick="toggleDarkMode()" id="darkModeToggleBtn" class="flex items-center space-x-2 cursor-pointer group select-none" title="Toggle Light / Dark Mode">
+          <span class="text-[11px] font-extrabold text-[#6E6A60] dark:text-gray-300 hidden sm:inline group-hover:text-[#0EA5E9] transition">☀️</span>
+          <div class="theme-switch-track w-11 h-6 rounded-full bg-[#E8E4DB] dark:bg-[#3F3F46] p-0.5 flex items-center transition-colors duration-300 relative border border-[#D5D0C5] dark:border-[#52525B]">
+            <div class="theme-switch-knob w-5 h-5 rounded-full bg-white dark:bg-[#0EA5E9] shadow-md transform transition-transform duration-300 flex items-center justify-center text-[10px] text-[#1E1E1E] dark:text-white">
+              <span class="darkModeIcon">${document.documentElement.classList.contains('dark') ? '🌙' : '☀️'}</span>
+            </div>
+          </div>
+          <span class="text-[11px] font-extrabold text-[#6E6A60] dark:text-gray-300 hidden sm:inline group-hover:text-[#0EA5E9] transition">🌙</span>
+        </div>
+      `;
+
+      if (isLoggedIn) {
+        container.innerHTML = `
+          ${darkModeBtnHtml}
+          <a href="https://github.com" target="_blank" class="hidden sm:flex items-center space-x-1.5 text-[#4A4740] hover:text-[#1E1E1E]">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            <span>GitHub</span>
+          </a>
+          <a href="dashboard.html" class="bg-emerald-50 text-emerald-700 border border-emerald-200 px-3 py-1.5 rounded-full font-bold flex items-center space-x-1.5 hover:bg-emerald-100 transition">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span>👤 ${userName}</span>
+          </a>
+          <button onclick="handleLogout()" class="border border-[#D5D0C5] text-[#7A756B] hover:text-[#1E1E1E] px-3 py-1.5 rounded-lg text-xs font-semibold hover:bg-gray-100 transition">
+            Log Out
+          </button>
+        `;
+      } else {
+        container.innerHTML = `
+          ${darkModeBtnHtml}
+          <a href="https://github.com" target="_blank" class="hidden sm:flex items-center space-x-1.5 text-[#4A4740] hover:text-[#1E1E1E]">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            <span>GitHub</span>
+          </a>
+          <a href="login.html" class="border border-[#D5D0C5] px-3.5 py-1.5 rounded-lg text-[#1E1E1E] hover:bg-[#F5F2EB] transition">
+            Log in
+          </a>
+          <a href="login.html" class="bg-[#0EA5E9] hover:bg-[#E04500] text-white px-4 py-1.5 rounded-lg font-extrabold transition shadow-sm">
+            Sign up
+          </a>
+        `;
+      }
+    }
+
+    function handleLogout() {
+      localStorage.removeItem('rishan_user_logged_in');
+      localStorage.removeItem('rishan_user_name');
+      renderUserNavHeader();
+      showToast("Logged out successfully", "ℹ️");
+    }
+
+    function updateCardToConnected(card) {
+      const badge = card.querySelector('.status-badge');
+      if (badge) {
+        badge.className = 'status-badge text-[10px] bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full font-bold';
+        badge.innerHTML = '● Connected (OAuth)';
+      }
+    }
+
+    function updateCardToDisconnected(card) {
+      const badge = card.querySelector('.status-badge');
+      if (badge) {
+        badge.className = 'status-badge text-[10px] bg-[#0EA5E9] text-white px-2 py-0.5 rounded-full font-bold';
+        badge.innerHTML = 'Connect App →';
+      }
+    }
+
+    function openConnectModal(id, name, icon, desc, cat, isInitiallyConnected) {
+      activeModalAppId = id;
+      activeModalAppName = name;
+
+      document.getElementById('modalAppIcon').innerText = icon;
+      document.getElementById('modalAppName').innerText = name;
+      document.getElementById('modalAppDesc').innerText = desc;
+
+      const connectedApps = JSON.parse(localStorage.getItem('rishan_connected_apps') || '{}');
+      const isConnected = connectedApps[id] !== undefined ? connectedApps[id] : isInitiallyConnected;
+
+      const statusElem = document.getElementById('modalAppStatus');
+      const btnElem = document.getElementById('modalConnectBtn');
+
+      if (isConnected) {
+        statusElem.className = 'text-emerald-600 font-extrabold';
+        statusElem.innerText = '● Connected (OAuth 2.0)';
+        btnElem.className = 'w-full bg-gray-200 hover:bg-gray-300 text-gray-800 py-3.5 rounded-xl font-extrabold text-xs transition shadow-sm';
+        btnElem.innerHTML = '<span>Disconnect Integration</span>';
+      } else {
+        statusElem.className = 'text-amber-600 font-extrabold';
+        statusElem.innerText = 'Not Connected';
+        btnElem.className = 'w-full bg-[#0EA5E9] hover:bg-[#E04500] text-white py-3.5 rounded-xl font-extrabold text-xs transition shadow-md flex items-center justify-center space-x-2';
+        btnElem.innerHTML = '<span>⚡ Connect with 1-Click (OAuth 2.0)</span>';
+      }
+
+      document.getElementById('connectModal').classList.remove('hidden');
+    }
+
+    function closeConnectModal() {
+      document.getElementById('connectModal').classList.add('hidden');
+    }
+
+    function toggleAppConnection() {
+      if (!activeModalAppId) return;
+
+      const connectedApps = JSON.parse(localStorage.getItem('rishan_connected_apps') || '{}');
+      const isConnected = !!connectedApps[activeModalAppId];
+
+      const card = document.querySelector(`.app-card[data-id="${activeModalAppId}"]`);
+
+      if (isConnected) {
+        delete connectedApps[activeModalAppId];
+        if (card) updateCardToDisconnected(card);
+        showToast(`Disconnected ${activeModalAppName}`, 'ℹ️');
+        localStorage.setItem('rishan_connected_apps', JSON.stringify(connectedApps));
+        closeConnectModal();
+      } else {
+        closeConnectModal();
+        openAppOAuthLogin(activeModalAppId);
+      }
+    }
+
+    function connectAllApps() {
+      const connectedApps = JSON.parse(localStorage.getItem('rishan_connected_apps') || '{}');
+
+      document.querySelectorAll('.app-card').forEach(card => {
+        const id = card.getAttribute('data-id');
+        connectedApps[id] = true;
+        updateCardToConnected(card);
+      });
+
+      localStorage.setItem('rishan_connected_apps', JSON.stringify(connectedApps));
+      showToast("All 9,000+ apps successfully connected to Rishan AI Agents!", "⚡");
+    }
+
+    function showToast(msg, icon = '✓') {
+      const toast = document.getElementById('toastNotification');
+      document.getElementById('toastMessage').innerText = msg;
+      document.getElementById('toastIcon').innerText = icon;
+
+      toast.classList.remove('hidden');
+      setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 3500);
+    }
+
+    function filterApps() {
+      const input = document.getElementById('appSearchInput').value.toLowerCase();
+      const cards = document.querySelectorAll('.app-card');
+      let visibleCount = 0;
+
+      cards.forEach(card => {
+        const text = (card.getAttribute('data-name') + ' ' + card.textContent).toLowerCase();
+        if (text.includes(input)) {
+          card.style.display = 'flex';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      document.getElementById('appCountText').innerText = `Showing ${visibleCount} of 9,000+ connected apps`;
+    }
+
+    function filterByTag(tagName, btnElement) {
+      document.querySelectorAll('.feature-tag-btn').forEach(btn => {
+        btn.className = 'feature-tag-btn bg-white hover:bg-[#FAF8F5] border border-[#E8E4DB] px-3 py-1 rounded-lg text-xs font-semibold text-[#5A574F] transition';
+      });
+      if (btnElement) {
+        btnElement.className = 'feature-tag-btn bg-[#0EA5E9] text-white border border-[#0EA5E9] px-3 py-1 rounded-lg text-xs font-black shadow-sm transition';
+      }
+      showToast(`Filtered connections by feature: ${tagName}`, "🏷️");
+    }
+
+    function setCategoryFilter(category, btnElement) {
+      if (btnElement && btnElement.classList.contains('cat-sidebar-btn')) {
+        document.querySelectorAll('.cat-sidebar-btn').forEach(btn => {
+          btn.className = 'cat-sidebar-btn text-[#5A574F] hover:text-[#0EA5E9] font-semibold px-3 py-1.5 rounded-xl w-full text-left transition flex items-center justify-between';
+          btn.style.backgroundColor = 'transparent';
+          btn.style.color = '#5A574F';
+        });
+        btnElement.className = 'cat-sidebar-btn bg-[#0EA5E9] text-white font-black px-3 py-1.5 rounded-xl w-full text-left shadow-sm transition flex items-center justify-between';
+        btnElement.style.backgroundColor = '#0EA5E9';
+        btnElement.style.color = '#ffffff';
+      }
+
+      if (btnElement && btnElement.classList.contains('top-tab-btn')) {
+        document.querySelectorAll('.top-tab-btn').forEach(btn => {
+          btn.className = 'top-tab-btn bg-white hover:bg-[#FAF8F5] text-[#1E1E1E] p-4 rounded-2xl text-left border border-[#E8E4DB] shadow-sm transition';
+        });
+        btnElement.className = 'top-tab-btn active bg-[#0EA5E9] text-white p-4 rounded-2xl text-left border-2 border-[#0EA5E9] shadow-lg transition scale-[1.02]';
+      }
+
+      const cards = document.querySelectorAll('.app-card');
+      let visibleCount = 0;
+
+      cards.forEach(card => {
+        const catAttr = card.getAttribute('data-cat') || '';
+        if (category === 'all' || catAttr.includes(category) || category === 'rishan' || category === 'tools') {
+          card.style.display = 'flex';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      if (visibleCount === 0) {
+        cards.forEach(card => { card.style.display = 'flex'; visibleCount++; });
+      }
+
+      document.getElementById('appCountText').innerText = `Showing ${visibleCount} matching '${category}' category`;
+    }
+
+    function loadMoreApps() {
+      if (additionalLoaded) {
+        showToast("All 9,000+ app connectors are active in Rishan AI Agents Platform!", "🚀");
+        return;
+      }
+
+      const grid = document.getElementById('appsGrid');
+      const connectedApps = JSON.parse(localStorage.getItem('rishan_connected_apps') || '{}');
+
+      extraApps.forEach(app => {
+        const isConnected = !!connectedApps[app.id];
+        const card = document.createElement('div');
+        card.className = "app-card cursor-pointer bg-white border border-[#E8E4DB] p-5 rounded-2xl hover:border-[#0EA5E9] transition shadow-sm hover:shadow flex items-start space-x-4 animate-fade-in";
+        card.setAttribute('data-id', app.id);
+        card.setAttribute('data-name', `${app.name} ${app.desc}`);
+        card.setAttribute('data-cat', app.cat);
+        card.onclick = (e) => {
+          document.querySelectorAll('.app-card').forEach(c => c.classList.remove('ring-2', 'ring-[#0EA5E9]', 'border-[#0EA5E9]', 'bg-sky-50/20'));
+          card.classList.add('ring-2', 'ring-[#0EA5E9]', 'border-[#0EA5E9]', 'bg-sky-50/20');
+          openConnectModal(app.id, app.name, app.icon, app.desc, app.cat, isConnected);
+        };
+
+        const badgeHtml = isConnected 
+          ? `<span class="status-badge text-[10px] bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full font-bold">● Connected (OAuth)</span>`
+          : `<span class="status-badge text-[10px] bg-[#0EA5E9] text-white px-2 py-0.5 rounded-full font-bold">Connect App →</span>`;
+
+        card.innerHTML = `
+          <div class="w-12 h-12 rounded-xl bg-gray-50 border border-gray-100 flex items-center justify-center font-bold text-xl shrink-0">${app.icon}</div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center justify-between">
+              <h4 class="font-extrabold text-sm text-[#1E1E1E]">${app.name}</h4>
+              ${badgeHtml}
+            </div>
+            <p class="text-xs text-[#5A574F] mt-1 leading-relaxed line-clamp-2">${app.desc}</p>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+
+      additionalLoaded = true;
+      const totalCount = document.querySelectorAll('.app-card').length;
+      document.getElementById('appCountText').innerText = `Showing ${totalCount} of 9,000+ connected apps`;
+      
+      const btnText = document.getElementById('loadMoreText');
+      if (btnText) btnText.innerText = "⚡ All 9,000+ Integrations Active";
+      
+      showToast(`Loaded ${extraApps.length} additional enterprise integrations!`, "🚀");
+    }
+
+    function sortApps(type, btnElement) {
+      document.querySelectorAll('.sort-btn').forEach(btn => {
+        btn.className = 'sort-btn text-[#5A574F] hover:text-[#0EA5E9] font-semibold px-3 py-1.5 rounded-xl w-full text-left transition flex items-center justify-between';
+        btn.style.backgroundColor = 'transparent';
+        btn.style.color = '#5A574F';
+      });
+
+      if (btnElement) {
+        btnElement.className = 'sort-btn bg-[#0EA5E9] text-white font-black px-3 py-1.5 rounded-xl w-full text-left shadow-sm transition flex items-center justify-between';
+        btnElement.style.backgroundColor = '#0EA5E9';
+        btnElement.style.color = '#ffffff';
+      }
+
+      showToast(`Sorted integrations by ${type}`, "ℹ️");
+    }
+
+    let currentActiveNav = 'explore';
+
+    function markActiveMegaItem(el) {
+      const megaContainer = el.closest('#productsMegaMenu, #solutionsMegaMenu, #resourcesMegaMenu');
+      if (megaContainer) {
+        megaContainer.querySelectorAll('.mega-sub-title, .mega-sub-link').forEach(item => {
+          item.classList.remove('text-[#0EA5E9]', 'font-black');
+          item.classList.add('text-[#1E1E1E]', 'font-extrabold');
+        });
+      }
+      const title = el.querySelector('.mega-sub-title') || (el.classList.contains('mega-sub-link') ? el : null);
+      if (title) {
+        title.classList.remove('text-[#1E1E1E]', 'font-extrabold', 'font-bold');
+        title.classList.add('text-[#0EA5E9]', 'font-black');
+      }
+    }
+
+    function setActiveNav(navId) {
+      currentActiveNav = navId;
+      const items = ['products', 'solutions', 'resources', 'explore', 'enterprise', 'pricing'];
+      items.forEach(id => {
+        const btn = document.getElementById('navBtn-' + id);
+        if (btn) {
+          if (id === navId) {
+            btn.classList.remove('text-[#4A4740]', 'font-semibold');
+            btn.classList.add('text-[#0EA5E9]', 'font-bold');
+          } else {
+            btn.classList.remove('text-[#0EA5E9]', 'font-bold');
+            btn.classList.add('text-[#4A4740]', 'font-semibold');
+          }
+        }
+      });
+    }
+
+    function toggleMobileDrawer() {
+      const drawer = document.getElementById('mobileDrawerNav');
+      if (drawer) {
+        drawer.classList.toggle('hidden');
+      }
+    }
+
+    function toggleMegaMenu(menuType, event) {
+      if (event) event.stopPropagation();
+      const products = document.getElementById('productsMegaMenu');
+      const solutions = document.getElementById('solutionsMegaMenu');
+      const resources = document.getElementById('resourcesMegaMenu');
+
+      const isTargetHidden = menuType === 'products' ? products?.classList.contains('hidden') :
+                             menuType === 'solutions' ? solutions?.classList.contains('hidden') :
+                             menuType === 'resources' ? resources?.classList.contains('hidden') : true;
+
+      closeMegaMenus(true);
+
+      if (isTargetHidden) {
+        setActiveNav(menuType);
+        if (menuType === 'products' && products) products.classList.remove('hidden');
+        if (menuType === 'solutions' && solutions) solutions.classList.remove('hidden');
+        if (menuType === 'resources' && resources) resources.classList.remove('hidden');
+      } else {
+        closeMegaMenus(false);
+      }
+    }
+
+    function openMegaMenu(menuType) {
+      const products = document.getElementById('productsMegaMenu');
+      const solutions = document.getElementById('solutionsMegaMenu');
+      const resources = document.getElementById('resourcesMegaMenu');
+
+      closeMegaMenus(true);
+      setActiveNav(menuType);
+
+      if (menuType === 'products' && products) products.classList.remove('hidden');
+      if (menuType === 'solutions' && solutions) solutions.classList.remove('hidden');
+      if (menuType === 'resources' && resources) resources.classList.remove('hidden');
+    }
+
+    function closeMegaMenus(keepActiveNav = true) {
+      ['productsMegaMenu', 'solutionsMegaMenu', 'resourcesMegaMenu'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.classList.add('hidden');
+      });
+      if (!keepActiveNav) {
+        setActiveNav(currentActiveNav || 'explore');
+      }
+    }
+
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('header')) {
+        closeMegaMenus();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeMegaMenus();
+        closeFeatureModal();
+      }
+    });
+  </script>
+
+  <!-- Interactive Feature Modal Component -->
+  <div id="featureModal" onclick="closeFeatureModal()" class="hidden fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in">
+    <div onclick="event.stopPropagation()" class="bg-[#FFFDF9] border border-[#E8E4DB] rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl flex flex-col justify-between">
+      
+      <!-- Modal Header -->
+      <div class="p-6 border-b border-[#E8E4DB] flex items-center justify-between bg-[#FAF8F5] rounded-t-3xl">
+        <div class="flex items-center space-x-3">
+          <div id="featureModalIcon" class="w-10 h-10 rounded-2xl bg-[#0EA5E9]/10 text-[#0EA5E9] flex items-center justify-center font-black text-xl">⚡</div>
+          <div>
+            <h3 id="featureModalTitle" class="text-xl font-black text-[#1E1E1E]">Feature Name</h3>
+            <p id="featureModalSubtitle" class="text-xs text-[#6E6A60] font-medium">Feature description line</p>
+          </div>
+        </div>
+        <button onclick="closeFeatureModal()" class="w-8 h-8 rounded-full bg-white border border-[#E8E4DB] text-[#6E6A60] hover:text-[#1E1E1E] hover:border-[#0EA5E9] transition flex items-center justify-center font-bold text-sm">✕</button>
+      </div>
+
+      <!-- Modal Body Content -->
+      <div id="featureModalBody" class="p-6 space-y-4 text-xs text-[#1E1E1E]">
+        <!-- Injected dynamically via JS -->
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="p-4 bg-[#FAF8F5] border-t border-[#E8E4DB] rounded-b-3xl flex items-center justify-between">
+        <span class="text-[11px] text-[#7A756B] font-medium">Rishan AI Agents Platform • Enterprise Grade</span>
+        <div class="flex items-center space-x-3">
+          <button onclick="closeFeatureModal()" class="px-4 py-2 rounded-xl border border-[#D5D0C5] text-[#5A574F] font-bold text-xs hover:bg-gray-100 transition">Close</button>
+          <button id="featureModalActionBtn" onclick="executeFeatureAction()" class="px-5 py-2 rounded-xl bg-[#0EA5E9] hover:bg-[#E04500] text-white font-bold text-xs shadow-md transition">Try Feature Now →</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    const FEATURE_DATA = {
+      "agent-workflows": {
+        icon: "⚡",
+        title: "Agent Workflows Automation",
+        subtitle: "Build, orchestrate, and execute autonomous multi-agent pipelines for SME operations.",
+        body: `
+          <div class="space-y-4">
+            <div class="p-4 bg-sky-50/50 border border-sky-200 rounded-2xl">
+              <h4 class="font-extrabold text-sm text-[#0EA5E9] mb-1">⚡ Active Orchestration Pipeline</h4>
+              <p class="text-xs text-[#5A574F]">5 Pre-configured Worker Agents registered in your workspace:</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div class="p-3 border border-[#E8E4DB] rounded-xl bg-white flex items-center justify-between">
+                <span class="font-bold text-xs">🤖 BookingAgent</span>
+                <span class="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded-full">TrekkSoft API</span>
+              </div>
+              <div class="p-3 border border-[#E8E4DB] rounded-xl bg-white flex items-center justify-between">
+                <span class="font-bold text-xs">🤖 OperationsAgent</span>
+                <span class="text-[10px] bg-purple-100 text-purple-800 font-bold px-2 py-0.5 rounded-full">SharePoint RAG</span>
+              </div>
+              <div class="p-3 border border-[#E8E4DB] rounded-xl bg-white flex items-center justify-between">
+                <span class="font-bold text-xs">🤖 SalesAgent</span>
+                <span class="text-[10px] bg-amber-100 text-amber-800 font-bold px-2 py-0.5 rounded-full">Outlook Mail</span>
+              </div>
+              <div class="p-3 border border-[#E8E4DB] rounded-xl bg-white flex items-center justify-between">
+                <span class="font-bold text-xs">🤖 MarketingAgent</span>
+                <span class="text-[10px] bg-rose-100 text-rose-800 font-bold px-2 py-0.5 rounded-full">Brevo API</span>
+              </div>
+            </div>
+          </div>
+        `,
+        actionText: "Launch Workflow in Dashboard →",
+        action: "window.location.href='dashboard.html'"
+      },
+      "mcp": {
+        icon: "🪢",
+        title: "Rishan MCP (Model Context Protocol)",
+        subtitle: "Connect Rishan AI tools directly to Claude Desktop, Antigravity IDE & Cursor.",
+        body: `
+          <div class="space-y-4">
+            <p class="text-xs text-[#5A574F]">Expose your local business data and integrations via standardized Model Context Protocol (MCP) servers.</p>
+            <div class="bg-[#1E1E1E] text-emerald-400 p-4 rounded-2xl font-mono text-[11px] overflow-x-auto">
+              <code>{<br>
+              &nbsp;&nbsp;"mcpServers": {<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;"trekksoft": { "command": "python", "args": ["-m", "src.mcp_servers.trekksoft_mcp"] },<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;"msgraph": { "command": "python", "args": ["-m", "src.mcp_servers.ms_graph_mcp"] }<br>
+              &nbsp;&nbsp;}<br>
+              }</code>
+            </div>
+            <div class="p-3 bg-blue-50 border border-blue-200 rounded-xl text-blue-900 text-xs">
+              <strong>✓ Status:</strong> 2 MCP Servers running on <code>127.0.0.1:8000</code> ready for connection.
+            </div>
+          </div>
+        `,
+        actionText: "Copy MCP Configuration",
+        action: "copyMCPConfig()"
+      },
+      "sdk": {
+        icon: "🛠️",
+        title: "Rishan Python & TS SDK",
+        subtitle: "Embed Rishan Agentic AI workforce directly into your application codebase.",
+        body: `
+          <div class="space-y-4">
+            <p class="text-xs text-[#5A574F]">Install the official Python SDK to interact with agents programmatically:</p>
+            <div class="bg-[#1E1E1E] text-white p-4 rounded-2xl font-mono text-[11px]">
+              <span class="text-gray-400"># Terminal</span><br>
+              <span class="text-sky-400">pip install</span> rishan-sdk<br><br>
+              <span class="text-gray-400"># Python script</span><br>
+              <span class="text-purple-400">from</span> rishan <span class="text-purple-400">import</span> Orchestrator<br><br>
+              agent = Orchestrator()<br>
+              result = agent.route_and_execute(<span class="text-emerald-300">"Show me today's bookings"</span>)<br>
+              print(result)
+            </div>
+          </div>
+        `,
+        actionText: "Download SDK Package",
+        action: "showToast('Rishan SDK (v0.1.0) ready in src/ directory!', '📦')"
+      },
+      "tables": {
+        icon: "📊",
+        title: "Rishan Vector & Relational Tables",
+        subtitle: "Structured database for storing guest bookings, RAG vector chunks, and audit logs.",
+        body: `
+          <div class="space-y-3">
+            <div class="overflow-x-auto border border-[#E8E4DB] rounded-2xl">
+              <table class="w-full text-left text-xs">
+                <thead class="bg-[#FAF8F5] border-b border-[#E8E4DB] text-[#7A756B] font-bold">
+                  <tr><th class="p-2.5">ID</th><th class="p-2.5">Entity</th><th class="p-2.5">Type</th><th class="p-2.5">Status</th></tr>
+                </thead>
+                <tbody class="divide-y divide-[#E8E4DB]">
+                  <tr><td class="p-2.5 font-mono">TS-1001</td><td class="p-2.5">Hans Müller</td><td class="p-2.5">Booking</td><td class="p-2.5"><span class="text-emerald-600 font-bold">Confirmed</span></td></tr>
+                  <tr><td class="p-2.5 font-mono">SP-001</td><td class="p-2.5">Cancellation SOP</td><td class="p-2.5">Vector Chunk</td><td class="p-2.5"><span class="text-purple-600 font-bold">Indexed</span></td></tr>
+                  <tr><td class="p-2.5 font-mono">ACT-842</td><td class="p-2.5">Sales Draft Email</td><td class="p-2.5">HITL Audit</td><td class="p-2.5"><span class="text-amber-600 font-bold">Approved</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        `,
+        actionText: "View Full Data Store",
+        action: "showToast('Vector Knowledge Store active with 1 SharePoint doc!', '📊')"
+      },
+      "integrations": {
+        icon: "🎛️",
+        title: "9,000+ App Connections",
+        subtitle: "Connect TrekkSoft, Microsoft 365, Outlook, Brevo, bexio & 9,000+ SaaS apps.",
+        body: `
+          <div class="space-y-4 text-xs text-[#5A574F]">
+            <p>Rishan Agents support instant connection via OAuth 2.0 and API keys for over 9,000 enterprise applications.</p>
+            <div class="grid grid-cols-2 gap-3">
+              <div class="p-3 border border-[#E8E4DB] rounded-xl flex items-center space-x-2 bg-white font-bold"><span>🏔️</span><span>TrekkSoft</span></div>
+              <div class="p-3 border border-[#E8E4DB] rounded-xl flex items-center space-x-2 bg-white font-bold"><span>📄</span><span>SharePoint</span></div>
+              <div class="p-3 border border-[#E8E4DB] rounded-xl flex items-center space-x-2 bg-white font-bold"><span>✉️</span><span>Outlook</span></div>
+              <div class="p-3 border border-[#E8E4DB] rounded-xl flex items-center space-x-2 bg-white font-bold"><span>🚀</span><span>Brevo</span></div>
+            </div>
+          </div>
+        `,
+        actionText: "Browse Connectors Below",
+        action: "closeFeatureModal()"
+      },
+      "ai-automation": {
+        icon: "✨",
+        title: "AI Automation & Multi-Agent Routing",
+        subtitle: "Smart intent classification routes user queries to the optimal specialist AI agent.",
+        body: `
+          <div class="space-y-3 text-xs">
+            <div class="p-3 bg-purple-50 border border-purple-200 rounded-xl text-purple-900">
+              <strong>🧠 Intent Classifier:</strong> Automatically parses natural language prompts and decides which agent tool to invoke.
+            </div>
+            <div class="p-3 bg-amber-50 border border-amber-200 rounded-xl text-amber-900">
+              <strong>🛡️ HITL Protection:</strong> High-risk operations (e.g. sending bulk emails, refunds) are intercepted for executive review before execution.
+            </div>
+          </div>
+        `,
+        actionText: "Test Router on Dashboard →",
+        action: "window.location.href='dashboard.html'"
+      },
+      "security": {
+        icon: "🛡️",
+        title: "Enterprise Safety & HITL Governance",
+        subtitle: "Human-in-the-Loop approval gateway & tamper-proof audit trail logging.",
+        body: `
+          <div class="space-y-3 text-xs">
+            <div class="p-3 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-900">
+              <strong>Low Risk:</strong> Read-only operations (e.g. searching SOPs, fetching bookings) execute automatically.
+            </div>
+            <div class="p-3 bg-amber-50 border border-amber-200 rounded-xl text-amber-900">
+              <strong>Medium / High Risk:</strong> State-changing operations (e.g. draft emails, payments) generate pending approval tokens.
+            </div>
+            <div class="p-3 bg-gray-50 border border-gray-200 rounded-xl font-mono text-[11px]">
+              Audit Log Path: <code>logs/audit.jsonl</code>
+            </div>
+          </div>
+        `,
+        actionText: "Open Dashboard HITL",
+        action: "window.location.href='dashboard.html'"
+      },
+      "forms": {
+        icon: "📋",
+        title: "Rishan Forms Builder",
+        subtitle: "Create no-code input forms to capture customer requests and feed into AI workflows.",
+        body: `
+          <div class="space-y-4">
+            <div class="p-4 border border-[#E8E4DB] rounded-2xl bg-white space-y-3">
+              <label class="block font-bold text-xs text-[#1E1E1E]">Test Form Input:</label>
+              <input id="formTestInput" type="text" value="Customer request for weather refund" class="w-full p-2.5 border border-[#E8E4DB] rounded-xl text-xs focus:outline-none focus:border-[#0EA5E9]">
+              <button onclick="submitFormTest()" class="w-full bg-[#0EA5E9] text-white py-2 rounded-xl font-bold text-xs hover:bg-[#E04500] transition">Submit Form Input to AI Agent →</button>
+            </div>
+          </div>
+        `,
+        actionText: "Create Form",
+        action: "submitFormTest()"
+      },
+      "canvas": {
+        icon: "🗺️",
+        title: "Rishan Visual Canvas",
+        subtitle: "Map out multi-agent execution flows visually with drag-and-drop node logic.",
+        body: `
+          <div class="p-4 bg-gray-900 text-white rounded-2xl space-y-4 text-xs">
+            <div class="flex items-center justify-between border-b border-gray-700 pb-2">
+              <span class="font-bold text-sky-400">Node Flow Graph</span>
+              <span class="text-[10px] bg-emerald-900 text-emerald-300 px-2 py-0.5 rounded-full font-bold">Active</span>
+            </div>
+            <div class="flex items-center justify-around py-4">
+              <div class="p-2.5 bg-gray-800 rounded-xl border border-gray-700 text-center"><div class="text-sm">📥</div><div>User Prompt</div></div>
+              <div class="text-sky-500 font-bold">➔</div>
+              <div class="p-2.5 bg-gray-800 rounded-xl border border-gray-700 text-center"><div class="text-sm">🔀</div><div>Orchestrator</div></div>
+              <div class="text-sky-500 font-bold">➔</div>
+              <div class="p-2.5 bg-gray-800 rounded-xl border border-gray-700 text-center"><div class="text-sm">🤖</div><div>Specialist Agent</div></div>
+            </div>
+          </div>
+        `,
+        actionText: "Open Canvas Diagram",
+        action: "showToast('Visual Canvas graph loaded!', '🗺️')"
+      },
+      "agents": {
+        icon: "✴️",
+        title: "Custom AI Agent Builder",
+        subtitle: "Define custom AI assistants with unique system prompts and MCP tool bindings.",
+        body: `
+          <div class="space-y-3 text-xs">
+            <div class="p-3 border border-[#E8E4DB] rounded-xl bg-white space-y-2">
+              <div class="font-bold text-xs text-[#1E1E1E]">Agent Configuration Preview:</div>
+              <div class="text-[11px] text-[#5A574F]"><strong>Name:</strong> SwissFinanceAgent</div>
+              <div class="text-[11px] text-[#5A574F]"><strong>Tools:</strong> bexio_invoicing, trekksoft_sync</div>
+              <div class="text-[11px] text-[#5A574F]"><strong>System Prompt:</strong> "You are a Swiss accounting assistant..."</div>
+            </div>
+          </div>
+        `,
+        actionText: "Build Agent",
+        action: "showToast('Custom Agent builder ready!', '✴️')"
+      },
+      "chatbots": {
+        icon: "💬",
+        title: "Rishan Support Chatbot Widget",
+        subtitle: "Embed an intelligent 24/7 AI chatbot on your website powered by SharePoint RAG.",
+        body: `
+          <div class="p-4 border border-[#E8E4DB] rounded-2xl bg-white space-y-3">
+            <div class="flex items-center space-x-2 border-b pb-2">
+              <div class="w-3 h-3 rounded-full bg-emerald-500"></div>
+              <span class="font-bold text-xs">Live Support Widget Preview</span>
+            </div>
+            <div class="p-2.5 bg-gray-100 rounded-xl text-xs text-[#1E1E1E]">
+              <strong>Rishan Bot:</strong> Hello! Ask me anything about tour cancellations, refunds, or guest bookings.
+            </div>
+          </div>
+        `,
+        actionText: "Embed Widget",
+        action: "showToast('Widget code generated for dashboard embedding!', '💬')"
+      },
+      "templates": {
+        icon: "🧩",
+        title: "Pre-Built Agent Templates",
+        subtitle: "Deploy battle-tested SME workflow templates with a single click.",
+        body: `
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+            <div class="p-3 border border-[#E8E4DB] rounded-xl bg-white hover:border-[#0EA5E9] transition cursor-pointer" onclick="window.location.href='dashboard.html'">
+              <div class="font-bold text-[#1E1E1E]">🏔️ Tourism Booking Sync</div>
+              <div class="text-[11px] text-[#6E6A60] mt-1">TrekkSoft API guest sync</div>
+            </div>
+            <div class="p-3 border border-[#E8E4DB] rounded-xl bg-white hover:border-[#0EA5E9] transition cursor-pointer" onclick="window.location.href='dashboard.html'">
+              <div class="font-bold text-[#1E1E1E]">📄 SOP Policy Search</div>
+              <div class="text-[11px] text-[#6E6A60] mt-1">SharePoint RAG search</div>
+            </div>
+          </div>
+        `,
+        actionText: "Go to Dashboard Workflows",
+        action: "window.location.href='dashboard.html'"
+      },
+      "use-cases": {
+        icon: "💼",
+        title: "Swiss SME & Enterprise Case Studies",
+        subtitle: "See how Swiss tourism operators, logistics, and sales teams use Rishan AI.",
+        body: `
+          <div class="space-y-3 text-xs">
+            <div class="p-3 bg-sky-50/60 border border-sky-200 rounded-xl">
+              <h5 class="font-bold text-[#0EA5E9]">Interlaken Outdoor Activities Ltd.</h5>
+              <p class="text-[#5A574F] mt-1">Automated daily guest check-ins and weather cancellation policy search, saving 15+ admin hours per week.</p>
+            </div>
+          </div>
+        `,
+        actionText: "Try Workflow Demo",
+        action: "window.location.href='dashboard.html'"
+      },
+      "comparisons": {
+        icon: "🔍",
+        title: "Rishan vs Legacy Automation",
+        subtitle: "Why Agentic AI surpasses rigid trigger-action tools like Zapier or Make.",
+        body: `
+          <div class="overflow-x-auto border border-[#E8E4DB] rounded-xl">
+            <table class="w-full text-left text-xs">
+              <thead class="bg-[#FAF8F5] text-[#7A756B] font-bold border-b">
+                <tr><th class="p-2">Feature</th><th class="p-2 text-[#0EA5E9]">Rishan AI</th><th class="p-2">Zapier/Make</th></tr>
+              </thead>
+              <tbody class="divide-y text-[11px]">
+                <tr><td class="p-2 font-bold">Natural Language Routing</td><td class="p-2 text-emerald-600 font-bold">✓ Dynamic AI Router</td><td class="p-2 text-red-500">✕ Rigid Rules Only</td></tr>
+                <tr><td class="p-2 font-bold">Human-in-the-Loop Safety</td><td class="p-2 text-emerald-600 font-bold">✓ Native HITL Gateway</td><td class="p-2 text-red-500">✕ Manual Workarounds</td></tr>
+                <tr><td class="p-2 font-bold">Vector RAG Search</td><td class="p-2 text-emerald-600 font-bold">✓ Native SharePoint RAG</td><td class="p-2 text-red-500">✕ Requires External Tool</td></tr>
+              </tbody>
+            </table>
+          </div>
+        `,
+        actionText: "Start Free Trial",
+        action: "window.location.href='login.html'"
+      },
+      "tourism": {
+        icon: "🏔️",
+        title: "Swiss Tourism & Activities Solution",
+        subtitle: "TrekkSoft API integration for booking lookups, passenger manifests, and payments.",
+        body: `
+          <div class="p-3 bg-blue-50 border border-blue-200 rounded-xl text-xs text-blue-900 space-y-1">
+            <p class="font-bold">Active Integration: TrekkSoft Booking Client</p>
+            <p>• Automated daily booking list retrieval</p>
+            <p>• Weather cancellation refund management</p>
+          </div>
+        `,
+        actionText: "Run Booking Agent Test →",
+        action: "window.location.href='dashboard.html'"
+      },
+      "accounting": {
+        icon: "📊",
+        title: "Swiss Accounting & Invoicing (bexio)",
+        subtitle: "Automate CHF invoicing, VAT breakdown, and payment reconciliation.",
+        body: `
+          <div class="p-3 bg-emerald-50 border border-emerald-200 rounded-xl text-xs text-emerald-900 space-y-1">
+            <p class="font-bold">bexio Swiss Invoicing Connector</p>
+            <p>• Automatically formats 8.1% Swiss VAT invoices</p>
+            <p>• Reconciles incoming bank transfers</p>
+          </div>
+        `,
+        actionText: "Open Invoicing Workflow",
+        action: "showToast('bexio invoicing connector ready!', '📊')"
+      },
+      "sop-rag": {
+        icon: "📋",
+        title: "SharePoint SOP Policy Vector RAG",
+        subtitle: "Index company PDFs, Word docs, and policy manuals with Microsoft Graph API.",
+        body: `
+          <div class="p-3 bg-purple-50 border border-purple-200 rounded-xl text-xs text-purple-900 space-y-1">
+            <p class="font-bold">SharePoint RAG Knowledge Store</p>
+            <p>• RAG vector search across SOP documents</p>
+            <p>• Instant answers with source URL citations</p>
+          </div>
+        `,
+        actionText: "Test Operations SOP Search →",
+        action: "window.location.href='dashboard.html'"
+      },
+      "sales": {
+        icon: "✉️",
+        title: "Sales & Support Email Automation",
+        subtitle: "Draft personalized Outlook follow-up emails with mandatory HITL approval.",
+        body: `
+          <div class="p-3 bg-amber-50 border border-amber-200 rounded-xl text-xs text-amber-900 space-y-1">
+            <p class="font-bold">SalesAgent (MS Outlook Integration)</p>
+            <p>• Creates email drafts for past customers</p>
+            <p>• Requires Executive Admin token approval before sending</p>
+          </div>
+        `,
+        actionText: "Run Sales Agent Test →",
+        action: "window.location.href='dashboard.html'"
+      },
+      "marketing": {
+        icon: "🚀",
+        title: "Marketing Campaign Operations",
+        subtitle: "Brevo Email API integration for automated marketing campaign management.",
+        body: `
+          <div class="p-3 bg-rose-50 border border-rose-200 rounded-xl text-xs text-rose-900 space-y-1">
+            <p class="font-bold">MarketingAgent (Brevo Integration)</p>
+            <p>• Segments customer list by activity type</p>
+            <p>• Generates email campaign content automatically</p>
+          </div>
+        `,
+        actionText: "Run Marketing Test →",
+        action: "window.location.href='dashboard.html'"
+      }
+    };
+
+    let currentFeatureKey = null;
+
+    function openFeatureModal(key) {
+      const data = FEATURE_DATA[key];
+      if (!data) return;
+
+      currentFeatureKey = key;
+      document.getElementById('featureModalIcon').innerText = data.icon || '⚡';
+      document.getElementById('featureModalTitle').innerText = data.title || 'Feature';
+      document.getElementById('featureModalSubtitle').innerText = data.subtitle || '';
+      document.getElementById('featureModalBody').innerHTML = data.body || '';
+      
+      const actionBtn = document.getElementById('featureModalActionBtn');
+      if (actionBtn) {
+        actionBtn.innerText = data.actionText || 'Try Feature Now →';
+      }
+
+      const modal = document.getElementById('featureModal');
+      if (modal) modal.classList.remove('hidden');
+    }
+
+    function closeFeatureModal() {
+      const modal = document.getElementById('featureModal');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    function runTask(taskQuery) {
+      window.location.href = `/dashboard?query=${encodeURIComponent(taskQuery)}`;
+    }
+
+    function executeFeatureAction() {
+      const data = FEATURE_DATA[currentFeatureKey];
+      closeFeatureModal();
+      if (data && data.action) {
+        try { eval(data.action); } catch(e) {
+          window.location.href = '/dashboard';
+        }
+      }
+    }
+
+    function copyMCPConfig() {
+      const configStr = `{
+  "mcpServers": {
+    "trekksoft": { "command": "python", "args": ["-m", "src.mcp_servers.trekksoft_mcp"] },
+    "msgraph": { "command": "python", "args": ["-m", "src.mcp_servers.ms_graph_mcp"] }
+  }
+}`;
+      navigator.clipboard.writeText(configStr);
+      showToast("MCP Configuration copied to clipboard!", "🪢");
+    }
+
+    // Extended Resources & Sales FEATURE_DATA entries
+    Object.assign(FEATURE_DATA, {
+      "ai-orchestration-guide": {
+        icon: "🚀",
+        title: "How to Implement AI Orchestration in 3 Phases",
+        subtitle: "Orchestration isn’t the end—it’s the beginning. Move from disconnected AI pilots to orchestrated systems that scale.",
+        body: `
+          <div class="space-y-6 text-[#1E1E1E]">
+
+            <!-- Top Hero Banner & Stat Callout -->
+            <div class="p-6 bg-gradient-to-r from-sky-500 to-[#0EA5E9] text-white rounded-3xl space-y-3 shadow-lg">
+              <div class="inline-block bg-white/20 text-white font-extrabold text-[10px] px-3 py-1 rounded-full uppercase tracking-wider">
+                Strategy & Implementation Playbook
+              </div>
+              <h2 class="text-xl font-black leading-tight">How to Implement AI Orchestration in 3 Strategic Phases</h2>
+              <p class="text-xs text-white/90 leading-relaxed font-medium">
+                Move from disconnected AI pilots to scalable, governed multi-agent systems across your enterprise.
+              </p>
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+                <div class="p-3 bg-white/10 rounded-2xl backdrop-blur-sm text-center">
+                  <div class="text-lg font-black">800,000+</div>
+                  <div class="text-[10px] text-white/80">AI Tasks Daily</div>
+                </div>
+                <div class="p-3 bg-white/10 rounded-2xl backdrop-blur-sm text-center">
+                  <div class="text-lg font-black">87%</div>
+                  <div class="text-[10px] text-white/80">Cloud 100 Adoption</div>
+                </div>
+                <div class="p-3 bg-white/10 rounded-2xl backdrop-blur-sm text-center">
+                  <div class="text-lg font-black">300+</div>
+                  <div class="text-[10px] text-white/80">AI Tools Connected</div>
+                </div>
+                <div class="p-3 bg-white/10 rounded-2xl backdrop-blur-sm text-center">
+                  <div class="text-lg font-black">3.4M</div>
+                  <div class="text-[10px] text-white/80">Companies Scaling AI</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Key Insight Callout -->
+            <div class="p-4 bg-amber-50 border border-amber-200 rounded-2xl flex items-start space-x-3 text-xs text-amber-900">
+              <span class="text-xl shrink-0">⚠️</span>
+              <div>
+                <strong>The AI Maturity Gap:</strong> Although almost all companies are investing in AI, only <strong>1% believe they've reached AI maturity</strong>. C-suite leaders are <strong>2.4x more likely</strong> to blame employees for slow adoption rather than recognize their own lack of strategic alignment.
+              </div>
+            </div>
+
+            <!-- Quote Box -->
+            <div class="p-4 bg-[#FAF8F5] border-l-4 border-[#0EA5E9] rounded-r-2xl space-y-1 text-xs">
+              <p class="italic text-[#4A4740]">
+                "An appetite for innovation is huge when it comes to moving from AI experimentation to full orchestration—a focus on data is important, too. Data will never be perfect, but the cleaner it is, the easier it will be to leverage AI and get insights and better productivity as quickly as possible."
+              </p>
+              <p class="font-extrabold text-[#1E1E1E] text-[11px]">— Sara McNamara, Founding Revenue Operations & GTM Strategy Lead, Vector</p>
+            </div>
+
+            <!-- The 3 Strategic Implementation Phases -->
+            <div class="space-y-4">
+              <h3 class="font-extrabold text-sm text-[#1E1E1E] flex items-center space-x-2">
+                <span>🎯</span><span>The 3 Strategic Implementation Phases</span>
+              </h3>
+
+              <!-- Phase 1 Card -->
+              <div class="p-5 border-2 border-sky-200 bg-sky-50/40 rounded-2xl space-y-3">
+                <div class="flex items-center justify-between">
+                  <span class="bg-[#0EA5E9] text-white text-[10px] font-black px-3 py-1 rounded-full uppercase">Phase 1: Take Immediate Action (Months 0 – 3)</span>
+                  <span class="text-xs text-[#0EA5E9] font-bold">Foundation & Assessment</span>
+                </div>
+                <ul class="space-y-2 text-xs text-[#4A4740]">
+                  <li class="flex items-start space-x-2"><span class="text-emerald-500 font-bold">1.</span><span>Complete a comprehensive assessment of infrastructure, governance, and talent readiness.</span></li>
+                  <li class="flex items-start space-x-2"><span class="text-emerald-500 font-bold">2.</span><span>Secure executive sponsorship and establish an AI orchestration steering committee.</span></li>
+                  <li class="flex items-start space-x-2"><span class="text-emerald-500 font-bold">3.</span><span>Identify and prioritize high-impact orchestration use cases.</span></li>
+                  <li class="flex items-start space-x-2"><span class="text-emerald-500 font-bold">4.</span><span>Improve foundational infrastructure—especially data quality and integration capabilities.</span></li>
+                  <li class="flex items-start space-x-2"><span class="text-emerald-500 font-bold">5.</span><span>Launch company-wide AI literacy initiatives like hackathons and live agent showcases.</span></li>
+                </ul>
+              </div>
+
+              <!-- Phase 2 Card -->
+              <div class="p-5 border-2 border-amber-200 bg-amber-50/40 rounded-2xl space-y-3">
+                <div class="flex items-center justify-between">
+                  <span class="bg-amber-600 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase">Phase 2: Execute Short-Term Objectives (Months 3 – 12)</span>
+                  <span class="text-xs text-amber-700 font-bold">Pilot & Governance</span>
+                </div>
+                <ul class="space-y-2 text-xs text-[#4A4740]">
+                  <li class="flex items-start space-x-2"><span class="text-emerald-500 font-bold">1.</span><span>Deploy AI/ML platform capabilities with initial workflow orchestration features.</span></li>
+                  <li class="flex items-start space-x-2"><span class="text-emerald-500 font-bold">2.</span><span>Build an orchestration governance framework: policies, HITL oversight, compliance.</span></li>
+                  <li class="flex items-start space-x-2"><span class="text-emerald-500 font-bold">3.</span><span>Launch AI orchestration pilots with measurable business impact tracking toward OKRs.</span></li>
+                  <li class="flex items-start space-x-2"><span class="text-emerald-500 font-bold">4.</span><span>Hire and train core AI transformation talent to upskill internal teams.</span></li>
+                  <li class="flex items-start space-x-2"><span class="text-emerald-500 font-bold">5.</span><span>Partner with key vendors (like Rishan AI Agents) to accelerate adoption.</span></li>
+                </ul>
+              </div>
+
+              <!-- Phase 3 Card -->
+              <div class="p-5 border-2 border-emerald-200 bg-emerald-50/40 rounded-2xl space-y-3">
+                <div class="flex items-center justify-between">
+                  <span class="bg-emerald-600 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase">Phase 3: Scale Orchestration for Long-Term Impact (Years 1 – 2)</span>
+                  <span class="text-xs text-emerald-700 font-bold">Category Leadership</span>
+                </div>
+                <ul class="space-y-2 text-xs text-[#4A4740]">
+                  <li class="flex items-start space-x-2"><span class="text-emerald-500 font-bold">1.</span><span>Roll out a fully deployed AI orchestration platform with advanced multi-agent routing.</span></li>
+                  <li class="flex items-start space-x-2"><span class="text-emerald-500 font-bold">2.</span><span>Demonstrate measurable business impact (processes automated, time saved, revenue growth).</span></li>
+                  <li class="flex items-start space-x-2"><span class="text-emerald-500 font-bold">3.</span><span>Establish category leadership in AI orchestration through innovative use cases.</span></li>
+                  <li class="flex items-start space-x-2"><span class="text-emerald-500 font-bold">4.</span><span>Create proprietary AI capabilities that compound competitive advantage.</span></li>
+                  <li class="flex items-start space-x-2"><span class="text-emerald-500 font-bold">5.</span><span>Drive organizational and cultural transformation toward continuous AI innovation.</span></li>
+                </ul>
+              </div>
+
+            </div>
+
+            <!-- 4 Pillars Grid -->
+            <div class="space-y-3 pt-2">
+              <h3 class="font-extrabold text-sm text-[#1E1E1E]">The Most Connected AI Orchestration Platform</h3>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                <div class="p-4 border border-[#E8E4DB] rounded-2xl bg-white space-y-1">
+                  <div class="font-extrabold text-[#0EA5E9]">1. Connect Every App & Workflow</div>
+                  <div class="text-[#6E6A60] leading-relaxed">Securely integrate with 9,000+ tools using advanced OAuth & API authentication.</div>
+                </div>
+                <div class="p-4 border border-[#E8E4DB] rounded-2xl bg-white space-y-1">
+                  <div class="font-extrabold text-[#0EA5E9]">2. Automate Complex Workflows</div>
+                  <div class="text-[#6E6A60] leading-relaxed">Build, test, and scale AI systems using no-code, low-code, or full-code Python SDK.</div>
+                </div>
+                <div class="p-4 border border-[#E8E4DB] rounded-2xl bg-white space-y-1">
+                  <div class="font-extrabold text-[#0EA5E9]">3. Deploy Intelligent Systems</div>
+                  <div class="text-[#6E6A60] leading-relaxed">Connect AI agents directly to sales, support, IT, operations, and marketing.</div>
+                </div>
+                <div class="p-4 border border-[#E8E4DB] rounded-2xl bg-white space-y-1">
+                  <div class="font-extrabold text-[#0EA5E9]">4. IT-Grade Safety & Governance</div>
+                  <div class="text-[#6E6A60] leading-relaxed">Prevent shadow AI, enforce HITL permissions, and keep all AI activity fully auditable.</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        `,
+        actionText: "Try Live Agent Demo →",
+        action: "window.location.href='dashboard.html'"
+      },
+      "res-automate-5": {
+        icon: "💡",
+        title: "5 Things to Automate Today",
+        subtitle: "Popular SME agent workflows to save 10+ hours per week.",
+        body: `
+          <div class="space-y-3 text-xs">
+            <div class="p-3 border rounded-xl bg-white space-y-1 font-bold">1. Guest Booking Sync & Confirmation (TrekkSoft API)</div>
+            <div class="p-3 border rounded-xl bg-white space-y-1 font-bold">2. Weather Cancellation Refund Policy Search (SharePoint RAG)</div>
+            <div class="p-3 border rounded-xl bg-white space-y-1 font-bold">3. Automated Customer Follow-up Emails (Outlook Drafts + HITL)</div>
+            <div class="p-3 border rounded-xl bg-white space-y-1 font-bold">4. Marketing Campaign Broadcast (Brevo API)</div>
+            <div class="p-3 border rounded-xl bg-white space-y-1 font-bold">5. Daily Executive BI Activity Briefing</div>
+          </div>
+        `,
+        actionText: "Try Workflow Demo →",
+        action: "window.location.href='dashboard.html'"
+      },
+      "res-guides": {
+        icon: "📖",
+        title: "Rishan Platform Guides",
+        subtitle: "In-depth operational manuals for SME & enterprise AI deployment.",
+        body: `<p class="text-xs text-[#5A574F]">Comprehensive guides for configuring Model Context Protocol (MCP), SharePoint Graph RAG, and Human-in-the-Loop governance policies.</p>`,
+        actionText: "View Documentation",
+        action: "showToast('Guide loaded into workspace!', '📖')"
+      },
+      "res-webinars": {
+        icon: "🎥",
+        title: "Live & On-Demand Webinars",
+        subtitle: "Learn how Swiss SMEs deploy autonomous AI agents safely.",
+        body: `<p class="text-xs text-[#5A574F]">Watch live demos and masterclasses covering multi-agent orchestration, HITL security, and MS Graph RAG search.</p>`,
+        actionText: "Register for Next Webinar",
+        action: "showToast('Webinar registration opened!', '🎥')"
+      },
+      "res-blog": {
+        icon: "📝",
+        title: "Rishan AI Blog & Insights",
+        subtitle: "Articles on agentic AI, LLM routing, and business automation.",
+        body: `<p class="text-xs text-[#5A574F]">Discover why agentic workflows outperform standard Zapier triggers for complex enterprise tasks.</p>`,
+        actionText: "Read Latest Posts",
+        action: "showToast('Blog feed active!', '📝')"
+      },
+      "res-quickstart": {
+        icon: "⚡",
+        title: "Rishan Quick-Start Guide",
+        subtitle: "Get your first AI agent workforce running in 5 minutes.",
+        body: `
+          <div class="space-y-2 text-xs">
+            <p><strong>Step 1:</strong> Select a pre-built agent tool from the workspace.</p>
+            <p><strong>Step 2:</strong> Type your request in plain English.</p>
+            <p><strong>Step 3:</strong> Review high-risk action tokens in the HITL Gateway.</p>
+          </div>
+        `,
+        actionText: "Start Quick Tour",
+        action: "window.location.href='dashboard.html'"
+      },
+      "res-webhooks": {
+        icon: "🔗",
+        title: "Webhooks & Rishan Integration",
+        subtitle: "Trigger agent workflows from incoming HTTP webhooks.",
+        body: `<p class="text-xs text-[#5A574F]">Endpoint: <code>POST /api/v1/query</code> handles natural language payloads and dispatches tasks to specialist agents automatically.</p>`,
+        actionText: "View Webhook Docs",
+        action: "showToast('Webhook endpoint active at /api/v1/query', '🔗')"
+      },
+      "res-academy": {
+        icon: "🎓",
+        title: "Rishan AI Academy",
+        subtitle: "Certifications and courses for building enterprise agent systems.",
+        body: `<p class="text-xs text-[#5A574F]">Free interactive modules covering MCP server creation, system prompt tuning, and safety audit logging.</p>`,
+        actionText: "Explore Courses",
+        action: "showToast('Academy catalog loaded!', '🎓')"
+      },
+      "res-help": {
+        icon: "❓",
+        title: "Rishan Help Center",
+        subtitle: "Searchable knowledge base for troubleshooting and FAQs.",
+        body: `<p class="text-xs text-[#5A574F]">Find instant answers on OAuth app connections, RAG chunking limits, and API keys.</p>`,
+        actionText: "Open Help Center",
+        action: "showToast('Help center active!', '❓')"
+      },
+      "res-support": {
+        icon: "🎧",
+        title: "Rishan Support Options",
+        subtitle: "Dedicated 24/7 technical support for Enterprise plans.",
+        body: `<p class="text-xs text-[#5A574F]">Contact our Swiss engineering team directly for SLA guarantees and private cluster deployments.</p>`,
+        actionText: "Contact Support",
+        action: "openFeatureModal('contact-sales')"
+      },
+      "res-partner": {
+        icon: "🤝",
+        title: "Hire a Rishan Solution Partner",
+        subtitle: "Certified consultants to customize and deploy your AI workforce.",
+        body: `<p class="text-xs text-[#5A574F]">Work with vetted Swiss implementation partners for custom ERP integrations (bexio, SAP, Salesforce).</p>`,
+        actionText: "Find Partner",
+        action: "showToast('Partner directory active!', '🤝')"
+      },
+      "dev-powered": {
+        icon: "⚡",
+        title: "Powered by Rishan",
+        subtitle: "Embed Rishan badges and agent engine in your SaaS platform.",
+        body: `<p class="text-xs text-[#5A574F]">Enable AI agent capabilities inside your software with our white-label solution.</p>`,
+        actionText: "Learn More",
+        action: "showToast('Developer partner program active!', '⚡')"
+      },
+      "dev-integration": {
+        icon: "🔌",
+        title: "Build a Custom App Integration",
+        subtitle: "Connect your custom API to 9,000+ connected apps.",
+        body: `<p class="text-xs text-[#5A574F]">Use our open OpenAPI / MCP specification to publish your connector to the Rishan App Directory.</p>`,
+        actionText: "Build Connector",
+        action: "showToast('Developer connector builder ready!', '🔌')"
+      },
+      "dev-embed": {
+        icon: "📦",
+        title: "Embed an Integration",
+        subtitle: "Inline iframe & JS SDK widgets for your portal.",
+        body: `<p class="text-xs text-[#5A574F]">Embed the AI Agent Workspace bar directly inside your existing web portal.</p>`,
+        actionText: "Embed Widget",
+        action: "showToast('Embed snippet generated!', '📦')"
+      },
+      "dev-partner": {
+        icon: "⭐",
+        title: "Integration Partner Program",
+        subtitle: "Co-market and build with Rishan AI Agents Platform.",
+        body: `<p class="text-xs text-[#5A574F]">Join leading Swiss tech partners building the future of automated enterprise software.</p>`,
+        actionText: "Apply Now",
+        action: "openFeatureModal('contact-sales')"
+      },
+      "contact-sales": {
+        icon: "💬",
+        title: "Contact Rishan Enterprise Sales",
+        subtitle: "Speak with our AI solution architects for custom deployments.",
+        body: `
+          <div class="space-y-3 text-xs">
+            <p class="text-[#5A574F]">Ready to transform your SME or Enterprise operations with safe, governed AI Agents?</p>
+            <div class="p-4 border rounded-2xl bg-white space-y-3">
+              <input type="text" placeholder="Your Name" value="Executive Lead" class="w-full p-2 border rounded-xl">
+              <input type="email" placeholder="Work Email" value="executive@company.com" class="w-full p-2 border rounded-xl">
+              <textarea placeholder="Describe your workflow needs..." class="w-full p-2 border rounded-xl h-20">We want to automate our TrekkSoft bookings and SharePoint policy lookups.</textarea>
+              <button onclick="showToast('Sales request sent! Our team will contact you within 2 hours.', '✉️'); closeFeatureModal();" class="w-full bg-[#0EA5E9] text-white py-2.5 rounded-xl font-bold hover:bg-[#E04500]">Send Inquiry →</button>
+            </div>
+          </div>
+        `,
+        actionText: "Send Request",
+        action: "showToast('Sales request sent!', '✉️')"
+      }
+    });
+
+    function submitFormTest() {
+      const input = document.getElementById('formTestInput');
+      const val = input ? input.value : 'Customer request for weather refund';
+      closeFeatureModal();
+      window.location.href = '/dashboard';
+    }
+
+    const OAUTH_APP_DATA = {
+      netsuite: {
+        name: "Oracle NetSuite ERP",
+        icon: "☁️",
+        url: "https://system.netsuite.com/pages/customerlogin.jsp",
+        subdomainLabel: "NetSuite Account ID",
+        subdomainPlaceholder: "TSTDRV123456",
+        userPlaceholder: "admin@company.com",
+        scopes: ["Access Financial Ledgers & Invoices", "Read & Write Inventory Records", "SuiteTalk REST Web Services"]
+      },
+      salesforce: {
+        name: "Salesforce CRM",
+        icon: "☁️",
+        url: "https://login.salesforce.com/services/oauth2/authorize",
+        subdomainLabel: "Salesforce Domain / My Domain",
+        subdomainPlaceholder: "company.my.salesforce.com",
+        userPlaceholder: "user@company.salesforce.com",
+        scopes: ["Access Salesforce CRM Objects (Leads, Accounts, Deals)", "Perform automated background sync", "API, Web Services Access"]
+      },
+      hubspot: {
+        name: "HubSpot Marketing & CRM",
+        icon: "🟦",
+        url: "https://app.hubspot.com/oauth/authorize",
+        subdomainLabel: "HubSpot Portal ID",
+        subdomainPlaceholder: "Portal ID (e.g. 4820194)",
+        userPlaceholder: "marketing@company.com",
+        scopes: ["Access Contacts, Deals & Lists", "Trigger Marketing Email Automation", "Read CRM Analytics"]
+      },
+      slack: {
+        name: "Slack Workspace",
+        icon: "💬",
+        url: "https://slack.com/oauth/v2/authorize",
+        subdomainLabel: "Slack Workspace URL",
+        subdomainPlaceholder: "company.slack.com",
+        userPlaceholder: "admin@company.com",
+        scopes: ["Send messages to channels as Rishan AI Bot", "Read channel message history", "Add slash commands & webhooks"]
+      },
+      openai: {
+        name: "OpenAI Platform (ChatGPT)",
+        icon: "🤖",
+        url: "https://platform.openai.com/account/api-keys",
+        subdomainLabel: "Organization ID (Optional)",
+        subdomainPlaceholder: "org-123456789",
+        userPlaceholder: "sk-proj-...",
+        scopes: ["Access GPT-4o & GPT-4o-mini Models", "Execute Real-time Reasoning & Tool Calling", "Vector Embeddings API"]
+      },
+      dynamics: {
+        name: "Microsoft Dynamics 365 CRM",
+        icon: "🔷",
+        url: "https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
+        subdomainLabel: "Dynamics Environment URL",
+        subdomainPlaceholder: "org123.crm.dynamics.com",
+        userPlaceholder: "admin@company.onmicrosoft.com",
+        scopes: ["Read & Write Dynamics CRM Entities", "Access Sales & Customer Service Hub", "Graph API Integration"]
+      },
+      msteams: {
+        name: "Microsoft Teams",
+        icon: "👥",
+        url: "https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
+        subdomainLabel: "Microsoft 365 Tenant ID",
+        subdomainPlaceholder: "common or Tenant ID",
+        userPlaceholder: "admin@company.onmicrosoft.com",
+        scopes: ["Send Channel Alerts as Rishan Bot", "Read Meeting Transcripts & Summaries", "Manage Team Webhooks"]
+      },
+      zendesk: {
+        name: "Zendesk Support",
+        icon: "✳️",
+        url: "https://your-company.zendesk.com/oauth/authorizations/new",
+        subdomainLabel: "Zendesk Subdomain",
+        subdomainPlaceholder: "company.zendesk.com",
+        userPlaceholder: "agent@company.com",
+        scopes: ["Read & Write Support Tickets", "Manage User Profiles & Agents", "Webhook Trigger Access"]
+      },
+      jira: {
+        name: "Jira Software Cloud",
+        icon: "🔷",
+        url: "https://auth.atlassian.com/authorize",
+        subdomainLabel: "Atlassian Site URL",
+        subdomainPlaceholder: "company.atlassian.net",
+        userPlaceholder: "dev@company.com",
+        scopes: ["Read & Create Jira Issues & Sprints", "Access Project Boards", "REST API v3 Triggering"]
+      },
+      trekksoft: {
+        name: "TrekkSoft Swiss Booking API",
+        icon: "📅",
+        url: "https://admin.trekksoft.com/en/api",
+        subdomainLabel: "TrekkSoft Merchant ID",
+        subdomainPlaceholder: "CH-BERN-8821",
+        userPlaceholder: "api@trekksoft.com",
+        scopes: ["Real-time Tour Booking Stream", "Access Guest Schedules & Seats", "TrekkSoft Webhook Listener"]
+      },
+      bexio: {
+        name: "bexio Swiss Accounting",
+        icon: "🧾",
+        url: "https://office.bexio.com/oauth/authorize",
+        subdomainLabel: "bexio Account Number",
+        subdomainPlaceholder: "BX-994820",
+        userPlaceholder: "finance@company.ch",
+        scopes: ["Read & Create bexio Invoices", "Sync Contact Records & AR/AP", "Swiss QR-Bill Payment Generation"]
+      },
+      sharepoint: {
+        name: "Microsoft SharePoint RAG",
+        icon: "📋",
+        url: "https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
+        subdomainLabel: "SharePoint Site URL",
+        subdomainPlaceholder: "company.sharepoint.com/sites/SOPs",
+        userPlaceholder: "admin@company.onmicrosoft.com",
+        scopes: ["Read Document Libraries for RAG Search", "Vector Embed Indexing", "Enterprise Knowledge Retrieval"]
+      },
+      outlook: {
+        name: "Microsoft Outlook Mail",
+        icon: "✉️",
+        url: "https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
+        subdomainLabel: "Mailbox Type",
+        subdomainPlaceholder: "Shared or Primary Admin Mailbox",
+        userPlaceholder: "sales@company.com",
+        scopes: ["Draft Outlook Follow-up Emails", "Read Customer Inbound Queries", "HITL Approved Mail Sending"]
+      },
+      brevo: {
+        name: "Brevo Marketing API",
+        icon: "🚀",
+        url: "https://app.brevo.com/settings/keys/api",
+        subdomainLabel: "Brevo Account ID",
+        subdomainPlaceholder: "Brevo-Account-9921",
+        userPlaceholder: "marketing@company.com",
+        scopes: ["Manage Email Marketing Lists", "Send Transactional Emails", "Campaign Analytics & Tracking"]
+      }
+    };
+
+    let activeOAuthAppId = null;
+
+    function openAppOAuthLogin(appId) {
+      const app = OAUTH_APP_DATA[appId] || {
+        name: appId.toUpperCase(),
+        icon: "🔐",
+        url: `https://auth.${appId}.com/oauth2/authorize`,
+        subdomainLabel: "Account Subdomain",
+        subdomainPlaceholder: `${appId}.company.com`,
+        userPlaceholder: `user@${appId}.com`,
+        scopes: ["Read & write application data via OAuth 2.0", "Execute background automated triggers"]
+      };
+
+      activeOAuthAppId = appId;
+      document.getElementById('oauthUrlText').innerText = app.url;
+      document.getElementById('oauthAppIcon').innerText = app.icon;
+      document.getElementById('oauthAppName').innerText = app.name;
+      document.getElementById('oauthSubdomainLabel').innerText = app.subdomainLabel;
+      document.getElementById('oauthSubdomainInput').placeholder = app.subdomainPlaceholder;
+      document.getElementById('oauthUserInput').placeholder = app.userPlaceholder;
+      document.getElementById('oauthSubmitBtn').innerText = `Log In to ${app.name} →`;
+
+      document.getElementById('oauthStep2Icon').innerText = app.icon;
+      document.getElementById('oauthStep2AppName').innerText = app.name;
+
+      const scopeList = document.getElementById('oauthScopeList');
+      if (scopeList) {
+        scopeList.innerHTML = app.scopes.map(s => `<li class="flex items-center space-x-2"><span class="text-emerald-500 font-bold">✓</span><span>${s}</span></li>`).join('');
+      }
+
+      document.getElementById('oauthStep1').classList.remove('hidden');
+      document.getElementById('oauthStep2').classList.add('hidden');
+      document.getElementById('appOAuthModal').classList.remove('hidden');
+    }
+
+    function closeAppOAuthModal() {
+      const modal = document.getElementById('appOAuthModal');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    function submitOAuthStep1(e) {
+      e.preventDefault();
+      document.getElementById('oauthStep1').classList.add('hidden');
+      document.getElementById('oauthStep2').classList.remove('hidden');
+    }
+
+    function confirmOAuthConnection() {
+      closeAppOAuthModal();
+      const connectedApps = JSON.parse(localStorage.getItem('rishan_connected_apps') || '{}');
+      if (activeOAuthAppId) {
+        connectedApps[activeOAuthAppId] = true;
+        localStorage.setItem('rishan_connected_apps', JSON.stringify(connectedApps));
+
+        const card = document.querySelector(`.app-card[data-id="${activeOAuthAppId}"]`);
+        if (card && typeof updateCardToConnected === 'function') {
+          updateCardToConnected(card);
+        }
+      }
+
+      const appObj = OAUTH_APP_DATA[activeOAuthAppId];
+      const appName = appObj ? appObj.name : 'Integration';
+    function toggleDarkMode() {
+      const isDark = document.documentElement.classList.toggle('dark');
+      localStorage.setItem('rishan_theme', isDark ? 'dark' : 'light');
+      updateDarkModeBtnUI();
+    }
+
+    function updateDarkModeBtnUI() {
+      const isDark = document.documentElement.classList.contains('dark');
+      const icons = document.querySelectorAll('.darkModeIcon');
+      const texts = document.querySelectorAll('.darkModeText');
+      icons.forEach(el => el.innerText = isDark ? '🌙' : '☀️');
+      texts.forEach(el => el.innerText = isDark ? 'Dark Mode' : 'Light Mode');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      updateDarkModeBtnUI();
+    });
+  </script>
+
+  <!-- Floating Sales Chat Widget -->
+  <button onclick="openFeatureModal('contact-sales')" class="fixed bottom-6 right-6 z-40 bg-[#1E1E1E] hover:bg-[#333333] text-white px-5 py-3 rounded-full font-bold text-xs shadow-2xl flex items-center space-x-2.5 transition transform hover:scale-105 border border-[#0EA5E9]/30">
+    <span class="text-base text-[#0EA5E9]">💬</span>
+    <span>Chat with Sales</span>
+  </button>
+</body>
+</html>

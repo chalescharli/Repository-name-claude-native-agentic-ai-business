@@ -1,0 +1,2495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rishan AI Agents | Meet your new AI teammates</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    function closeModal(id) {
+      const el = document.getElementById(id);
+      if (el) el.classList.add('hidden');
+    }
+    function markActiveMegaSubItem(el) {
+      if (typeof closeMegaMenus === 'function') closeMegaMenus();
+    }
+    function markActiveMegaItem(el) {
+      if (typeof closeMegaMenus === 'function') closeMegaMenus();
+    }
+  </script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+    };
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+    body { font-family: 'Inter', system-ui, -apple-system, sans-serif; transition: background-color 0.3s ease, color 0.3s ease; }
+
+    /* Universal Dark Mode Overrides */
+    html.dark, html.dark body {
+      background-color: #121212 !important;
+      color: #F3F4F6 !important;
+    }
+
+    html.dark *, html.dark *::before, html.dark *::after {
+      border-color: #2D2D30 !important;
+    }
+
+    /* Universal Dark Backgrounds for White & Light Surfaces */
+    html.dark .bg-\[\#FFFDF9\], 
+    html.dark .bg-\[\#FAF8F5\],
+    html.dark .bg-white,
+    html.dark .bg-gray-50,
+    html.dark .bg-gray-100,
+    html.dark header,
+    html.dark footer,
+    html.dark nav,
+    html.dark main,
+    html.dark section,
+    html.dark article,
+    html.dark .app-card,
+    html.dark .agent-card,
+    html.dark .res-card,
+    html.dark .hitl-card,
+    html.dark .pricing-card,
+    html.dark .stat-card,
+    html.dark #productsMegaMenu,
+    html.dark #solutionsMegaMenu,
+    html.dark #resourcesMegaMenu,
+    html.dark #mobileDrawerNav {
+      background-color: #1E1E1E !important;
+      color: #F3F4F6 !important;
+    }
+
+    /* Universal Dark Text Colors */
+    html.dark .text-\[\#1E1E1E\],
+    html.dark .text-\[\#4A4740\],
+    html.dark .text-\[\#5A574F\],
+    html.dark .text-\[\#6E6A60\],
+    html.dark .text-\[\#7A756B\],
+    html.dark .text-gray-900,
+    html.dark .text-gray-800,
+    html.dark .text-gray-700,
+    html.dark h1, html.dark h2, html.dark h3, html.dark h4, html.dark h5, html.dark h6 {
+      color: #F9FAFB !important;
+    }
+
+    html.dark .text-\[\#858075\],
+    html.dark .text-gray-600,
+    html.dark .text-gray-500 {
+      color: #9CA3AF !important;
+    }
+
+    /* Inputs, Textareas, Selects */
+    html.dark input,
+    html.dark textarea,
+    html.dark select {
+      background-color: #2A2A2D !important;
+      color: #FFFFFF !important;
+      border-color: #3F3F46 !important;
+    }
+
+    /* Hover States in Dark Mode */
+    html.dark .hover\:bg-sky-50\/60:hover,
+    html.dark .hover\:bg-sky-50:hover,
+    html.dark .hover\:bg-\[\#FAF8F5\]:hover,
+    html.dark .hover\:bg-gray-100:hover,
+    html.dark .hover\:bg-gray-50:hover,
+    html.dark .hover\:bg-gray-200:hover {
+      background-color: #2D2D30 !important;
+    }
+
+    /* Brand Light Blue & Accent Colors */
+    html.dark .text-\[\#0EA5E9\], html.dark .group-hover\:text-\[\#0EA5E9\]:hover {
+      color: #0EA5E9 !important;
+    }
+    html.dark .bg-\[\#0EA5E9\] {
+      background-color: #0EA5E9 !important;
+      color: #FFFFFF !important;
+    }
+    html.dark .bg-sky-50\/60,
+    html.dark .bg-sky-50,
+    html.dark .bg-amber-50,
+    html.dark .bg-emerald-50 {
+      background-color: rgba(255, 79, 0, 0.12) !important;
+    }
+
+    /* Theme Switch Knob & Track in Dark Mode */
+    html.dark .theme-switch-knob {
+      transform: translateX(1.25rem) !important;
+      background-color: #0EA5E9 !important;
+    }
+    html.dark .theme-switch-track {
+      background-color: #3F3F46 !important;
+      border-color: #52525B !important;
+    }
+
+    /* Modals in Dark Mode */
+    html.dark #appOAuthModal > div,
+    html.dark #connectModal > div,
+    html.dark #featureModal > div,
+    html.dark #googleAccountModal > div,
+    html.dark #helpModal > div,
+    html.dark #salesModal > div {
+      background-color: #1E1E1E !important;
+      border-color: #3F3F46 !important;
+      color: #F3F4F6 !important;
+    }
+  </style>
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('rishan_theme');
+      if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+  </script>
+</head>
+<body class="bg-[#FFFDF9] text-[#1E1E1E] antialiased selection:bg-[#0EA5E9] selection:text-white">
+
+  <!-- Top Announcement Bar -->
+  <div class="bg-[#2B2A27] text-white text-xs py-2 px-4 text-center font-medium tracking-wide">
+    Get early access to Next Gen Rishan AI Business Agents • Swiss SME Platform
+  </div>
+
+  <!-- Notification Toast -->
+  <div id="toastNotification" class="hidden fixed bottom-6 right-6 z-50 bg-[#1E1E1E] text-white px-5 py-3.5 rounded-2xl shadow-2xl flex items-center space-x-3 transition-all duration-300 transform">
+    <span id="toastIcon" class="text-emerald-400 text-lg">✓</span>
+    <span id="toastMessage" class="text-xs font-semibold">Plan selected!</span>
+  </div>
+
+  <!-- Top Navigation Header Bar -->
+  <header class="border-b border-[#E8E4DB] bg-[#FFFDF9] sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      
+      <!-- Brand Logo & Main Nav -->
+      <div class="flex items-center space-x-4 sm:space-x-8">
+        <button onclick="toggleMobileDrawer()" class="md:hidden p-1.5 text-[#1E1E1E] text-xl font-bold focus:outline-none hover:text-[#0EA5E9] transition">
+          ☰
+        </button>
+
+        <a href="dashboard.html" class="flex items-center space-x-1.5 text-2xl font-black tracking-tighter">
+          <span class="text-[#0EA5E9] font-black text-3xl">_</span><span id="brandNameText">rishan</span>
+          <span class="text-xs bg-[#0EA5E9]/10 text-[#0EA5E9] px-2 py-0.5 rounded-full font-bold ml-1">Agents</span>
+        </a>
+
+        <nav id="mainHeaderNav" class="hidden md:flex items-center space-x-6 text-xs font-semibold text-[#4A4740]">
+          <div class="relative group">
+            <button id="navBtn-products" onclick="toggleMegaMenu('products', event)" class="hover:text-[#0EA5E9] transition py-5 font-semibold flex items-center space-x-1 focus:outline-none">
+              <span>Products</span> <span class="text-[10px]">▾</span>
+            </button>
+          </div>
+
+          <div class="relative group">
+            <button id="navBtn-solutions" onclick="toggleMegaMenu('solutions', event)" class="hover:text-[#0EA5E9] transition py-5 font-semibold flex items-center space-x-1 focus:outline-none">
+              <span>Solutions</span> <span class="text-[10px]">▾</span>
+            </button>
+          </div>
+
+          <div class="relative group">
+            <button id="navBtn-resources" onclick="toggleMegaMenu('resources', event)" class="hover:text-[#0EA5E9] transition py-5 font-semibold flex items-center space-x-1 focus:outline-none">
+              <span>Resources</span> <span class="text-[10px]">▾</span>
+            </button>
+          </div>
+
+          <a id="navBtn-explore" href="explore.html" onclick="setActiveNav('explore')" class="hover:text-[#0EA5E9] transition py-5 font-semibold">Explore apps</a>
+          <a id="navBtn-enterprise" href="#workspace" onclick="setActiveNav('enterprise')" class="hover:text-[#0EA5E9] transition py-5 font-semibold">Enterprise</a>
+          <a id="navBtn-pricing" href="#pricing" onclick="setActiveNav('pricing')" class="hover:text-[#0EA5E9] transition py-5 font-semibold">Pricing</a>
+        </nav>
+      </div>
+
+      <!-- Right Nav Buttons -->
+      <div id="userHeaderNav" class="flex items-center space-x-3 sm:space-x-4 text-xs font-bold">
+        <div onclick="toggleDarkMode()" id="darkModeToggleBtn" class="flex items-center space-x-2 cursor-pointer group select-none" title="Toggle Light / Dark Mode">
+          <span class="text-[11px] font-extrabold text-[#6E6A60] dark:text-gray-300 hidden sm:inline group-hover:text-[#0EA5E9] transition">☀️</span>
+          <div class="theme-switch-track w-11 h-6 rounded-full bg-[#E8E4DB] dark:bg-[#3F3F46] p-0.5 flex items-center transition-colors duration-300 relative border border-[#D5D0C5] dark:border-[#52525B]">
+            <div class="theme-switch-knob w-5 h-5 rounded-full bg-white dark:bg-[#0EA5E9] shadow-md transform transition-transform duration-300 flex items-center justify-center text-[10px] text-[#1E1E1E] dark:text-white">
+              <span class="darkModeIcon">☀️</span>
+            </div>
+          </div>
+          <span class="text-[11px] font-extrabold text-[#6E6A60] dark:text-gray-300 hidden sm:inline group-hover:text-[#0EA5E9] transition">🌙</span>
+        </div>
+        <a href="https://github.com" target="_blank" class="hidden md:flex items-center text-[#4A4740] hover:text-[#1E1E1E] transition">
+          <svg class="w-4 h-4 mr-1.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+        <a href="#" onclick="openFeatureModal('contact-sales'); return false;" class="hidden md:block text-[#4A4740] hover:text-[#1E1E1E] transition">Contact sales</a>
+        <a href="login.html" class="hidden md:block text-[#4A4740] hover:text-[#1E1E1E] transition">Log in</a>
+        <a href="login.html" class="bg-[#0EA5E9] hover:bg-[#E04500] text-white px-4 sm:px-5 py-2 sm:py-2.5 rounded-full font-bold transition shadow-sm hover:shadow text-xs">Sign up</a>
+      </div>
+
+    </div>
+
+    <!-- Responsive Mobile Drawer Navigation -->
+    <div id="mobileDrawerNav" class="hidden md:hidden bg-[#FFFDF9] border-b border-[#E8E4DB] px-6 py-4 space-y-3 font-semibold text-xs text-[#1E1E1E] animate-fadeIn">
+      <div class="flex flex-col space-y-2.5">
+        <div onclick="toggleDarkMode()" class="flex items-center justify-between py-2 border-b border-[#E8E4DB] cursor-pointer">
+          <span class="font-extrabold text-xs text-[#1E1E1E]">Theme Mode (Dark / Light)</span>
+          <div class="theme-switch-track w-11 h-6 rounded-full bg-[#E8E4DB] dark:bg-[#3F3F46] p-0.5 flex items-center transition-colors duration-300 relative border border-[#D5D0C5]">
+            <div class="theme-switch-knob w-5 h-5 rounded-full bg-white dark:bg-[#0EA5E9] shadow-md transform transition-transform duration-300 flex items-center justify-center text-[10px] text-[#1E1E1E] dark:text-white">
+              <span class="darkModeIcon">☀️</span>
+            </div>
+          </div>
+        </div>
+        <button onclick="toggleMegaMenu('products', event)" class="text-left font-bold text-[#0EA5E9] py-1">Products ▾</button>
+        <button onclick="toggleMegaMenu('solutions', event)" class="text-left font-bold text-[#0EA5E9] py-1">Solutions ▾</button>
+        <button onclick="toggleMegaMenu('resources', event)" class="text-left font-bold text-[#0EA5E9] py-1">Resources ▾</button>
+        <a href="explore.html" class="hover:text-[#0EA5E9] py-1">Explore apps</a>
+        <a href="#workspace" onclick="toggleMobileDrawer()" class="hover:text-[#0EA5E9] py-1">Enterprise</a>
+        <a href="#pricing" onclick="toggleMobileDrawer()" class="hover:text-[#0EA5E9] py-1">Pricing</a>
+      </div>
+    </div>
+
+    <!-- Mega Menu 1: Products ▾ Dropdown -->
+    <div id="productsMegaMenu" onmouseleave="closeMegaMenus()" class="hidden absolute top-full left-0 w-full max-h-[85vh] overflow-y-auto bg-[#FFFDF9] border-b border-[#E8E4DB] shadow-2xl z-50 py-6 sm:py-8 px-4 sm:px-6 transition-all duration-200">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Left 2 Columns: Main Products & Capabilities (Col Span 8) -->
+        <div class="lg:col-span-8 space-y-6">
+          
+          <div class="border-b border-[#E8E4DB] pb-3">
+            <h3 class="text-2xl font-black text-[#1E1E1E]">Rishan Automation Platform</h3>
+            <p class="text-xs text-[#6E6A60] font-medium mt-1">No-code automation across 9,000+ apps</p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            
+            <!-- MOST POPULAR Column -->
+            <div class="space-y-3">
+              <div class="text-[10px] font-extrabold text-[#858075] uppercase tracking-wider">MOST POPULAR</div>
+
+              <a href="#" onclick="openFeatureModal('agent-workflows'); closeMegaMenus(); return false;" class="flex items-start space-x-3 p-2.5 rounded-xl hover:bg-sky-50/60 transition group">
+                <div class="w-8 h-8 rounded-lg bg-sky-100 text-[#0EA5E9] flex items-center justify-center font-bold text-sm shrink-0 group-hover:bg-[#0EA5E9] group-hover:text-white transition">⚡</div>
+                <div>
+                  <div class="font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Agent Workflows</div>
+                  <div class="text-[11px] text-[#6E6A60] leading-snug">Do-it-yourself automation for SME workflows</div>
+                </div>
+              </a>
+
+              <a href="#" onclick="openFeatureModal('mcp'); closeMegaMenus(); return false;" class="flex items-start space-x-3 p-2.5 rounded-xl hover:bg-sky-50/60 transition group">
+                <div class="w-8 h-8 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center font-bold text-sm shrink-0 group-hover:bg-[#0EA5E9] group-hover:text-white transition">🪢</div>
+                <div>
+                  <div class="font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Rishan MCP</div>
+                  <div class="text-[11px] text-[#6E6A60] leading-snug">Add Rishan tools to your AI chat & desktop</div>
+                </div>
+              </a>
+
+              <a href="#" onclick="openFeatureModal('sdk'); closeMegaMenus(); return false;" class="flex items-start space-x-3 p-2.5 rounded-xl hover:bg-sky-50/60 transition group">
+                <div class="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-sm shrink-0 group-hover:bg-[#0EA5E9] group-hover:text-white transition">🛠️</div>
+                <div>
+                  <div class="font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Rishan SDK</div>
+                  <div class="text-[11px] text-[#6E6A60] leading-snug">Install Rishan to your AI coding agent</div>
+                </div>
+              </a>
+
+              <a href="#" onclick="openFeatureModal('tables'); closeMegaMenus(); return false;" class="flex items-start space-x-3 p-2.5 rounded-xl hover:bg-sky-50/60 transition group">
+                <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-sm shrink-0 group-hover:bg-[#0EA5E9] group-hover:text-white transition">📊</div>
+                <div>
+                  <div class="font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Tables</div>
+                  <div class="text-[11px] text-[#6E6A60] leading-snug">Store data your agent workflows can read and update</div>
+                </div>
+              </a>
+            </div>
+
+            <!-- CAPABILITIES Column -->
+            <div class="space-y-3">
+              <div class="text-[10px] font-extrabold text-[#858075] uppercase tracking-wider">CAPABILITIES</div>
+
+              <a href="#" onclick="openFeatureModal('integrations'); closeMegaMenus(); return false;" class="flex items-start space-x-3 p-2.5 rounded-xl hover:bg-sky-50/60 transition group">
+                <div class="w-8 h-8 rounded-lg bg-purple-100 text-purple-700 flex items-center justify-center font-bold text-sm shrink-0 group-hover:bg-[#0EA5E9] group-hover:text-white transition">🎛️</div>
+                <div>
+                  <div class="font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">App integrations</div>
+                  <div class="text-[11px] text-[#6E6A60] leading-snug">Explore 9,000+ app connections</div>
+                </div>
+              </a>
+
+              <a href="#" onclick="openFeatureModal('ai-automation'); closeMegaMenus(); return false;" class="flex items-start space-x-3 p-2.5 rounded-xl hover:bg-sky-50/60 transition group">
+                <div class="w-8 h-8 rounded-lg bg-rose-100 text-rose-700 flex items-center justify-center font-bold text-sm shrink-0 group-hover:bg-[#0EA5E9] group-hover:text-white transition">✨</div>
+                <div>
+                  <div class="font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">AI automation ✨</div>
+                  <div class="text-[11px] text-[#6E6A60] leading-snug">Cutting-edge AI to upgrade your workflows</div>
+                </div>
+              </a>
+
+              <a href="#" onclick="openFeatureModal('security'); closeMegaMenus(); return false;" class="flex items-start space-x-3 p-2.5 rounded-xl hover:bg-sky-50/60 transition group">
+                <div class="w-8 h-8 rounded-lg bg-teal-100 text-teal-700 flex items-center justify-center font-bold text-sm shrink-0 group-hover:bg-[#0EA5E9] group-hover:text-white transition">🛡️</div>
+                <div>
+                  <div class="font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Security</div>
+                  <div class="text-[11px] text-[#6E6A60] leading-snug">Enterprise-grade safety & HITL governance</div>
+                </div>
+              </a>
+            </div>
+
+          </div>
+
+          <!-- Bottom Action Bar -->
+          <div class="border-t border-[#E8E4DB] pt-4 flex flex-wrap items-center gap-6 text-xs font-bold text-[#5A574F]">
+            <a href="#" onclick="openFeatureModal('templates'); closeMegaMenus(); return false;" class="hover:text-[#0EA5E9] transition flex items-center space-x-1"><span>🧩</span><span>Explore templates</span></a>
+            <a href="#" onclick="openFeatureModal('use-cases'); closeMegaMenus(); return false;" class="hover:text-[#0EA5E9] transition flex items-center space-x-1"><span>💼</span><span>Explore use cases</span></a>
+            <a href="login.html" onclick="closeMegaMenus()" class="hover:text-[#0EA5E9] transition flex items-center space-x-1 text-[#0EA5E9]"><span>⚡</span><span>Join Rishan Early Access</span></a>
+            <a href="#" onclick="openFeatureModal('comparisons'); closeMegaMenus(); return false;" class="hover:text-[#0EA5E9] transition flex items-center space-x-1"><span>🔍</span><span>Industry comparisons</span></a>
+          </div>
+
+        </div>
+
+        <!-- Right Panel: MORE PRODUCTS (Col Span 4) -->
+        <div class="lg:col-span-4 bg-[#FAF8F5] border border-[#E8E4DB] rounded-2xl p-6 space-y-4">
+          <div class="text-[10px] font-extrabold text-[#858075] uppercase tracking-wider">MORE PRODUCTS</div>
+
+          <a href="#" onclick="openFeatureModal('forms'); closeMegaMenus(); return false;" class="flex items-start space-x-3 p-2.5 rounded-xl hover:bg-white transition group">
+            <div class="w-8 h-8 rounded-lg bg-gray-200 text-[#1E1E1E] flex items-center justify-center font-bold text-sm shrink-0 group-hover:bg-[#0EA5E9] group-hover:text-white transition">📋</div>
+            <div>
+              <div class="font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Forms</div>
+              <div class="text-[11px] text-[#6E6A60]">Capture inputs that trigger workflows</div>
+            </div>
+          </a>
+
+          <a href="#" onclick="openFeatureModal('canvas'); closeMegaMenus(); return false;" class="flex items-start space-x-3 p-2.5 rounded-xl hover:bg-white transition group">
+            <div class="w-8 h-8 rounded-lg bg-gray-200 text-[#1E1E1E] flex items-center justify-center font-bold text-sm shrink-0 group-hover:bg-[#0EA5E9] group-hover:text-white transition">🗺️</div>
+            <div>
+              <div class="font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Canvas</div>
+              <div class="text-[11px] text-[#6E6A60]">Plan and map your workflows with AI</div>
+            </div>
+          </a>
+
+          <a href="#" onclick="openFeatureModal('agents'); closeMegaMenus(); return false;" class="flex items-start space-x-3 p-2.5 rounded-xl hover:bg-white transition group">
+            <div class="w-8 h-8 rounded-lg bg-gray-200 text-[#1E1E1E] flex items-center justify-center font-bold text-sm shrink-0 group-hover:bg-[#0EA5E9] group-hover:text-white transition">✴️</div>
+            <div>
+              <div class="font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Agents</div>
+              <div class="text-[11px] text-[#6E6A60]">Create your own AI assistants for any task</div>
+            </div>
+          </a>
+
+          <a href="#" onclick="openFeatureModal('chatbots'); closeMegaMenus(); return false;" class="flex items-start space-x-3 p-2.5 rounded-xl hover:bg-white transition group">
+            <div class="w-8 h-8 rounded-lg bg-gray-200 text-[#1E1E1E] flex items-center justify-center font-bold text-sm shrink-0 group-hover:bg-[#0EA5E9] group-hover:text-white transition">💬</div>
+            <div>
+              <div class="font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Chatbots</div>
+              <div class="text-[11px] text-[#6E6A60]">Answer customer questions with AI chatbots</div>
+            </div>
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mega Menu 2: Solutions ▾ Dropdown (1:1 Exact Zapier Solutions Layout) -->
+    <div id="solutionsMegaMenu" onmouseleave="closeMegaMenus()" class="hidden absolute top-full left-0 w-full max-h-[85vh] overflow-y-auto bg-[#FFFDF9] border-b border-[#E8E4DB] shadow-2xl z-50 py-6 sm:py-8 px-4 sm:px-6 transition-all duration-200">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Left 3-Column Section (Col Span 8) -->
+        <div class="lg:col-span-8 space-y-6">
+          <div class="border-b border-[#E8E4DB] pb-3">
+            <h3 class="text-3xl font-black text-[#1E1E1E]">Solutions</h3>
+            <p class="text-xs text-[#6E6A60] font-medium mt-1">How Rishan AI can help you automate your work across teams</p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            
+            <!-- Column 1: BY TEAM -->
+            <div class="space-y-3">
+              <div class="text-[10px] font-extrabold text-[#858075] uppercase tracking-wider">BY TEAM</div>
+
+              <a href="team.html?team=revops" onclick="closeMegaMenus()" class="flex items-start space-x-2.5 p-1.5 rounded-xl hover:bg-sky-50/60 transition group">
+                <div class="w-6 h-6 rounded bg-purple-100 text-purple-700 flex items-center justify-center font-bold text-xs shrink-0 group-hover:bg-[#0EA5E9] group-hover:text-white transition">💳</div>
+                <div>
+                  <div class="font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">RevOps</div>
+                  <div class="text-[10px] text-[#6E6A60] leading-tight">Drive revenue through automation</div>
+                </div>
+              </a>
+
+              <a href="team.html?team=marketing" onclick="closeMegaMenus()" class="flex items-start space-x-2.5 p-1.5 rounded-xl hover:bg-sky-50/60 transition group">
+                <div class="w-6 h-6 rounded bg-rose-100 text-rose-700 flex items-center justify-center font-bold text-xs shrink-0 group-hover:bg-[#0EA5E9] group-hover:text-white transition">🎨</div>
+                <div>
+                  <div class="font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Marketing</div>
+                  <div class="text-[10px] text-[#6E6A60] leading-tight">Multiply campaign effectiveness and ROI</div>
+                </div>
+              </a>
+
+              <a href="team.html?team=it" onclick="closeMegaMenus()" class="flex items-start space-x-2.5 p-1.5 rounded-xl hover:bg-sky-50/60 transition group">
+                <div class="w-6 h-6 rounded bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-xs shrink-0 group-hover:bg-[#0EA5E9] group-hover:text-white transition">⚙️</div>
+                <div>
+                  <div class="font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">IT</div>
+                  <div class="text-[10px] text-[#6E6A60] leading-tight">Better manage systems with automation</div>
+                </div>
+              </a>
+
+              <a href="team.html?team=hr" onclick="closeMegaMenus()" class="flex items-start space-x-2.5 p-1.5 rounded-xl hover:bg-sky-50/60 transition group">
+                <div class="w-6 h-6 rounded bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold text-xs shrink-0 group-hover:bg-[#0EA5E9] group-hover:text-white transition">👥</div>
+                <div>
+                  <div class="font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">HR</div>
+                  <div class="text-[10px] text-[#6E6A60] leading-tight">Empower your HR team with AI automation</div>
+                </div>
+              </a>
+
+              <a href="team.html?team=sales" onclick="closeMegaMenus()" class="flex items-start space-x-2.5 p-1.5 rounded-xl hover:bg-sky-50/60 transition group">
+                <div class="w-6 h-6 rounded bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xs shrink-0 group-hover:bg-[#0EA5E9] group-hover:text-white transition">📊</div>
+                <div>
+                  <div class="font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Sales</div>
+                  <div class="text-[10px] text-[#6E6A60] leading-tight">Close more deals</div>
+                </div>
+              </a>
+
+              <a href="team.html?team=support" onclick="closeMegaMenus()" class="flex items-start space-x-2.5 p-1.5 rounded-xl hover:bg-sky-50/60 transition group">
+                <div class="w-6 h-6 rounded bg-amber-100 text-amber-700 flex items-center justify-center font-bold text-xs shrink-0 group-hover:bg-[#0EA5E9] group-hover:text-white transition">🎧</div>
+                <div>
+                  <div class="font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Customer Support</div>
+                  <div class="text-[10px] text-[#6E6A60] leading-tight">Elevate customer satisfaction</div>
+                </div>
+              </a>
+
+              <a href="team.html?team=leaders" onclick="closeMegaMenus()" class="flex items-start space-x-2.5 p-1.5 rounded-xl hover:bg-sky-50/60 transition group">
+                <div class="w-6 h-6 rounded bg-gray-100 text-gray-800 flex items-center justify-center font-bold text-xs shrink-0 group-hover:bg-[#0EA5E9] group-hover:text-white transition">👨‍💼</div>
+                <div>
+                  <div class="font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Leaders</div>
+                  <div class="text-[10px] text-[#6E6A60] leading-tight">Streamline decision-making processes</div>
+                </div>
+              </a>
+
+              <a href="team.html?team=ea" onclick="closeMegaMenus()" class="flex items-start space-x-2.5 p-1.5 rounded-xl hover:bg-sky-50/60 transition group">
+                <div class="w-6 h-6 rounded bg-teal-100 text-teal-800 flex items-center justify-center font-bold text-xs shrink-0 group-hover:bg-[#0EA5E9] group-hover:text-white transition">📋</div>
+                <div>
+                  <div class="font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Executive Assistants</div>
+                  <div class="text-[10px] text-[#6E6A60] leading-tight">Eliminate repetitive admin tasks</div>
+                </div>
+              </a>
+            </div>
+
+            <!-- Column 2: BY APP -->
+            <div class="space-y-2.5">
+              <div class="text-[10px] font-extrabold text-[#858075] uppercase tracking-wider">BY APP</div>
+
+              <a href="#" onclick="openAppOAuthLogin('netsuite'); closeMegaMenus(); return false;" class="flex items-center space-x-2.5 p-1 rounded-lg hover:bg-sky-50/60 transition group">
+                <span class="text-sm">☁️</span>
+                <span class="font-bold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">NetSuite</span>
+              </a>
+
+              <a href="#" onclick="openAppOAuthLogin('salesforce'); closeMegaMenus(); return false;" class="flex items-center space-x-2.5 p-1 rounded-lg hover:bg-sky-50/60 transition group">
+                <span class="text-sm text-sky-500">☁️</span>
+                <span class="font-bold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Salesforce</span>
+              </a>
+
+              <a href="#" onclick="openAppOAuthLogin('hubspot'); closeMegaMenus(); return false;" class="flex items-center space-x-2.5 p-1 rounded-lg hover:bg-sky-50/60 transition group">
+                <span class="text-sm text-sky-500">🟦</span>
+                <span class="font-bold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">HubSpot</span>
+              </a>
+
+              <a href="#" onclick="openAppOAuthLogin('slack'); closeMegaMenus(); return false;" class="flex items-center space-x-2.5 p-1 rounded-lg hover:bg-sky-50/60 transition group">
+                <span class="text-sm">💬</span>
+                <span class="font-bold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Slack</span>
+              </a>
+
+              <a href="#" onclick="openAppOAuthLogin('openai'); closeMegaMenus(); return false;" class="flex items-center space-x-2.5 p-1 rounded-lg hover:bg-sky-50/60 transition group">
+                <span class="text-sm text-emerald-600">🤖</span>
+                <span class="font-bold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">ChatGPT (OpenAI)</span>
+              </a>
+
+              <a href="#" onclick="openAppOAuthLogin('dynamics'); closeMegaMenus(); return false;" class="flex items-center space-x-2.5 p-1 rounded-lg hover:bg-sky-50/60 transition group">
+                <span class="text-sm text-blue-600">🔷</span>
+                <span class="font-bold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Microsoft Dynamics CRM</span>
+              </a>
+
+              <a href="#" onclick="openAppOAuthLogin('msteams'); closeMegaMenus(); return false;" class="flex items-center space-x-2.5 p-1 rounded-lg hover:bg-sky-50/60 transition group">
+                <span class="text-sm text-indigo-600">👥</span>
+                <span class="font-bold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Microsoft Teams</span>
+              </a>
+
+              <a href="#" onclick="openAppOAuthLogin('zendesk'); closeMegaMenus(); return false;" class="flex items-center space-x-2.5 p-1 rounded-lg hover:bg-sky-50/60 transition group">
+                <span class="text-sm text-teal-600">✳️</span>
+                <span class="font-bold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Zendesk</span>
+              </a>
+
+              <a href="#" onclick="openAppOAuthLogin('jira'); closeMegaMenus(); return false;" class="flex items-center space-x-2.5 p-1 rounded-lg hover:bg-sky-50/60 transition group">
+                <span class="text-sm text-blue-500">🔷</span>
+                <span class="font-bold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Jira Software Cloud</span>
+              </a>
+
+              <a href="explore.html" onclick="closeMegaMenus()" class="flex items-center space-x-2.5 p-1 rounded-lg hover:bg-sky-50/60 transition group">
+                <span class="text-xs text-[#0EA5E9] font-bold">▦</span>
+                <span class="font-extrabold text-xs text-[#0EA5E9] transition">View all apps →</span>
+              </a>
+            </div>
+
+            <!-- Column 3: BY USE CASE -->
+            <div class="space-y-3">
+              <div class="text-[10px] font-extrabold text-[#858075] uppercase tracking-wider">BY USE CASE</div>
+
+              <a href="#" onclick="openFeatureModal('sales'); closeMegaMenus(); return false;" class="block p-1.5 rounded-xl hover:bg-sky-50/60 transition group">
+                <div class="font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Lead management</div>
+                <div class="text-[10px] text-[#6E6A60] leading-tight">Automate your way to more conversions</div>
+              </a>
+
+              <a href="#" onclick="openFeatureModal('sales'); closeMegaMenus(); return false;" class="block p-1.5 rounded-xl hover:bg-sky-50/60 transition group">
+                <div class="font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Sales pipeline</div>
+                <div class="text-[10px] text-[#6E6A60] leading-tight">Automate handoffs and streamline sales</div>
+              </a>
+
+              <a href="#" onclick="openFeatureModal('marketing'); closeMegaMenus(); return false;" class="block p-1.5 rounded-xl hover:bg-sky-50/60 transition group">
+                <div class="font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Marketing campaigns</div>
+                <div class="text-[10px] text-[#6E6A60] leading-tight">Boost your marketing campaign's impact</div>
+              </a>
+
+              <a href="#" onclick="openFeatureModal('sop-rag'); closeMegaMenus(); return false;" class="block p-1.5 rounded-xl hover:bg-sky-50/60 transition group">
+                <div class="font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Customer support</div>
+                <div class="text-[10px] text-[#6E6A60] leading-tight">Quickly route tickets and responses</div>
+              </a>
+
+              <a href="#" onclick="openFeatureModal('mcp'); closeMegaMenus(); return false;" class="block p-1.5 rounded-xl hover:bg-sky-50/60 transition group">
+                <div class="font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Data management</div>
+                <div class="text-[10px] text-[#6E6A60] leading-tight">Connect app data for more insights</div>
+              </a>
+
+              <a href="#" onclick="openFeatureModal('agent-workflows'); closeMegaMenus(); return false;" class="block p-1.5 rounded-xl hover:bg-sky-50/60 transition group">
+                <div class="font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Project management</div>
+                <div class="text-[10px] text-[#6E6A60] leading-tight">Deliver projects seamlessly</div>
+              </a>
+
+              <a href="#" onclick="openFeatureModal('sop-rag'); closeMegaMenus(); return false;" class="block p-1.5 rounded-xl hover:bg-sky-50/60 transition group">
+                <div class="font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Tickets and incidents</div>
+                <div class="text-[10px] text-[#6E6A60] leading-tight">Resolve issues and incidents faster</div>
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Right Side Soft Card Panel (Matching Zapier Right Panel Layout) -->
+        <div class="lg:col-span-4 bg-[#FAF8F5] border border-[#E8E4DB] rounded-2xl p-6 space-y-6">
+          
+          <div class="bg-white border border-[#E8E4DB] rounded-2xl p-4 shadow-sm flex items-start space-x-3.5">
+            <div class="w-12 h-12 rounded-xl bg-sky-100 text-[#0EA5E9] flex items-center justify-center font-black text-xl shrink-0">
+              ⚡
+            </div>
+            <div>
+              <h4 class="font-extrabold text-xs text-[#1E1E1E]">Automation you can govern</h4>
+              <p class="text-[11px] text-[#6E6A60] mt-1 leading-relaxed">
+                See how Rishan AI helps you manage, secure, and scale automation across your organization.
+              </p>
+            </div>
+          </div>
+
+          <div class="space-y-3 pt-2">
+            <div class="text-[10px] font-extrabold text-[#858075] uppercase tracking-wider">RISHAN AI FOR</div>
+            <ul class="space-y-2.5 text-xs font-bold text-[#1E1E1E]">
+              <li><a href="dashboard.html" onclick="closeMegaMenus()" class="hover:text-[#0EA5E9] transition flex items-center space-x-2"><span>🚀</span><span>Startups</span></a></li>
+              <li><a href="dashboard.html" onclick="closeMegaMenus()" class="hover:text-[#0EA5E9] transition flex items-center space-x-2"><span>🏢</span><span>Small and medium businesses</span></a></li>
+              <li><a href="dashboard.html" onclick="closeMegaMenus()" class="hover:text-[#0EA5E9] transition flex items-center space-x-2"><span>🛡️</span><span>Enterprise</span></a></li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mega Menu 3: Resources ▾ Dropdown -->
+    <div id="resourcesMegaMenu" onmouseleave="closeMegaMenus()" class="hidden absolute top-full left-0 w-full max-h-[85vh] overflow-y-auto bg-[#FFFDF9] border-b border-[#E8E4DB] shadow-2xl z-50 py-6 sm:py-8 px-4 sm:px-6 transition-all duration-200">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Left 3 Columns: Educational Resources (Col Span 8) -->
+        <div class="lg:col-span-8 space-y-6">
+          
+          <div class="border-b border-[#E8E4DB] pb-3">
+            <h3 class="text-2xl font-black text-[#1E1E1E]">Resources</h3>
+            <p class="text-xs text-[#6E6A60] font-medium mt-1">Educational resources to move your work forward</p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            
+            <!-- Column 1: GET INSPIRED -->
+            <div class="space-y-4">
+              <div class="text-[10px] font-extrabold text-[#858075] uppercase tracking-wider">GET INSPIRED</div>
+
+              <a href="resources.html?id=ai-orchestration-guide" onclick="markActiveMegaItem(this)" class="block group space-y-0.5">
+                <div class="mega-sub-title font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">⭐ 3-Phase AI Orchestration Guide</div>
+                <div class="text-[11px] text-[#6E6A60]">Strategic playbook by Sara McNamara</div>
+              </a>
+
+              <a href="resources.html?id=res-automate-5" onclick="markActiveMegaItem(this)" class="block group space-y-0.5">
+                <div class="mega-sub-title font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">5 things to automate today</div>
+                <div class="text-[11px] text-[#6E6A60]">Popular workflows to save time</div>
+              </a>
+
+              <a href="resources.html?id=chatbots" onclick="markActiveMegaItem(this)" class="block group space-y-0.5">
+                <div class="mega-sub-title font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Create custom chatbots</div>
+                <div class="text-[11px] text-[#6E6A60]">Build an AI chatbot in minutes</div>
+              </a>
+
+              <a href="resources.html?id=res-guides" onclick="markActiveMegaItem(this)" class="block group space-y-0.5">
+                <div class="mega-sub-title font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Guides</div>
+                <div class="text-[11px] text-[#6E6A60]">Go deep with dedicated guidance</div>
+              </a>
+
+              <a href="resources.html?id=res-webinars" onclick="markActiveMegaItem(this)" class="block group space-y-0.5">
+                <div class="mega-sub-title font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Webinars</div>
+                <div class="text-[11px] text-[#6E6A60]">Join live or watch on demand</div>
+              </a>
+
+              <a href="resources.html?id=res-blog" onclick="markActiveMegaItem(this)" class="block group space-y-0.5">
+                <div class="mega-sub-title font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Blog</div>
+                <div class="text-[11px] text-[#6E6A60]">Read all about apps and automation</div>
+              </a>
+            </div>
+
+            <!-- Column 2: HOW TO USE RISHAN -->
+            <div class="space-y-4">
+              <div class="text-[10px] font-extrabold text-[#858075] uppercase tracking-wider">HOW TO USE RISHAN</div>
+
+              <a href="resources.html?id=res-quickstart" onclick="markActiveMegaItem(this)" class="block group space-y-0.5">
+                <div class="mega-sub-title font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Rishan quick-start guide</div>
+                <div class="text-[11px] text-[#6E6A60]">Automate with confidence</div>
+              </a>
+
+              <a href="resources.html?id=res-webhooks" onclick="markActiveMegaItem(this)" class="block group space-y-0.5">
+                <div class="mega-sub-title font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Webhooks and Rishan</div>
+                <div class="text-[11px] text-[#6E6A60]">Connect your favorite apps with Rishan webhooks</div>
+              </a>
+
+              <a href="resources.html?id=res-academy" onclick="markActiveMegaItem(this)" class="block group space-y-0.5">
+                <div class="mega-sub-title font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Rishan Academy</div>
+                <div class="text-[11px] text-[#6E6A60]">Build AI skills to transform work</div>
+              </a>
+
+              <a href="resources.html?id=res-help" onclick="markActiveMegaItem(this)" class="block group space-y-0.5">
+                <div class="mega-sub-title font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Help Center</div>
+                <div class="text-[11px] text-[#6E6A60]">Find answers to your questions</div>
+              </a>
+
+              <a href="resources.html?id=res-support" onclick="markActiveMegaItem(this)" class="block group space-y-0.5">
+                <div class="mega-sub-title font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Rishan Support</div>
+                <div class="text-[11px] text-[#6E6A60]">Get help and find support options</div>
+              </a>
+            </div>
+
+            <!-- Column 3: AI & RISHAN -->
+            <div class="space-y-4">
+              <div class="text-[10px] font-extrabold text-[#858075] uppercase tracking-wider">AI & RISHAN</div>
+
+              <a href="resources.html?id=ai-orchestration-guide" onclick="markActiveMegaItem(this)" class="block group space-y-0.5">
+                <div class="mega-sub-title font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">AI orchestration at work</div>
+                <div class="text-[11px] text-[#6E6A60]">Your guide to intelligent systems</div>
+              </a>
+
+              <a href="resources.html?id=mcp" onclick="markActiveMegaItem(this)" class="block group space-y-0.5">
+                <div class="mega-sub-title font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">How to use Rishan MCP</div>
+                <div class="text-[11px] text-[#6E6A60]">Connect AI to thousands of apps—code-free</div>
+              </a>
+
+              <a href="resources.html?id=sdk" onclick="markActiveMegaItem(this)" class="block group space-y-0.5">
+                <div class="mega-sub-title font-extrabold text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] transition">Rishan Python SDK</div>
+                <div class="text-[11px] text-[#6E6A60]">Install Rishan SDK for developers</div>
+              </a>
+            </div>
+
+          </div>
+
+          <!-- Bottom Action Bar -->
+          <div class="border-t border-[#E8E4DB] pt-4 flex flex-wrap items-center gap-6 text-xs font-bold text-[#5A574F]">
+            <a href="resources.html" onclick="markActiveMegaItem(this)" class="mega-sub-link hover:text-[#0EA5E9] transition flex items-center space-x-1"><span>📚</span><span>All Resources Hub</span></a>
+            <a href="resources.html?id=ai-orchestration-guide" onclick="markActiveMegaItem(this)" class="mega-sub-link hover:text-[#0EA5E9] transition flex items-center space-x-1"><span>⚡</span><span>3-Phase AI Playbook</span></a>
+            <a href="resources.html?id=res-guides" onclick="markActiveMegaItem(this)" class="mega-sub-link hover:text-[#0EA5E9] transition flex items-center space-x-1"><span>🧩</span><span>Explore templates</span></a>
+            <a href="resources.html?id=res-automate-5" onclick="markActiveMegaItem(this)" class="mega-sub-link hover:text-[#0EA5E9] transition flex items-center space-x-1"><span>💼</span><span>Explore use cases</span></a>
+            <a href="resources.html?id=ai-orchestration-guide" onclick="markActiveMegaItem(this)" class="mega-sub-link hover:text-[#0EA5E9] transition flex items-center space-x-1"><span>🔍</span><span>Industry comparisons</span></a>
+          </div>
+
+        </div>
+
+        <!-- Right Panel: DEVELOPER RESOURCES (Col Span 4) -->
+        <div class="lg:col-span-4 bg-[#FAF8F5] border border-[#E8E4DB] rounded-2xl p-6 space-y-5">
+          <a href="resources.html?id=ai-orchestration-guide" onclick="markActiveMegaItem(this)" class="block p-4 bg-sky-50 border border-sky-200 rounded-xl space-y-2 cursor-pointer hover:border-[#0EA5E9] transition group">
+            <h4 class="mega-sub-title font-black text-xs text-[#1E1E1E] group-hover:text-[#0EA5E9] flex items-center space-x-1">
+              <span>🚀</span><span>Implement AI orchestration</span>
+            </h4>
+            <p class="text-[11px] text-[#6E6A60] leading-relaxed">Three phases to move from disconnected AI pilots to orchestrated systems that scale. Click to read playbook →</p>
+          </a>
+
+          <div class="space-y-3">
+            <div class="text-[10px] font-extrabold text-[#858075] uppercase tracking-wider">DEVELOPER RESOURCES</div>
+
+            <a href="resources.html?id=sdk" onclick="markActiveMegaItem(this)" class="mega-sub-link block font-bold text-xs text-[#1E1E1E] hover:text-[#0EA5E9] transition">Powered by Rishan</a>
+            <a href="resources.html?id=mcp" onclick="markActiveMegaItem(this)" class="mega-sub-link block font-bold text-xs text-[#1E1E1E] hover:text-[#0EA5E9] transition">Build an integration</a>
+            <a href="resources.html?id=res-webhooks" onclick="markActiveMegaItem(this)" class="mega-sub-link block font-bold text-xs text-[#1E1E1E] hover:text-[#0EA5E9] transition">Embed an integration</a>
+            <a href="resources.html?id=res-academy" onclick="markActiveMegaItem(this)" class="mega-sub-link block font-bold text-xs text-[#1E1E1E] hover:text-[#0EA5E9] transition">Integration Partner Program</a>
+            <a href="resources.html?id=res-guides" onclick="markActiveMegaItem(this)" class="mega-sub-link block font-bold text-xs text-[#1E1E1E] hover:text-[#0EA5E9] transition">Documentation</a>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </header>
+
+  <!-- Hero Section -->
+  <section class="pt-16 pb-20 px-6 text-center max-w-5xl mx-auto">
+    <div class="inline-flex items-center space-x-2 bg-[#0EA5E9]/10 text-[#0EA5E9] px-4 py-1.5 rounded-full text-xs font-bold mb-6">
+      <span>✨ Rishan AI Agentic Platform</span>
+    </div>
+    
+    <h1 class="text-5xl sm:text-6xl font-extrabold text-[#1E1E1E] tracking-tight leading-[1.1] mb-6">
+      Automate Swiss Tourism & SME Operations with <span class="text-[#0EA5E9]">AI Agents</span>
+    </h1>
+
+    <p class="text-lg sm:text-xl text-[#5A574F] max-w-3xl mx-auto leading-relaxed mb-10">
+      Empower your team with autonomous AI agents connected to <strong>TrekkSoft</strong>, <strong>M365 SharePoint & Outlook</strong>, <strong>bexio</strong>, and <strong>Brevo</strong> with Human-in-the-Loop safety governance.
+    </p>
+
+    <!-- Quick Action Launcher Buttons -->
+    <div class="flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
+      <button onclick="runTask('Show me today\'s bookings.', this)" class="quick-action-btn bg-white border border-[#E8E4DB] hover:border-[#0EA5E9] text-[#1E1E1E] px-4 py-3 rounded-2xl text-xs font-bold shadow-sm transition flex items-center space-x-2">
+        <span>📅</span>
+        <span>Check Today's Bookings (TrekkSoft)</span>
+      </button>
+
+      <button onclick="runTask('What is our procedure for handling a cancelled tour?', this)" class="quick-action-btn bg-white border border-[#E8E4DB] hover:border-[#0EA5E9] text-[#1E1E1E] px-4 py-3 rounded-2xl text-xs font-bold shadow-sm transition flex items-center space-x-2">
+        <span>📋</span>
+        <span>Search Cancellation SOP (SharePoint RAG)</span>
+      </button>
+
+      <button onclick="runTask('Prepare follow-up emails for yesterday\'s customers.', this)" class="quick-action-btn bg-white border border-[#E8E4DB] hover:border-[#0EA5E9] text-[#1E1E1E] px-4 py-3 rounded-2xl text-xs font-bold shadow-sm transition flex items-center space-x-2">
+        <span>✉️</span>
+        <span>Draft Follow-up Emails (Outlook Mail)</span>
+      </button>
+
+      <button onclick="runTask('Give me a summary of today\'s business activity.', this)" class="quick-action-btn bg-white border border-[#E8E4DB] hover:border-[#0EA5E9] text-[#1E1E1E] px-4 py-3 rounded-2xl text-xs font-bold shadow-sm transition flex items-center space-x-2">
+        <span>📊</span>
+        <span>Business Daily Summary (Management AI)</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- Interactive AI Workspace Section -->
+  <section id="workspace" class="max-w-6xl mx-auto px-6 pb-20">
+    <div class="bg-white border border-[#E8E4DB] rounded-3xl p-6 sm:p-10 shadow-lg">
+      
+      <div class="flex items-center justify-between border-b border-[#E8E4DB] pb-4 mb-6">
+        <div class="flex items-center space-x-3">
+          <div class="w-3 h-3 rounded-full bg-[#0EA5E9]"></div>
+          <h2 class="text-lg font-extrabold text-[#1E1E1E]">Central AI Agent Orchestrator</h2>
+        </div>
+        <span class="text-xs bg-emerald-50 text-emerald-700 border border-emerald-200 px-3 py-1 rounded-full font-bold">● 5 Active Agents Ready</span>
+      </div>
+
+      <!-- Main Input Bar -->
+      <form onsubmit="handleFormSubmit(event)" class="space-y-4">
+        <div class="relative">
+          <input 
+            type="text" 
+            id="promptInput"
+            placeholder="Type instructions or questions (e.g. Check bookings, draft follow-up email, search SOP)..."
+            class="w-full bg-[#FAF8F5] border border-[#D5D0C5] rounded-2xl px-5 py-4 text-sm sm:text-base focus:outline-none focus:border-[#0EA5E9] text-[#1E1E1E] pr-32 font-medium"
+            required
+          />
+          <button type="submit" class="absolute right-3 top-2.5 bg-[#0EA5E9] hover:bg-[#E04500] text-white px-5 py-2.5 rounded-xl text-xs font-bold transition shadow-sm">
+            Execute →
+          </button>
+        </div>
+      </form>
+
+      <!-- Execution Grid: AI Response & HITL Card -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-8">
+        
+        <!-- Left: AI Output Console -->
+        <div class="lg:col-span-7 space-y-4">
+          <div id="outputBox" class="hidden p-5 rounded-2xl bg-[#FAF8F5] border border-[#E8E4DB] space-y-3">
+            <div class="flex items-center justify-between text-xs text-[#858075] border-b border-[#E8E4DB] pb-2">
+              <span id="routedAgent" class="font-bold text-[#0EA5E9]">🤖 Routing to Specialized Agent...</span>
+              <span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-bold">Success 200 OK</span>
+            </div>
+            <div id="responseContent" class="text-xs sm:text-sm text-[#2B2A27] leading-relaxed font-medium"></div>
+          </div>
+        </div>
+
+        <!-- Right: Human in the Loop (HITL) Governance -->
+        <div class="lg:col-span-5">
+          <div class="bg-[#FFFDF9] border border-[#E8E4DB] rounded-2xl p-5 space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-[#1E1E1E] uppercase tracking-wider">🛡️ HITL Safety Governance</span>
+              <span id="pendingBadge" class="text-[10px] bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full font-bold">1 Action Pending</span>
+            </div>
+
+            <!-- Approval Card -->
+            <div id="approvalCard" class="bg-white border border-amber-200 rounded-xl p-4 space-y-3 text-xs">
+              <div class="flex justify-between items-center text-amber-700 font-bold">
+                <span>HIGH RISK ACTION</span>
+                <span class="bg-amber-100 px-2 py-0.5 rounded text-[10px]">SalesAgent</span>
+              </div>
+              <p class="text-[#4A4740]"><strong>Action:</strong> Send 4 follow-up emails via Microsoft Outlook API.</p>
+              <div class="bg-gray-50 p-2.5 rounded border border-gray-200 font-mono text-[11px] text-gray-700">
+                <div><strong>To:</strong> sarah.j@example.com</div>
+                <div><strong>Subject:</strong> Thank you for your activity booking!</div>
+              </div>
+              <div class="flex gap-2 pt-1">
+                <button onclick="approveAction()" class="flex-1 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-xs font-bold transition">
+                  ✓ Approve Action
+                </button>
+                <button onclick="rejectAction()" class="py-2 px-3 bg-red-50 text-red-600 hover:bg-red-100 border border-red-200 rounded-lg text-xs font-bold transition">
+                  ✕ Reject
+                </button>
+              </div>
+            </div>
+
+            <div id="approvalSuccess" class="hidden p-3 rounded-xl bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-bold text-center">
+              🎉 Action approved and executed cleanly!
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Pricing Plans Section -->
+  <section id="pricing" class="bg-[#FAF8F5] border-t border-[#E8E4DB] py-20 px-6">
+    <div class="max-w-6xl mx-auto">
+      
+      <div class="text-left mb-10">
+        <h2 class="text-4xl sm:text-5xl font-extrabold text-[#1E1E1E] mb-3">Rishan Agents Plans</h2>
+        <p class="text-base text-[#6E6A60]">Create your own AI-powered teammates in minutes. Try it free, and scale as needed.</p>
+      </div>
+
+      <!-- Pricing Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Free Plan (Default Active) -->
+        <div onclick="selectPricingPlan('Rishan Free', this)" class="plan-card active cursor-pointer bg-white border-2 border-[#0EA5E9] rounded-2xl p-8 shadow-xl ring-2 ring-[#0EA5E9]/20 scale-[1.02] transition flex flex-col justify-between space-y-6 relative">
+          <div class="plan-badge absolute -top-3 right-6 bg-[#0EA5E9] text-white text-[10px] uppercase font-bold px-3 py-1 rounded-full">Selected Plan</div>
+          <div>
+            <h3 class="text-xl font-extrabold text-[#1E1E1E] mb-1">Rishan Free</h3>
+            <div class="text-xs text-[#858075] uppercase font-bold tracking-wider mb-4">Forever</div>
+            <div class="text-4xl font-extrabold text-[#1E1E1E] mb-4">Free</div>
+            <p class="text-xs text-[#5A574F] leading-relaxed mb-6">Run automated behaviors up to 400 times per month.</p>
+          </div>
+          <button type="button" class="plan-btn w-full text-center block bg-[#0EA5E9] hover:bg-[#E04500] text-white py-3.5 rounded-xl text-sm font-bold transition shadow-md">
+            Try it free →
+          </button>
+        </div>
+
+        <!-- Pro Plan -->
+        <div onclick="selectPricingPlan('Rishan Pro', this)" class="plan-card cursor-pointer bg-white border border-[#E8E4DB] hover:border-[#0EA5E9] rounded-2xl p-8 shadow-sm transition flex flex-col justify-between space-y-6 relative">
+          <div class="plan-badge hidden absolute -top-3 right-6 bg-[#0EA5E9] text-white text-[10px] uppercase font-bold px-3 py-1 rounded-full">Most Popular</div>
+          <div>
+            <h3 class="text-xl font-extrabold text-[#1E1E1E] mb-1">Rishan Pro</h3>
+            <div class="text-xs text-[#858075] mb-4">$400 billed annually</div>
+            <div class="text-4xl font-extrabold text-[#1E1E1E] mb-4">$33.33 <span class="text-sm font-normal text-[#858075]">/month</span></div>
+            <p class="text-xs text-[#5A574F] leading-relaxed mb-6">Run automated behaviors up to 1,500 times per month.</p>
+          </div>
+          <button type="button" class="plan-btn w-full text-center block bg-[#1E1E1E] hover:bg-[#333333] text-white py-3.5 rounded-xl text-sm font-bold transition">
+            Try it free →
+          </button>
+        </div>
+
+        <!-- Enterprise Plan -->
+        <div onclick="selectPricingPlan('Rishan Enterprise', this)" class="plan-card cursor-pointer bg-white border border-[#E8E4DB] hover:border-[#0EA5E9] rounded-2xl p-8 shadow-sm transition flex flex-col justify-between space-y-6 relative">
+          <div class="plan-badge hidden absolute -top-3 right-6 bg-[#0EA5E9] text-white text-[10px] uppercase font-bold px-3 py-1 rounded-full">Custom Plan</div>
+          <div>
+            <h3 class="text-xl font-extrabold text-[#1E1E1E] mb-1">Rishan Enterprise</h3>
+            <div class="text-xs text-[#858075] uppercase font-bold tracking-wider mb-4">Custom Scale</div>
+            <div class="text-3xl font-extrabold text-[#1E1E1E] mb-4">Contact for pricing</div>
+            <p class="text-xs text-[#5A574F] leading-relaxed mb-6">Orchestrate agents across your organization with custom governance.</p>
+          </div>
+          <button type="button" class="plan-btn w-full text-center block bg-[#1E1E1E] hover:bg-[#333333] text-white py-3.5 rounded-xl text-sm font-bold transition">
+            Contact sales →
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Interactive JavaScript logic -->
+  <script>
+    const sampleResults = {
+      "Show me today's bookings.": {
+        agent: "Booking Agent (TrekkSoft API)",
+        content: `
+          <div class="space-y-2">
+            <p class="font-bold text-emerald-600">Here are today's 3 Guest Bookings:</p>
+            <div class="p-3 bg-white rounded-xl border border-[#E8E4DB] flex justify-between">
+              <div><strong>Hans Müller</strong> (2 Guests)<br><span class="text-[10px] text-[#7A756B]">Interlaken Paragliding</span></div>
+              <div class="text-right"><strong>380 CHF</strong><br><span class="text-emerald-600 font-bold">Confirmed</span></div>
+            </div>
+            <div class="p-3 bg-white rounded-xl border border-[#E8E4DB] flex justify-between">
+              <div><strong>Sarah Jenkins</strong> (4 Guests)<br><span class="text-[10px] text-[#7A756B]">Jungfraujoch Tour</span></div>
+              <div class="text-right"><strong>940 CHF</strong><br><span class="text-emerald-600 font-bold">Confirmed</span></div>
+            </div>
+          </div>
+        `
+      },
+      "What is our procedure for handling a cancelled tour?": {
+        agent: "Operations Agent (SharePoint SOP RAG)",
+        content: `
+          <div class="p-3 bg-white rounded-xl border border-[#E8E4DB] space-y-1">
+            <p class="font-bold text-purple-600">SharePoint SOP Policy Summary:</p>
+            <p>1. Bad Weather: 100% full refund or 12-month reschedule.</p>
+            <p>2. Customer cancellation >48h: Full refund minus 10 CHF admin fee.</p>
+          </div>
+        `
+      },
+      "Prepare follow-up emails for yesterday's customers.": {
+        agent: "Sales Agent (Outlook Mail)",
+        content: `
+          <p class="font-bold text-amber-600">Email Draft Created!</p>
+          <p class="text-xs text-[#5A574F]">Held for Human-in-the-Loop approval in the right panel.</p>
+        `
+      },
+      "Give me a summary of today's business activity.": {
+        agent: "Management AI (Executive BI)",
+        content: `
+          <div class="p-3 bg-white rounded-xl border border-[#E8E4DB] space-y-1">
+            <p class="font-bold text-emerald-600">Daily Revenue Summary:</p>
+            <p>• Total Revenue: <strong>1,430 CHF</strong></p>
+            <p>• Confirmed Guests: <strong>6 Passengers (2 Tours)</strong></p>
+          </div>
+        `
+      }
+    };
+
+    function runTask(taskQuery, btnElement) {
+      document.querySelectorAll('.quick-action-btn').forEach(btn => {
+        btn.className = "quick-action-btn bg-white border border-[#E8E4DB] hover:border-[#0EA5E9] text-[#1E1E1E] px-4 py-3 rounded-2xl text-xs font-bold shadow-sm transition flex items-center space-x-2";
+      });
+      if (btnElement) {
+        btnElement.className = "quick-action-btn bg-[#0EA5E9] text-white border border-[#0EA5E9] px-4 py-3 rounded-2xl text-xs font-black shadow-md transition flex items-center space-x-2 scale-[1.02] ring-2 ring-[#0EA5E9]/30";
+      }
+      document.getElementById('promptInput').value = taskQuery;
+      executeTask(taskQuery);
+    }
+
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      const q = document.getElementById('promptInput').value;
+      if (q) executeTask(q);
+    }
+
+    async function executeTask(q) {
+      const box = document.getElementById('outputBox');
+      const content = document.getElementById('responseContent');
+      const agentLabel = document.getElementById('routedAgent');
+
+      if (box) {
+        box.classList.remove('hidden');
+        box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+
+      if (typeof showToast === 'function') {
+        showToast(`Running task: "${q.substring(0, 30)}..."`, '🤖');
+      }
+
+      try {
+        const res = await fetch('/api/v1/query', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({query: q})
+        });
+        if (res.ok) {
+          const jsonRes = await res.json();
+          if (agentLabel) agentLabel.innerText = `🤖 ${jsonRes.data.routed_to}`;
+        }
+      } catch(e) {}
+
+      const resObj = sampleResults[q] || {
+        agent: "Central Orchestrator",
+        content: `<p>Task "<strong>${q}</strong>" processed through Claude AI Agentic framework.</p>`
+      };
+
+      if (agentLabel) agentLabel.innerText = `🤖 ${resObj.agent}`;
+      if (content) content.innerHTML = resObj.content;
+    }
+
+    function selectPricingPlan(planName, cardElement) {
+      document.querySelectorAll('.plan-card').forEach(card => {
+        card.className = "plan-card cursor-pointer bg-white border border-[#E8E4DB] hover:border-[#0EA5E9] rounded-2xl p-8 shadow-sm transition flex flex-col justify-between space-y-6 relative";
+        
+        const badge = card.querySelector('.plan-badge');
+        if (badge) badge.classList.add('hidden');
+
+        const btn = card.querySelector('.plan-btn');
+        if (btn) btn.className = "plan-btn w-full text-center block bg-[#1E1E1E] hover:bg-[#333333] text-white py-3.5 rounded-xl text-sm font-bold transition";
+      });
+
+      if (cardElement) {
+        cardElement.className = "plan-card active cursor-pointer bg-white border-2 border-[#0EA5E9] rounded-2xl p-8 shadow-xl ring-2 ring-[#0EA5E9]/20 scale-[1.02] transition flex flex-col justify-between space-y-6 relative";
+        
+        const badge = cardElement.querySelector('.plan-badge');
+        if (badge) {
+          badge.classList.remove('hidden');
+          badge.innerText = "Selected Plan";
+        }
+
+        const btn = cardElement.querySelector('.plan-btn');
+        if (btn) btn.className = "plan-btn w-full text-center block bg-[#0EA5E9] hover:bg-[#E04500] text-white py-3.5 rounded-xl text-sm font-bold transition shadow-md";
+      }
+
+      showToast(`Selected ${planName}!`, "⚡");
+    }
+
+    function showToast(msg, icon = '✓') {
+      const toast = document.getElementById('toastNotification');
+      document.getElementById('toastMessage').innerText = msg;
+      document.getElementById('toastIcon').innerText = icon;
+
+      toast.classList.remove('hidden');
+      setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 3500);
+    }
+
+    function approveAction() {
+      document.getElementById('approvalCard').classList.add('hidden');
+      document.getElementById('approvalSuccess').classList.remove('hidden');
+      document.getElementById('pendingBadge').innerText = '0 Actions';
+      document.getElementById('pendingBadge').className = 'text-[10px] bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full font-bold';
+    }
+
+    function rejectAction() {
+      document.getElementById('approvalCard').innerHTML = '<div class="text-xs text-red-600 font-bold text-center py-2">✕ Action cancelled.</div>';
+      document.getElementById('pendingBadge').innerText = '0 Actions';
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      renderUserNavHeader();
+      const urlParams = new URLSearchParams(window.location.search);
+      const initialQuery = urlParams.get('query');
+      if (initialQuery) {
+        setTimeout(() => {
+          runTask(initialQuery);
+        }, 300);
+      }
+    });
+
+    function toggleDarkMode() {
+      const isDark = document.documentElement.classList.toggle('dark');
+      localStorage.setItem('rishan_theme', isDark ? 'dark' : 'light');
+      updateDarkModeBtnUI();
+    }
+
+    function updateDarkModeBtnUI() {
+      const isDark = document.documentElement.classList.contains('dark');
+      const icons = document.querySelectorAll('.darkModeIcon');
+      icons.forEach(el => el.innerText = isDark ? '🌙' : '☀️');
+    }
+
+    function renderUserNavHeader() {
+      const container = document.getElementById('userHeaderNav');
+      if (!container) return;
+
+      const isLoggedIn = localStorage.getItem('rishan_user_logged_in') === 'true';
+      const userName = localStorage.getItem('rishan_user_name') || 'Rishan';
+      const userRole = localStorage.getItem('rishan_user_role') || 'Business Owner';
+      const userAvatar = localStorage.getItem('rishan_user_avatar') || '👤';
+
+      const darkModeBtnHtml = `
+        <div onclick="toggleDarkMode()" id="darkModeToggleBtn" class="flex items-center space-x-2 cursor-pointer group select-none" title="Toggle Light / Dark Mode">
+          <span class="text-[11px] font-extrabold text-[#6E6A60] dark:text-gray-300 hidden sm:inline group-hover:text-[#0EA5E9] transition">☀️</span>
+          <div class="theme-switch-track w-11 h-6 rounded-full bg-[#E8E4DB] dark:bg-[#3F3F46] p-0.5 flex items-center transition-colors duration-300 relative border border-[#D5D0C5] dark:border-[#52525B]">
+            <div class="theme-switch-knob w-5 h-5 rounded-full bg-white dark:bg-[#0EA5E9] shadow-md transform transition-transform duration-300 flex items-center justify-center text-[10px] text-[#1E1E1E] dark:text-white">
+              <span class="darkModeIcon">${document.documentElement.classList.contains('dark') ? '🌙' : '☀️'}</span>
+            </div>
+          </div>
+          <span class="text-[11px] font-extrabold text-[#6E6A60] dark:text-gray-300 hidden sm:inline group-hover:text-[#0EA5E9] transition">🌙</span>
+        </div>
+      `;
+
+      if (isLoggedIn) {
+        const roleBadgeHtml = userRole ? `<span class="text-[10px] bg-[#0EA5E9]/10 text-[#0EA5E9] px-2 py-0.5 rounded-full font-bold ml-1">${userRole}</span>` : '';
+        container.innerHTML = `
+          ${darkModeBtnHtml}
+          <button onclick="openUserProfileModal()" class="bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 px-3 py-1.5 rounded-full font-bold flex items-center space-x-1.5 hover:bg-emerald-100 transition shadow-sm" title="Click to view & edit Profile">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span>${userAvatar} ${userName}</span>
+            ${roleBadgeHtml}
+          </button>
+          <button onclick="handleLogout()" class="border border-[#D5D0C5] text-[#7A756B] hover:text-[#1E1E1E] px-3 py-1.5 rounded-lg text-xs font-semibold hover:bg-gray-100 transition">
+            Log Out
+          </button>
+        `;
+      } else {
+        container.innerHTML = `
+          ${darkModeBtnHtml}
+          <button onclick="openUserProfileModal()" class="text-[#1E1E1E] dark:text-white hover:text-[#0EA5E9] transition text-xs font-bold flex items-center space-x-1">
+            <span>👤 Profile</span>
+          </button>
+          <a href="login.html" class="bg-[#0EA5E9] hover:bg-[#E04500] text-white px-4 py-1.5 rounded-xl font-extrabold transition shadow-sm">
+            Log in
+          </a>
+        `;
+      }
+    }
+
+    function openUserProfileModal() {
+      const modal = document.getElementById('userProfileModal');
+      if (!modal) return;
+
+      const name = localStorage.getItem('rishan_user_name') || 'Rishan';
+      const email = localStorage.getItem('rishan_user_email') || 'rishan@rishan.ai';
+      const role = localStorage.getItem('rishan_user_role') || 'Business Owner';
+      const avatar = localStorage.getItem('rishan_user_avatar') || '👤';
+      const model = localStorage.getItem('rishan_user_model') || 'Claude 3.5 Sonnet';
+      const hitl = localStorage.getItem('rishan_user_hitl') || 'strict';
+
+      const nameInput = document.getElementById('profileNameInput');
+      const emailInput = document.getElementById('profileEmailInput');
+      const roleSelect = document.getElementById('profileRoleSelect');
+      const avatarSelect = document.getElementById('profileAvatarSelect');
+      const modelSelect = document.getElementById('profileModelSelect');
+      const hitlSelect = document.getElementById('profileHitlSelect');
+
+      if (nameInput) nameInput.value = name;
+      if (emailInput) emailInput.value = email;
+      if (roleSelect) roleSelect.value = role;
+      if (avatarSelect) avatarSelect.value = avatar;
+      if (modelSelect) modelSelect.value = model;
+      if (hitlSelect) hitlSelect.value = hitl;
+
+      const nameDisp = document.getElementById('profileNameDisplay');
+      const emailDisp = document.getElementById('profileEmailDisplay');
+      const roleBadge = document.getElementById('profileRoleBadge');
+      const avatarDisp = document.getElementById('profileAvatarDisplay');
+
+      if (nameDisp) nameDisp.innerText = name;
+      if (emailDisp) emailDisp.innerText = email;
+      if (roleBadge) roleBadge.innerText = role;
+      if (avatarDisp) avatarDisp.innerText = avatar;
+
+      modal.classList.remove('hidden');
+    }
+
+    function updateProfileAvatarPreview() {
+      const avatarSelect = document.getElementById('profileAvatarSelect');
+      const avatarDisp = document.getElementById('profileAvatarDisplay');
+      if (avatarSelect && avatarDisp) {
+        avatarDisp.innerText = avatarSelect.value;
+      }
+    }
+
+    function saveUserProfileSettings() {
+      const nameInput = document.getElementById('profileNameInput');
+      const emailInput = document.getElementById('profileEmailInput');
+      const roleSelect = document.getElementById('profileRoleSelect');
+      const avatarSelect = document.getElementById('profileAvatarSelect');
+      const modelSelect = document.getElementById('profileModelSelect');
+      const hitlSelect = document.getElementById('profileHitlSelect');
+
+      const name = nameInput ? (nameInput.value.trim() || 'Rishan') : 'Rishan';
+      const email = emailInput ? (emailInput.value.trim() || 'rishan@rishan.ai') : 'rishan@rishan.ai';
+      const role = roleSelect ? roleSelect.value : 'Business Owner';
+      const avatar = avatarSelect ? avatarSelect.value : '👤';
+      const model = modelSelect ? modelSelect.value : 'Claude 3.5 Sonnet';
+      const hitl = hitlSelect ? hitlSelect.value : 'strict';
+
+      localStorage.setItem('rishan_user_logged_in', 'true');
+      localStorage.setItem('rishan_user_name', name);
+      localStorage.setItem('rishan_user_email', email);
+      localStorage.setItem('rishan_user_role', role);
+      localStorage.setItem('rishan_user_avatar', avatar);
+      localStorage.setItem('rishan_user_model', model);
+      localStorage.setItem('rishan_user_hitl', hitl);
+
+      closeModal('userProfileModal');
+      if (typeof renderUserNavHeader === 'function') {
+        renderUserNavHeader();
+      }
+      if (typeof showToast === 'function') {
+        showToast('Profile & Platform settings updated! 👤', '✅');
+      }
+    }
+
+    function handleLogout() {
+      localStorage.removeItem('rishan_user_logged_in');
+      localStorage.removeItem('rishan_user_name');
+      window.location.href = 'login.html';
+    }
+
+    let currentActiveNav = '';
+
+    function markActiveMegaItem(el) {
+      const megaContainer = el.closest('#productsMegaMenu, #solutionsMegaMenu, #resourcesMegaMenu');
+      if (megaContainer) {
+        megaContainer.querySelectorAll('.mega-sub-title, .mega-sub-link').forEach(item => {
+          item.classList.remove('text-[#0EA5E9]', 'font-black');
+          item.classList.add('text-[#1E1E1E]', 'font-extrabold');
+        });
+      }
+      const title = el.querySelector('.mega-sub-title') || (el.classList.contains('mega-sub-link') ? el : null);
+      if (title) {
+        title.classList.remove('text-[#1E1E1E]', 'font-extrabold', 'font-bold');
+        title.classList.add('text-[#0EA5E9]', 'font-black');
+      }
+    }
+
+    function setActiveNav(navId) {
+      currentActiveNav = navId;
+      const items = ['products', 'solutions', 'resources', 'explore', 'enterprise', 'pricing'];
+      items.forEach(id => {
+        const btn = document.getElementById('navBtn-' + id);
+        if (btn) {
+          if (id === navId) {
+            btn.classList.remove('text-[#4A4740]', 'font-semibold');
+            btn.classList.add('text-[#0EA5E9]', 'font-bold');
+          } else {
+            btn.classList.remove('text-[#0EA5E9]', 'font-bold');
+            btn.classList.add('text-[#4A4740]', 'font-semibold');
+          }
+        }
+      });
+    }
+
+    function toggleMobileDrawer() {
+      const drawer = document.getElementById('mobileDrawerNav');
+      if (drawer) {
+        drawer.classList.toggle('hidden');
+      }
+    }
+
+    function toggleMegaMenu(menuType, event) {
+      if (event) event.stopPropagation();
+      const products = document.getElementById('productsMegaMenu');
+      const solutions = document.getElementById('solutionsMegaMenu');
+      const resources = document.getElementById('resourcesMegaMenu');
+
+      const isTargetHidden = menuType === 'products' ? products?.classList.contains('hidden') :
+                             menuType === 'solutions' ? solutions?.classList.contains('hidden') :
+                             menuType === 'resources' ? resources?.classList.contains('hidden') : true;
+
+      closeMegaMenus(true);
+
+      if (isTargetHidden) {
+        setActiveNav(menuType);
+        if (menuType === 'products' && products) products.classList.remove('hidden');
+        if (menuType === 'solutions' && solutions) solutions.classList.remove('hidden');
+        if (menuType === 'resources' && resources) resources.classList.remove('hidden');
+      } else {
+        closeMegaMenus(false);
+      }
+    }
+
+    function openMegaMenu(menuType) {
+      const products = document.getElementById('productsMegaMenu');
+      const solutions = document.getElementById('solutionsMegaMenu');
+      const resources = document.getElementById('resourcesMegaMenu');
+
+      closeMegaMenus(true);
+      setActiveNav(menuType);
+
+      if (menuType === 'products' && products) products.classList.remove('hidden');
+      if (menuType === 'solutions' && solutions) solutions.classList.remove('hidden');
+      if (menuType === 'resources' && resources) resources.classList.remove('hidden');
+    }
+
+    function closeMegaMenus(keepActiveNav = true) {
+      ['productsMegaMenu', 'solutionsMegaMenu', 'resourcesMegaMenu'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.classList.add('hidden');
+      });
+      if (!keepActiveNav) {
+        if (window.location.hash === '#workspace') setActiveNav('enterprise');
+        else if (window.location.hash === '#pricing') setActiveNav('pricing');
+        else if (window.location.pathname.includes('explore')) setActiveNav('explore');
+        else if (window.location.pathname.includes('resources')) setActiveNav('resources');
+        else setActiveNav(currentActiveNav || 'products');
+      }
+    }
+
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('header')) {
+        closeMegaMenus(true);
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeMegaMenus(true);
+        closeFeatureModal();
+      }
+    });
+  </script>
+
+  <!-- Interactive Feature Modal Component -->
+  <div id="featureModal" onclick="closeFeatureModal()" class="hidden fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in">
+    <div onclick="event.stopPropagation()" class="bg-[#FFFDF9] border border-[#E8E4DB] rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl flex flex-col justify-between">
+      
+      <!-- Modal Header -->
+      <div class="p-6 border-b border-[#E8E4DB] flex items-center justify-between bg-[#FAF8F5] rounded-t-3xl">
+        <div class="flex items-center space-x-3">
+          <div id="featureModalIcon" class="w-10 h-10 rounded-2xl bg-[#0EA5E9]/10 text-[#0EA5E9] flex items-center justify-center font-black text-xl">⚡</div>
+          <div>
+            <h3 id="featureModalTitle" class="text-xl font-black text-[#1E1E1E]">Feature Name</h3>
+            <p id="featureModalSubtitle" class="text-xs text-[#6E6A60] font-medium">Feature description line</p>
+          </div>
+        </div>
+        <button onclick="closeFeatureModal()" class="w-8 h-8 rounded-full bg-white border border-[#E8E4DB] text-[#6E6A60] hover:text-[#1E1E1E] hover:border-[#0EA5E9] transition flex items-center justify-center font-bold text-sm">✕</button>
+      </div>
+
+      <!-- Modal Body Content -->
+      <div id="featureModalBody" class="p-6 space-y-4 text-xs text-[#1E1E1E]">
+        <!-- Injected dynamically via JS -->
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="p-4 bg-[#FAF8F5] border-t border-[#E8E4DB] rounded-b-3xl flex items-center justify-between">
+        <span class="text-[11px] text-[#7A756B] font-medium">Rishan AI Agents Platform • Enterprise Grade</span>
+        <div class="flex items-center space-x-3">
+          <button onclick="closeFeatureModal()" class="px-4 py-2 rounded-xl border border-[#D5D0C5] text-[#5A574F] font-bold text-xs hover:bg-gray-100 transition">Close</button>
+          <button id="featureModalActionBtn" onclick="executeFeatureAction()" class="px-5 py-2 rounded-xl bg-[#0EA5E9] hover:bg-[#E04500] text-white font-bold text-xs shadow-md transition">Try Feature Now →</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Universal App OAuth 2.0 Login / Consent Modal Component -->
+  <div id="appOAuthModal" onclick="closeAppOAuthModal()" class="hidden fixed inset-0 z-[110] bg-black/75 backdrop-blur-md flex items-center justify-center p-4 animate-fade-in">
+    <div onclick="event.stopPropagation()" class="bg-[#FFFDF9] border border-[#E8E4DB] rounded-3xl max-w-lg w-full shadow-2xl overflow-hidden flex flex-col">
+      
+      <!-- Top Browser URL Header Bar -->
+      <div class="bg-[#1E1E1E] text-white px-4 py-2.5 flex items-center justify-between text-xs">
+        <div class="flex items-center space-x-2 text-gray-400 font-mono text-[11px] truncate">
+          <span class="text-emerald-400">🔒</span>
+          <span id="oauthUrlText" class="truncate">https://login.salesforce.com/oauth2/authorize</span>
+        </div>
+        <button onclick="closeAppOAuthModal()" class="text-gray-400 hover:text-white font-bold ml-2">✕</button>
+      </div>
+
+      <!-- Step 1: Login Credentials Screen -->
+      <div id="oauthStep1" class="p-6 sm:p-8 space-y-5">
+        <div class="flex items-center space-x-3 border-b border-[#E8E4DB] pb-4">
+          <div id="oauthAppIcon" class="w-12 h-12 rounded-2xl bg-[#0EA5E9]/10 text-[#0EA5E9] flex items-center justify-center font-black text-2xl shrink-0">
+            ☁️
+          </div>
+          <div>
+            <h3 id="oauthAppName" class="text-lg font-black text-[#1E1E1E]">Salesforce CRM</h3>
+            <p class="text-xs text-[#6E6A60] font-medium">OAuth 2.0 Enterprise Authentication</p>
+          </div>
+        </div>
+
+        <form onsubmit="submitOAuthStep1(event)" class="space-y-4 text-xs font-semibold">
+          <div>
+            <label id="oauthSubdomainLabel" class="block text-[#5A574F] mb-1">Salesforce Domain / Subdomain</label>
+            <input id="oauthSubdomainInput" type="text" placeholder="company.my.salesforce.com" class="w-full px-3.5 py-2.5 border border-[#D5D0C5] rounded-xl focus:outline-none focus:border-[#0EA5E9] bg-white font-mono text-xs" required>
+          </div>
+
+          <div>
+            <label class="block text-[#5A574F] mb-1">Username / Email</label>
+            <input id="oauthUserInput" type="email" placeholder="user@company.com" value="rishi.raj@enterprise.ch" class="w-full px-3.5 py-2.5 border border-[#D5D0C5] rounded-xl focus:outline-none focus:border-[#0EA5E9] bg-white text-xs" required>
+          </div>
+
+          <div>
+            <label class="block text-[#5A574F] mb-1">Password / Access Token</label>
+            <input type="password" value="••••••••••••••••" class="w-full px-3.5 py-2.5 border border-[#D5D0C5] rounded-xl focus:outline-none focus:border-[#0EA5E9] bg-white text-xs" required>
+          </div>
+
+          <div class="pt-2">
+            <button type="submit" id="oauthSubmitBtn" class="w-full bg-[#0EA5E9] hover:bg-[#E04500] text-white py-3 rounded-xl font-bold text-xs shadow-md transition">
+              Log In to App →
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Step 2: Permissions Scope Consent Screen -->
+      <div id="oauthStep2" class="hidden p-6 sm:p-8 space-y-5">
+        <div class="text-center space-y-2">
+          <div class="flex items-center justify-center space-x-3 text-2xl font-black">
+            <span class="text-[#0EA5E9]">_rishan</span>
+            <span class="text-gray-400">↔️</span>
+            <span id="oauthStep2Icon">☁️</span>
+          </div>
+          <h3 class="text-lg font-black text-[#1E1E1E]">Permissions Requested</h3>
+          <p class="text-xs text-[#6E6A60] font-medium">
+            Rishan AI Agents is requesting access to your <strong id="oauthStep2AppName">Salesforce Account</strong>:
+          </p>
+        </div>
+
+        <div class="bg-sky-50/60 border border-sky-200 p-4 rounded-2xl space-y-2.5 text-xs text-[#1E1E1E]">
+          <div class="font-extrabold text-[#0EA5E9] text-[11px] uppercase tracking-wider">Authorized Scopes</div>
+          <ul id="oauthScopeList" class="space-y-1.5 font-medium">
+            <!-- Rendered dynamically -->
+          </ul>
+        </div>
+
+        <div class="flex items-center space-x-3 pt-2">
+          <button onclick="closeAppOAuthModal()" class="w-1/2 border border-[#D5D0C5] text-[#5A574F] py-3 rounded-xl font-bold text-xs hover:bg-gray-100 transition">
+            Cancel
+          </button>
+          <button onclick="confirmOAuthConnection()" class="w-1/2 bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-xl font-bold text-xs shadow-md transition">
+            Allow & Authorize →
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    const FEATURE_DATA = {
+      "agent-workflows": {
+        icon: "⚡",
+        title: "Agent Workflows Automation",
+        subtitle: "Build, orchestrate, and execute autonomous multi-agent pipelines for SME operations.",
+        body: `
+          <div class="space-y-4">
+            <div class="p-4 bg-sky-50/50 border border-sky-200 rounded-2xl">
+              <h4 class="font-extrabold text-sm text-[#0EA5E9] mb-1">⚡ Active Orchestration Pipeline</h4>
+              <p class="text-xs text-[#5A574F]">5 Pre-configured Worker Agents registered in your workspace:</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div class="p-3 border border-[#E8E4DB] rounded-xl bg-white flex items-center justify-between">
+                <span class="font-bold text-xs">🤖 BookingAgent</span>
+                <span class="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded-full">TrekkSoft API</span>
+              </div>
+              <div class="p-3 border border-[#E8E4DB] rounded-xl bg-white flex items-center justify-between">
+                <span class="font-bold text-xs">🤖 OperationsAgent</span>
+                <span class="text-[10px] bg-purple-100 text-purple-800 font-bold px-2 py-0.5 rounded-full">SharePoint RAG</span>
+              </div>
+              <div class="p-3 border border-[#E8E4DB] rounded-xl bg-white flex items-center justify-between">
+                <span class="font-bold text-xs">🤖 SalesAgent</span>
+                <span class="text-[10px] bg-amber-100 text-amber-800 font-bold px-2 py-0.5 rounded-full">Outlook Mail</span>
+              </div>
+              <div class="p-3 border border-[#E8E4DB] rounded-xl bg-white flex items-center justify-between">
+                <span class="font-bold text-xs">🤖 MarketingAgent</span>
+                <span class="text-[10px] bg-rose-100 text-rose-800 font-bold px-2 py-0.5 rounded-full">Brevo API</span>
+              </div>
+            </div>
+            <div class="p-3 bg-gray-50 border border-gray-200 rounded-xl">
+              <p class="font-bold text-xs text-[#1E1E1E]">Interactive Test:</p>
+              <p class="text-[11px] text-[#6E6A60] mt-1">Click 'Launch Workflow' to run a test prompt through the Central Router on the Dashboard.</p>
+            </div>
+          </div>
+        `,
+        actionText: "Launch Workflow in Dashboard →",
+        action: "runTask('Show me today\\'s bookings.')"
+      },
+      "mcp": {
+        icon: "🪢",
+        title: "Rishan MCP (Model Context Protocol)",
+        subtitle: "Connect Rishan AI tools directly to Claude Desktop, Antigravity IDE & Cursor.",
+        body: `
+          <div class="space-y-4">
+            <p class="text-xs text-[#5A574F]">Expose your local business data and integrations via standardized Model Context Protocol (MCP) servers.</p>
+            <div class="bg-[#1E1E1E] text-emerald-400 p-4 rounded-2xl font-mono text-[11px] overflow-x-auto">
+              <code>{<br>
+              &nbsp;&nbsp;"mcpServers": {<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;"trekksoft": { "command": "python", "args": ["-m", "src.mcp_servers.trekksoft_mcp"] },<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;"msgraph": { "command": "python", "args": ["-m", "src.mcp_servers.ms_graph_mcp"] }<br>
+              &nbsp;&nbsp;}<br>
+              }</code>
+            </div>
+            <div class="p-3 bg-blue-50 border border-blue-200 rounded-xl text-blue-900 text-xs">
+              <strong>✓ Status:</strong> 2 MCP Servers running on <code>127.0.0.1:8000</code> ready for connection.
+            </div>
+          </div>
+        `,
+        actionText: "Copy MCP Configuration",
+        action: "copyMCPConfig()"
+      },
+      "sdk": {
+        icon: "🛠️",
+        title: "Rishan Python & TS SDK",
+        subtitle: "Embed Rishan Agentic AI workforce directly into your application codebase.",
+        body: `
+          <div class="space-y-4">
+            <p class="text-xs text-[#5A574F]">Install the official Python SDK to interact with agents programmatically:</p>
+            <div class="bg-[#1E1E1E] text-white p-4 rounded-2xl font-mono text-[11px]">
+              <span class="text-gray-400"># Terminal</span><br>
+              <span class="text-sky-400">pip install</span> rishan-sdk<br><br>
+              <span class="text-gray-400"># Python script</span><br>
+              <span class="text-purple-400">from</span> rishan <span class="text-purple-400">import</span> Orchestrator<br><br>
+              agent = Orchestrator()<br>
+              result = agent.route_and_execute(<span class="text-emerald-300">"Show me today's bookings"</span>)<br>
+              print(result)
+            </div>
+          </div>
+        `,
+        actionText: "Download SDK Package",
+        action: "showToast('Rishan SDK (v0.1.0) ready in src/ directory!', '📦')"
+      },
+      "tables": {
+        icon: "📊",
+        title: "Rishan Vector & Relational Tables",
+        subtitle: "Structured database for storing guest bookings, RAG vector chunks, and audit logs.",
+        body: `
+          <div class="space-y-3">
+            <div class="overflow-x-auto border border-[#E8E4DB] rounded-2xl">
+              <table class="w-full text-left text-xs">
+                <thead class="bg-[#FAF8F5] border-b border-[#E8E4DB] text-[#7A756B] font-bold">
+                  <tr><th class="p-2.5">ID</th><th class="p-2.5">Entity</th><th class="p-2.5">Type</th><th class="p-2.5">Status</th></tr>
+                </thead>
+                <tbody class="divide-y divide-[#E8E4DB]">
+                  <tr><td class="p-2.5 font-mono">TS-1001</td><td class="p-2.5">Hans Müller</td><td class="p-2.5">Booking</td><td class="p-2.5"><span class="text-emerald-600 font-bold">Confirmed</span></td></tr>
+                  <tr><td class="p-2.5 font-mono">SP-001</td><td class="p-2.5">Cancellation SOP</td><td class="p-2.5">Vector Chunk</td><td class="p-2.5"><span class="text-purple-600 font-bold">Indexed</span></td></tr>
+                  <tr><td class="p-2.5 font-mono">ACT-842</td><td class="p-2.5">Sales Draft Email</td><td class="p-2.5">HITL Audit</td><td class="p-2.5"><span class="text-amber-600 font-bold">Approved</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        `,
+        actionText: "View Full Data Store",
+        action: "showToast('Vector Knowledge Store active with 1 SharePoint doc!', '📊')"
+      },
+      "integrations": {
+        icon: "🎛️",
+        title: "9,000+ App Connections",
+        subtitle: "Connect TrekkSoft, Microsoft 365, Outlook, Brevo, bexio & 9,000+ SaaS apps.",
+        body: `
+          <div class="space-y-4 text-xs text-[#5A574F]">
+            <p>Rishan Agents support instant connection via OAuth 2.0 and API keys for over 9,000 enterprise applications.</p>
+            <div class="grid grid-cols-2 gap-3">
+              <div class="p-3 border border-[#E8E4DB] rounded-xl flex items-center space-x-2 bg-white font-bold"><span>🏔️</span><span>TrekkSoft</span></div>
+              <div class="p-3 border border-[#E8E4DB] rounded-xl flex items-center space-x-2 bg-white font-bold"><span>📄</span><span>SharePoint</span></div>
+              <div class="p-3 border border-[#E8E4DB] rounded-xl flex items-center space-x-2 bg-white font-bold"><span>✉️</span><span>Outlook</span></div>
+              <div class="p-3 border border-[#E8E4DB] rounded-xl flex items-center space-x-2 bg-white font-bold"><span>🚀</span><span>Brevo</span></div>
+            </div>
+          </div>
+        `,
+        actionText: "Explore All Connections →",
+        action: "window.location.href='explore.html'"
+      },
+      "ai-automation": {
+        icon: "✨",
+        title: "AI Automation & Multi-Agent Routing",
+        subtitle: "Smart intent classification routes user queries to the optimal specialist AI agent.",
+        body: `
+          <div class="space-y-3 text-xs">
+            <div class="p-3 bg-purple-50 border border-purple-200 rounded-xl text-purple-900">
+              <strong>🧠 Intent Classifier:</strong> Automatically parses natural language prompts and decides which agent tool to invoke.
+            </div>
+            <div class="p-3 bg-amber-50 border border-amber-200 rounded-xl text-amber-900">
+              <strong>🛡️ HITL Protection:</strong> High-risk operations (e.g. sending bulk emails, refunds) are intercepted for executive review before execution.
+            </div>
+          </div>
+        `,
+        actionText: "Test Router on Dashboard →",
+        action: "runTask('What is our procedure for handling a cancelled tour?')"
+      },
+      "security": {
+        icon: "🛡️",
+        title: "Enterprise Safety & HITL Governance",
+        subtitle: "Human-in-the-Loop approval gateway & tamper-proof audit trail logging.",
+        body: `
+          <div class="space-y-3 text-xs">
+            <div class="p-3 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-900">
+              <strong>Low Risk:</strong> Read-only operations (e.g. searching SOPs, fetching bookings) execute automatically.
+            </div>
+            <div class="p-3 bg-amber-50 border border-amber-200 rounded-xl text-amber-900">
+              <strong>Medium / High Risk:</strong> State-changing operations (e.g. draft emails, payments) generate pending approval tokens.
+            </div>
+            <div class="p-3 bg-gray-50 border border-gray-200 rounded-xl font-mono text-[11px]">
+              Audit Log Path: <code>logs/audit.jsonl</code>
+            </div>
+          </div>
+        `,
+        actionText: "View HITL Gateway",
+        action: "runTask('Prepare follow-up emails for yesterday\\'s customers.')"
+      },
+      "forms": {
+        icon: "📋",
+        title: "Rishan Forms Builder",
+        subtitle: "Create no-code input forms to capture customer requests and feed into AI workflows.",
+        body: `
+          <div class="space-y-4">
+            <div class="p-4 border border-[#E8E4DB] rounded-2xl bg-white space-y-3">
+              <label class="block font-bold text-xs text-[#1E1E1E]">Test Form Input:</label>
+              <input id="formTestInput" type="text" value="Customer request for weather refund" class="w-full p-2.5 border border-[#E8E4DB] rounded-xl text-xs focus:outline-none focus:border-[#0EA5E9]">
+              <button onclick="submitFormTest()" class="w-full bg-[#0EA5E9] text-white py-2 rounded-xl font-bold text-xs hover:bg-[#E04500] transition">Submit Form Input to AI Agent →</button>
+            </div>
+          </div>
+        `,
+        actionText: "Create New Form",
+        action: "submitFormTest()"
+      },
+      "canvas": {
+        icon: "🗺️",
+        title: "Rishan Visual Canvas",
+        subtitle: "Map out multi-agent execution flows visually with drag-and-drop node logic.",
+        body: `
+          <div class="p-4 bg-gray-900 text-white rounded-2xl space-y-4 text-xs">
+            <div class="flex items-center justify-between border-b border-gray-700 pb-2">
+              <span class="font-bold text-sky-400">Node Flow Graph</span>
+              <span class="text-[10px] bg-emerald-900 text-emerald-300 px-2 py-0.5 rounded-full font-bold">Active</span>
+            </div>
+            <div class="flex items-center justify-around py-4">
+              <div class="p-2.5 bg-gray-800 rounded-xl border border-gray-700 text-center"><div class="text-sm">📥</div><div>User Prompt</div></div>
+              <div class="text-sky-500 font-bold">➔</div>
+              <div class="p-2.5 bg-gray-800 rounded-xl border border-gray-700 text-center"><div class="text-sm">🔀</div><div>Orchestrator</div></div>
+              <div class="text-sky-500 font-bold">➔</div>
+              <div class="p-2.5 bg-gray-800 rounded-xl border border-gray-700 text-center"><div class="text-sm">🤖</div><div>Specialist Agent</div></div>
+            </div>
+          </div>
+        `,
+        actionText: "Open Canvas Diagram",
+        action: "showToast('Visual Canvas graph loaded!', '🗺️')"
+      },
+      "agents": {
+        icon: "✴️",
+        title: "Custom AI Agent Builder",
+        subtitle: "Define custom AI assistants with unique system prompts and MCP tool bindings.",
+        body: `
+          <div class="space-y-3 text-xs">
+            <div class="p-3 border border-[#E8E4DB] rounded-xl bg-white space-y-2">
+              <div class="font-bold text-xs text-[#1E1E1E]">Agent Configuration Preview:</div>
+              <div class="text-[11px] text-[#5A574F]"><strong>Name:</strong> SwissFinanceAgent</div>
+              <div class="text-[11px] text-[#5A574F]"><strong>Tools:</strong> bexio_invoicing, trekksoft_sync</div>
+              <div class="text-[11px] text-[#5A574F]"><strong>System Prompt:</strong> "You are a Swiss accounting assistant..."</div>
+            </div>
+          </div>
+        `,
+        actionText: "Build Agent",
+        action: "showToast('Custom Agent builder ready!', '✴️')"
+      },
+      "chatbots": {
+        icon: "💬",
+        title: "Rishan Support Chatbot Widget",
+        subtitle: "Embed an intelligent 24/7 AI chatbot on your website powered by SharePoint RAG.",
+        body: `
+          <div class="p-4 border border-[#E8E4DB] rounded-2xl bg-white space-y-3">
+            <div class="flex items-center space-x-2 border-b pb-2">
+              <div class="w-3 h-3 rounded-full bg-emerald-500"></div>
+              <span class="font-bold text-xs">Live Support Widget Preview</span>
+            </div>
+            <div class="p-2.5 bg-gray-100 rounded-xl text-xs text-[#1E1E1E]">
+              <strong>Rishan Bot:</strong> Hello! Ask me anything about tour cancellations, refunds, or guest bookings.
+            </div>
+          </div>
+        `,
+        actionText: "Embed Widget",
+        action: "showToast('Widget code generated for dashboard embedding!', '💬')"
+      },
+      "templates": {
+        icon: "🧩",
+        title: "Pre-Built Agent Templates",
+        subtitle: "Deploy battle-tested SME workflow templates with a single click.",
+        body: `
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+            <div class="p-3 border border-[#E8E4DB] rounded-xl bg-white hover:border-[#0EA5E9] transition cursor-pointer" onclick="closeFeatureModal(); runTask('Show me today\\'s bookings.');">
+              <div class="font-bold text-[#1E1E1E]">🏔️ Tourism Booking Sync</div>
+              <div class="text-[11px] text-[#6E6A60] mt-1">TrekkSoft API guest sync</div>
+            </div>
+            <div class="p-3 border border-[#E8E4DB] rounded-xl bg-white hover:border-[#0EA5E9] transition cursor-pointer" onclick="closeFeatureModal(); runTask('What is our procedure for handling a cancelled tour?');">
+              <div class="font-bold text-[#1E1E1E]">📄 SOP Policy Search</div>
+              <div class="text-[11px] text-[#6E6A60] mt-1">SharePoint RAG search</div>
+            </div>
+            <div class="p-3 border border-[#E8E4DB] rounded-xl bg-white hover:border-[#0EA5E9] transition cursor-pointer" onclick="closeFeatureModal(); runTask('Prepare follow-up emails for yesterday\\'s customers.');">
+              <div class="font-bold text-[#1E1E1E]">✉️ Outlook Follow-up</div>
+              <div class="text-[11px] text-[#6E6A60] mt-1">HITL approval email draft</div>
+            </div>
+            <div class="p-3 border border-[#E8E4DB] rounded-xl bg-white hover:border-[#0EA5E9] transition cursor-pointer" onclick="closeFeatureModal(); runTask('Give me a summary of today\\'s business activity.');">
+              <div class="font-bold text-[#1E1E1E]">📊 Executive BI Daily</div>
+              <div class="text-[11px] text-[#6E6A60] mt-1">Management summary</div>
+            </div>
+          </div>
+        `,
+        actionText: "Close Window",
+        action: "closeFeatureModal()"
+      },
+      "use-cases": {
+        icon: "💼",
+        title: "Swiss SME & Enterprise Case Studies",
+        subtitle: "See how Swiss tourism operators, logistics, and sales teams use Rishan AI.",
+        body: `
+          <div class="space-y-3 text-xs">
+            <div class="p-3 bg-sky-50/60 border border-sky-200 rounded-xl">
+              <h5 class="font-bold text-[#0EA5E9]">Interlaken Outdoor Activities Ltd.</h5>
+              <p class="text-[#5A574F] mt-1">Automated daily guest check-ins and weather cancellation policy search, saving 15+ admin hours per week.</p>
+            </div>
+          </div>
+        `,
+        actionText: "Try Workflow Demo",
+        action: "runTask('Show me today\\'s bookings.')"
+      },
+      "comparisons": {
+        icon: "🔍",
+        title: "Rishan vs Legacy Automation",
+        subtitle: "Why Agentic AI surpasses rigid trigger-action tools like Zapier or Make.",
+        body: `
+          <div class="overflow-x-auto border border-[#E8E4DB] rounded-xl">
+            <table class="w-full text-left text-xs">
+              <thead class="bg-[#FAF8F5] text-[#7A756B] font-bold border-b">
+                <tr><th class="p-2">Feature</th><th class="p-2 text-[#0EA5E9]">Rishan AI</th><th class="p-2">Zapier/Make</th></tr>
+              </thead>
+              <tbody class="divide-y text-[11px]">
+                <tr><td class="p-2 font-bold">Natural Language Routing</td><td class="p-2 text-emerald-600 font-bold">✓ Dynamic AI Router</td><td class="p-2 text-red-500">✕ Rigid Rules Only</td></tr>
+                <tr><td class="p-2 font-bold">Human-in-the-Loop Safety</td><td class="p-2 text-emerald-600 font-bold">✓ Native HITL Gateway</td><td class="p-2 text-red-500">✕ Manual Workarounds</td></tr>
+                <tr><td class="p-2 font-bold">Vector RAG Search</td><td class="p-2 text-emerald-600 font-bold">✓ Native SharePoint RAG</td><td class="p-2 text-red-500">✕ Requires External Tool</td></tr>
+              </tbody>
+            </table>
+          </div>
+        `,
+        actionText: "Start Free Trial",
+        action: "window.location.href='login.html'"
+      },
+      "tourism": {
+        icon: "🏔️",
+        title: "Swiss Tourism & Activities Solution",
+        subtitle: "TrekkSoft API integration for booking lookups, passenger manifests, and payments.",
+        body: `
+          <div class="p-3 bg-blue-50 border border-blue-200 rounded-xl text-xs text-blue-900 space-y-1">
+            <p class="font-bold">Active Integration: TrekkSoft Booking Client</p>
+            <p>• Automated daily booking list retrieval</p>
+            <p>• Weather cancellation refund management</p>
+          </div>
+        `,
+        actionText: "Run Booking Agent Test →",
+        action: "runTask('Show me today\\'s bookings.')"
+      },
+      "accounting": {
+        icon: "📊",
+        title: "Swiss Accounting & Invoicing (bexio)",
+        subtitle: "Automate CHF invoicing, VAT breakdown, and payment reconciliation.",
+        body: `
+          <div class="p-3 bg-emerald-50 border border-emerald-200 rounded-xl text-xs text-emerald-900 space-y-1">
+            <p class="font-bold">bexio Swiss Invoicing Connector</p>
+            <p>• Automatically formats 8.1% Swiss VAT invoices</p>
+            <p>• Reconciles incoming bank transfers</p>
+          </div>
+        `,
+        actionText: "Open Invoicing Workflow",
+        action: "showToast('bexio invoicing connector ready!', '📊')"
+      },
+      "sop-rag": {
+        icon: "📋",
+        title: "SharePoint SOP Policy Vector RAG",
+        subtitle: "Index company PDFs, Word docs, and policy manuals with Microsoft Graph API.",
+        body: `
+          <div class="p-3 bg-purple-50 border border-purple-200 rounded-xl text-xs text-purple-900 space-y-1">
+            <p class="font-bold">SharePoint RAG Knowledge Store</p>
+            <p>• RAG vector search across SOP documents</p>
+            <p>• Instant answers with source URL citations</p>
+          </div>
+        `,
+        actionText: "Test Operations SOP Search →",
+        action: "runTask('What is our procedure for handling a cancelled tour?')"
+      },
+      "sales": {
+        icon: "✉️",
+        title: "Sales & Support Email Automation",
+        subtitle: "Draft personalized Outlook follow-up emails with mandatory HITL approval.",
+        body: `
+          <div class="p-3 bg-amber-50 border border-amber-200 rounded-xl text-xs text-amber-900 space-y-1">
+            <p class="font-bold">SalesAgent (MS Outlook Integration)</p>
+            <p>• Creates email drafts for past customers</p>
+            <p>• Requires Executive Admin token approval before sending</p>
+          </div>
+        `,
+        actionText: "Run Sales Agent Test →",
+        action: "runTask('Prepare follow-up emails for yesterday\\'s customers.')"
+      },
+      "marketing": {
+        icon: "🚀",
+        title: "Marketing Campaign Operations",
+        subtitle: "Brevo Email API integration for automated marketing campaign management.",
+        body: `
+          <div class="p-3 bg-rose-50 border border-rose-200 rounded-xl text-xs text-rose-900 space-y-1">
+            <p class="font-bold">MarketingAgent (Brevo Integration)</p>
+            <p>• Segments customer list by activity type</p>
+            <p>• Generates email campaign content automatically</p>
+          </div>
+        `,
+        actionText: "Run Marketing Test →",
+        action: "runTask('Prepare an email campaign for previous customers.')"
+      }
+    };
+
+    let currentFeatureKey = null;
+
+    function openFeatureModal(key) {
+      const data = FEATURE_DATA[key];
+      if (!data) return;
+
+      currentFeatureKey = key;
+      document.getElementById('featureModalIcon').innerText = data.icon || '⚡';
+      document.getElementById('featureModalTitle').innerText = data.title || 'Feature';
+      document.getElementById('featureModalSubtitle').innerText = data.subtitle || '';
+      document.getElementById('featureModalBody').innerHTML = data.body || '';
+      
+      const actionBtn = document.getElementById('featureModalActionBtn');
+      if (actionBtn) {
+        actionBtn.innerText = data.actionText || 'Try Feature Now →';
+      }
+
+      const modal = document.getElementById('featureModal');
+      if (modal) modal.classList.remove('hidden');
+    }
+
+    function closeFeatureModal() {
+      const modal = document.getElementById('featureModal');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    function executeFeatureAction() {
+      const data = FEATURE_DATA[currentFeatureKey];
+      if (data && data.action) {
+        closeFeatureModal();
+        try { eval(data.action); } catch(e) {}
+      } else {
+        closeFeatureModal();
+      }
+    }
+
+    function copyMCPConfig() {
+      const configStr = `{
+  "mcpServers": {
+    "trekksoft": { "command": "python", "args": ["-m", "src.mcp_servers.trekksoft_mcp"] },
+    "msgraph": { "command": "python", "args": ["-m", "src.mcp_servers.ms_graph_mcp"] }
+  }
+}`;
+      navigator.clipboard.writeText(configStr);
+      showToast("MCP Configuration copied to clipboard!", "🪢");
+    }
+
+    // Extended Resources & Sales FEATURE_DATA entries
+    Object.assign(FEATURE_DATA, {
+      "ai-orchestration-guide": {
+        icon: "🚀",
+        title: "How to Implement AI Orchestration in 3 Phases",
+        subtitle: "Orchestration isn’t the end—it’s the beginning. Move from disconnected AI pilots to orchestrated systems that scale.",
+        body: `
+          <div class="space-y-6 text-[#1E1E1E]">
+
+            <!-- Top Hero Banner & Stat Callout -->
+            <div class="p-6 bg-gradient-to-r from-sky-500 to-[#0EA5E9] text-white rounded-3xl space-y-3 shadow-lg">
+              <div class="inline-block bg-white/20 text-white font-extrabold text-[10px] px-3 py-1 rounded-full uppercase tracking-wider">
+                Strategy & Implementation Playbook
+              </div>
+              <h2 class="text-xl font-black leading-tight">How to Implement AI Orchestration in 3 Strategic Phases</h2>
+              <p class="text-xs text-white/90 leading-relaxed font-medium">
+                Move from disconnected AI pilots to scalable, governed multi-agent systems across your enterprise.
+              </p>
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+                <div class="p-3 bg-white/10 rounded-2xl backdrop-blur-sm text-center">
+                  <div class="text-lg font-black">800,000+</div>
+                  <div class="text-[10px] text-white/80">AI Tasks Daily</div>
+                </div>
+                <div class="p-3 bg-white/10 rounded-2xl backdrop-blur-sm text-center">
+                  <div class="text-lg font-black">87%</div>
+                  <div class="text-[10px] text-white/80">Cloud 100 Adoption</div>
+                </div>
+                <div class="p-3 bg-white/10 rounded-2xl backdrop-blur-sm text-center">
+                  <div class="text-lg font-black">300+</div>
+                  <div class="text-[10px] text-white/80">AI Tools Connected</div>
+                </div>
+                <div class="p-3 bg-white/10 rounded-2xl backdrop-blur-sm text-center">
+                  <div class="text-lg font-black">3.4M</div>
+                  <div class="text-[10px] text-white/80">Companies Scaling AI</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Key Insight Callout -->
+            <div class="p-4 bg-amber-50 border border-amber-200 rounded-2xl flex items-start space-x-3 text-xs text-amber-900">
+              <span class="text-xl shrink-0">⚠️</span>
+              <div>
+                <strong>The AI Maturity Gap:</strong> Although almost all companies are investing in AI, only <strong>1% believe they've reached AI maturity</strong>. C-suite leaders are <strong>2.4x more likely</strong> to blame employees for slow adoption rather than recognize their own lack of strategic alignment.
+              </div>
+            </div>
+
+            <!-- Quote Box -->
+            <div class="p-4 bg-[#FAF8F5] border-l-4 border-[#0EA5E9] rounded-r-2xl space-y-1 text-xs">
+              <p class="italic text-[#4A4740]">
+                "An appetite for innovation is huge when it comes to moving from AI experimentation to full orchestration—a focus on data is important, too. Data will never be perfect, but the cleaner it is, the easier it will be to leverage AI and get insights and better productivity as quickly as possible."
+              </p>
+              <p class="font-extrabold text-[#1E1E1E] text-[11px]">— Sara McNamara, Founding Revenue Operations & GTM Strategy Lead, Vector</p>
+            </div>
+
+            <!-- The 3 Strategic Implementation Phases -->
+            <div class="space-y-4">
+              <h3 class="font-extrabold text-sm text-[#1E1E1E] flex items-center space-x-2">
+                <span>🎯</span><span>The 3 Strategic Implementation Phases</span>
+              </h3>
+
+              <!-- Phase 1 Card -->
+              <div class="p-5 border-2 border-sky-200 bg-sky-50/40 rounded-2xl space-y-3">
+                <div class="flex items-center justify-between">
+                  <span class="bg-[#0EA5E9] text-white text-[10px] font-black px-3 py-1 rounded-full uppercase">Phase 1: Take Immediate Action (Months 0 – 3)</span>
+                  <span class="text-xs text-[#0EA5E9] font-bold">Foundation & Assessment</span>
+                </div>
+                <ul class="space-y-2 text-xs text-[#4A4740]">
+                  <li class="flex items-start space-x-2"><span class="text-emerald-500 font-bold">1.</span><span>Complete a comprehensive assessment of infrastructure, governance, and talent readiness.</span></li>
+                  <li class="flex items-start space-x-2"><span class="text-emerald-500 font-bold">2.</span><span>Secure executive sponsorship and establish an AI orchestration steering committee.</span></li>
+                  <li class="flex items-start space-x-2"><span class="text-emerald-500 font-bold">3.</span><span>Identify and prioritize high-impact orchestration use cases.</span></li>
+                  <li class="flex items-start space-x-2"><span class="text-emerald-500 font-bold">4.</span><span>Improve foundational infrastructure—especially data quality and integration capabilities.</span></li>
+                  <li class="flex items-start space-x-2"><span class="text-emerald-500 font-bold">5.</span><span>Launch company-wide AI literacy initiatives like hackathons and live agent showcases.</span></li>
+                </ul>
+              </div>
+
+              <!-- Phase 2 Card -->
+              <div class="p-5 border-2 border-amber-200 bg-amber-50/40 rounded-2xl space-y-3">
+                <div class="flex items-center justify-between">
+                  <span class="bg-amber-600 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase">Phase 2: Execute Short-Term Objectives (Months 3 – 12)</span>
+                  <span class="text-xs text-amber-700 font-bold">Pilot & Governance</span>
+                </div>
+                <ul class="space-y-2 text-xs text-[#4A4740]">
+                  <li class="flex items-start space-x-2"><span class="text-emerald-500 font-bold">1.</span><span>Deploy AI/ML platform capabilities with initial workflow orchestration features.</span></li>
+                  <li class="flex items-start space-x-2"><span class="text-emerald-500 font-bold">2.</span><span>Build an orchestration governance framework: policies, HITL oversight, compliance.</span></li>
+                  <li class="flex items-start space-x-2"><span class="text-emerald-500 font-bold">3.</span><span>Launch AI orchestration pilots with measurable business impact tracking toward OKRs.</span></li>
+                  <li class="flex items-start space-x-2"><span class="text-emerald-500 font-bold">4.</span><span>Hire and train core AI transformation talent to upskill internal teams.</span></li>
+                  <li class="flex items-start space-x-2"><span class="text-emerald-500 font-bold">5.</span><span>Partner with key vendors (like Rishan AI Agents) to accelerate adoption.</span></li>
+                </ul>
+              </div>
+
+              <!-- Phase 3 Card -->
+              <div class="p-5 border-2 border-emerald-200 bg-emerald-50/40 rounded-2xl space-y-3">
+                <div class="flex items-center justify-between">
+                  <span class="bg-emerald-600 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase">Phase 3: Scale Orchestration for Long-Term Impact (Years 1 – 2)</span>
+                  <span class="text-xs text-emerald-700 font-bold">Category Leadership</span>
+                </div>
+                <ul class="space-y-2 text-xs text-[#4A4740]">
+                  <li class="flex items-start space-x-2"><span class="text-emerald-500 font-bold">1.</span><span>Roll out a fully deployed AI orchestration platform with advanced multi-agent routing.</span></li>
+                  <li class="flex items-start space-x-2"><span class="text-emerald-500 font-bold">2.</span><span>Demonstrate measurable business impact (processes automated, time saved, revenue growth).</span></li>
+                  <li class="flex items-start space-x-2"><span class="text-emerald-500 font-bold">3.</span><span>Establish category leadership in AI orchestration through innovative use cases.</span></li>
+                  <li class="flex items-start space-x-2"><span class="text-emerald-500 font-bold">4.</span><span>Create proprietary AI capabilities that compound competitive advantage.</span></li>
+                  <li class="flex items-start space-x-2"><span class="text-emerald-500 font-bold">5.</span><span>Drive organizational and cultural transformation toward continuous AI innovation.</span></li>
+                </ul>
+              </div>
+
+            </div>
+
+            <!-- 4 Pillars Grid -->
+            <div class="space-y-3 pt-2">
+              <h3 class="font-extrabold text-sm text-[#1E1E1E]">The Most Connected AI Orchestration Platform</h3>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                <div class="p-4 border border-[#E8E4DB] rounded-2xl bg-white space-y-1">
+                  <div class="font-extrabold text-[#0EA5E9]">1. Connect Every App & Workflow</div>
+                  <div class="text-[#6E6A60] leading-relaxed">Securely integrate with 9,000+ tools using advanced OAuth & API authentication.</div>
+                </div>
+                <div class="p-4 border border-[#E8E4DB] rounded-2xl bg-white space-y-1">
+                  <div class="font-extrabold text-[#0EA5E9]">2. Automate Complex Workflows</div>
+                  <div class="text-[#6E6A60] leading-relaxed">Build, test, and scale AI systems using no-code, low-code, or full-code Python SDK.</div>
+                </div>
+                <div class="p-4 border border-[#E8E4DB] rounded-2xl bg-white space-y-1">
+                  <div class="font-extrabold text-[#0EA5E9]">3. Deploy Intelligent Systems</div>
+                  <div class="text-[#6E6A60] leading-relaxed">Connect AI agents directly to sales, support, IT, operations, and marketing.</div>
+                </div>
+                <div class="p-4 border border-[#E8E4DB] rounded-2xl bg-white space-y-1">
+                  <div class="font-extrabold text-[#0EA5E9]">4. IT-Grade Safety & Governance</div>
+                  <div class="text-[#6E6A60] leading-relaxed">Prevent shadow AI, enforce HITL permissions, and keep all AI activity fully auditable.</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        `,
+        actionText: "Try Live Agent Demo →",
+        action: "runTask('Show me today\\'s bookings.')"
+      },
+      "res-automate-5": {
+        icon: "💡",
+        title: "5 Things to Automate Today",
+        subtitle: "Popular SME agent workflows to save 10+ hours per week.",
+        body: `
+          <div class="space-y-3 text-xs">
+            <div class="p-3 border rounded-xl bg-white space-y-1 font-bold">1. Guest Booking Sync & Confirmation (TrekkSoft API)</div>
+            <div class="p-3 border rounded-xl bg-white space-y-1 font-bold">2. Weather Cancellation Refund Policy Search (SharePoint RAG)</div>
+            <div class="p-3 border rounded-xl bg-white space-y-1 font-bold">3. Automated Customer Follow-up Emails (Outlook Drafts + HITL)</div>
+            <div class="p-3 border rounded-xl bg-white space-y-1 font-bold">4. Marketing Campaign Broadcast (Brevo API)</div>
+            <div class="p-3 border rounded-xl bg-white space-y-1 font-bold">5. Daily Executive BI Activity Briefing</div>
+          </div>
+        `,
+        actionText: "Try Workflow Demo →",
+        action: "runTask('Show me today\\'s bookings.')"
+      },
+      "res-guides": {
+        icon: "📖",
+        title: "Rishan Platform Guides",
+        subtitle: "In-depth operational manuals for SME & enterprise AI deployment.",
+        body: `<p class="text-xs text-[#5A574F]">Comprehensive guides for configuring Model Context Protocol (MCP), SharePoint Graph RAG, and Human-in-the-Loop governance policies.</p>`,
+        actionText: "View Documentation",
+        action: "showToast('Guide loaded into workspace!', '📖')"
+      },
+      "res-webinars": {
+        icon: "🎥",
+        title: "Live & On-Demand Webinars",
+        subtitle: "Learn how Swiss SMEs deploy autonomous AI agents safely.",
+        body: `<p class="text-xs text-[#5A574F]">Watch live demos and masterclasses covering multi-agent orchestration, HITL security, and MS Graph RAG search.</p>`,
+        actionText: "Register for Next Webinar",
+        action: "showToast('Webinar registration opened!', '🎥')"
+      },
+      "res-blog": {
+        icon: "📝",
+        title: "Rishan AI Blog & Insights",
+        subtitle: "Articles on agentic AI, LLM routing, and business automation.",
+        body: `<p class="text-xs text-[#5A574F]">Discover why agentic workflows outperform standard Zapier triggers for complex enterprise tasks.</p>`,
+        actionText: "Read Latest Posts",
+        action: "showToast('Blog feed active!', '📝')"
+      },
+      "res-quickstart": {
+        icon: "⚡",
+        title: "Rishan Quick-Start Guide",
+        subtitle: "Get your first AI agent workforce running in 5 minutes.",
+        body: `
+          <div class="space-y-2 text-xs">
+            <p><strong>Step 1:</strong> Select a pre-built agent tool from the workspace.</p>
+            <p><strong>Step 2:</strong> Type your request in plain English.</p>
+            <p><strong>Step 3:</strong> Review high-risk action tokens in the HITL Gateway.</p>
+          </div>
+        `,
+        actionText: "Start Quick Tour",
+        action: "runTask('Show me today\\'s bookings.')"
+      },
+      "res-webhooks": {
+        icon: "🔗",
+        title: "Webhooks & Rishan Integration",
+        subtitle: "Trigger agent workflows from incoming HTTP webhooks.",
+        body: `<p class="text-xs text-[#5A574F]">Endpoint: <code>POST /api/v1/query</code> handles natural language payloads and dispatches tasks to specialist agents automatically.</p>`,
+        actionText: "View Webhook Docs",
+        action: "showToast('Webhook endpoint active at /api/v1/query', '🔗')"
+      },
+      "res-academy": {
+        icon: "🎓",
+        title: "Rishan AI Academy",
+        subtitle: "Certifications and courses for building enterprise agent systems.",
+        body: `<p class="text-xs text-[#5A574F]">Free interactive modules covering MCP server creation, system prompt tuning, and safety audit logging.</p>`,
+        actionText: "Explore Courses",
+        action: "showToast('Academy catalog loaded!', '🎓')"
+      },
+      "res-help": {
+        icon: "❓",
+        title: "Rishan Help Center",
+        subtitle: "Searchable knowledge base for troubleshooting and FAQs.",
+        body: `<p class="text-xs text-[#5A574F]">Find instant answers on OAuth app connections, RAG chunking limits, and API keys.</p>`,
+        actionText: "Open Help Center",
+        action: "showToast('Help center active!', '❓')"
+      },
+      "res-support": {
+        icon: "🎧",
+        title: "Rishan Support Options",
+        subtitle: "Dedicated 24/7 technical support for Enterprise plans.",
+        body: `<p class="text-xs text-[#5A574F]">Contact our Swiss engineering team directly for SLA guarantees and private cluster deployments.</p>`,
+        actionText: "Contact Support",
+        action: "openFeatureModal('contact-sales')"
+      },
+      "res-partner": {
+        icon: "🤝",
+        title: "Hire a Rishan Solution Partner",
+        subtitle: "Certified consultants to customize and deploy your AI workforce.",
+        body: `<p class="text-xs text-[#5A574F]">Work with vetted Swiss implementation partners for custom ERP integrations (bexio, SAP, Salesforce).</p>`,
+        actionText: "Find Partner",
+        action: "showToast('Partner directory active!', '🤝')"
+      },
+      "dev-powered": {
+        icon: "⚡",
+        title: "Powered by Rishan",
+        subtitle: "Embed Rishan badges and agent engine in your SaaS platform.",
+        body: `<p class="text-xs text-[#5A574F]">Enable AI agent capabilities inside your software with our white-label solution.</p>`,
+        actionText: "Learn More",
+        action: "showToast('Developer partner program active!', '⚡')"
+      },
+      "dev-integration": {
+        icon: "🔌",
+        title: "Build a Custom App Integration",
+        subtitle: "Connect your custom API to 9,000+ connected apps.",
+        body: `<p class="text-xs text-[#5A574F]">Use our open OpenAPI / MCP specification to publish your connector to the Rishan App Directory.</p>`,
+        actionText: "Build Connector",
+        action: "showToast('Developer connector builder ready!', '🔌')"
+      },
+      "dev-embed": {
+        icon: "📦",
+        title: "Embed an Integration",
+        subtitle: "Inline iframe & JS SDK widgets for your portal.",
+        body: `<p class="text-xs text-[#5A574F]">Embed the AI Agent Workspace bar directly inside your existing web portal.</p>`,
+        actionText: "Embed Widget",
+        action: "showToast('Embed snippet generated!', '📦')"
+      },
+      "dev-partner": {
+        icon: "⭐",
+        title: "Integration Partner Program",
+        subtitle: "Co-market and build with Rishan AI Agents Platform.",
+        body: `<p class="text-xs text-[#5A574F]">Join leading Swiss tech partners building the future of automated enterprise software.</p>`,
+        actionText: "Apply Now",
+        action: "openFeatureModal('contact-sales')"
+      },
+      "contact-sales": {
+        icon: "💬",
+        title: "Contact Rishan Enterprise Sales",
+        subtitle: "Speak with our AI solution architects for custom deployments.",
+        body: `
+          <div class="space-y-3 text-xs">
+            <p class="text-[#5A574F]">Ready to transform your SME or Enterprise operations with safe, governed AI Agents?</p>
+            <div class="p-4 border rounded-2xl bg-white space-y-3">
+              <input type="text" placeholder="Your Name" value="Executive Lead" class="w-full p-2 border rounded-xl">
+              <input type="email" placeholder="Work Email" value="executive@company.com" class="w-full p-2 border rounded-xl">
+              <textarea placeholder="Describe your workflow needs..." class="w-full p-2 border rounded-xl h-20">We want to automate our TrekkSoft bookings and SharePoint policy lookups.</textarea>
+              <button onclick="showToast('Sales request sent! Our team will contact you within 2 hours.', '✉️'); closeFeatureModal();" class="w-full bg-[#0EA5E9] text-white py-2.5 rounded-xl font-bold hover:bg-[#E04500]">Send Inquiry →</button>
+            </div>
+          </div>
+        `,
+        actionText: "Send Request",
+        action: "showToast('Sales request sent!', '✉️')"
+      }
+    });
+
+    function submitFormTest() {
+      const input = document.getElementById('formTestInput');
+      const val = input ? input.value : 'Customer request for weather refund';
+      closeFeatureModal();
+      const promptBox = document.getElementById('promptInput') || document.getElementById('userQueryInput');
+      if (promptBox) {
+        promptBox.value = val;
+        window.scrollTo({ top: promptBox.offsetTop - 100, behavior: 'smooth' });
+        showToast("Form input loaded into AI Agent Orchestrator!", "📋");
+      } else {
+        window.location.href = '/dashboard';
+      }
+    }
+
+    const OAUTH_APP_DATA = {
+      netsuite: {
+        name: "Oracle NetSuite ERP",
+        icon: "☁️",
+        url: "https://system.netsuite.com/pages/customerlogin.jsp",
+        subdomainLabel: "NetSuite Account ID",
+        subdomainPlaceholder: "TSTDRV123456",
+        userPlaceholder: "admin@company.com",
+        scopes: ["Access Financial Ledgers & Invoices", "Read & Write Inventory Records", "SuiteTalk REST Web Services"]
+      },
+      salesforce: {
+        name: "Salesforce CRM",
+        icon: "☁️",
+        url: "https://login.salesforce.com/services/oauth2/authorize",
+        subdomainLabel: "Salesforce Domain / My Domain",
+        subdomainPlaceholder: "company.my.salesforce.com",
+        userPlaceholder: "user@company.salesforce.com",
+        scopes: ["Access Salesforce CRM Objects (Leads, Accounts, Deals)", "Perform automated background sync", "API, Web Services Access"]
+      },
+      hubspot: {
+        name: "HubSpot Marketing & CRM",
+        icon: "🟦",
+        url: "https://app.hubspot.com/oauth/authorize",
+        subdomainLabel: "HubSpot Portal ID",
+        subdomainPlaceholder: "Portal ID (e.g. 4820194)",
+        userPlaceholder: "marketing@company.com",
+        scopes: ["Access Contacts, Deals & Lists", "Trigger Marketing Email Automation", "Read CRM Analytics"]
+      },
+      slack: {
+        name: "Slack Workspace",
+        icon: "💬",
+        url: "https://slack.com/oauth/v2/authorize",
+        subdomainLabel: "Slack Workspace URL",
+        subdomainPlaceholder: "company.slack.com",
+        userPlaceholder: "admin@company.com",
+        scopes: ["Send messages to channels as Rishan AI Bot", "Read channel message history", "Add slash commands & webhooks"]
+      },
+      openai: {
+        name: "OpenAI Platform (ChatGPT)",
+        icon: "🤖",
+        url: "https://platform.openai.com/account/api-keys",
+        subdomainLabel: "Organization ID (Optional)",
+        subdomainPlaceholder: "org-123456789",
+        userPlaceholder: "sk-proj-...",
+        scopes: ["Access GPT-4o & GPT-4o-mini Models", "Execute Real-time Reasoning & Tool Calling", "Vector Embeddings API"]
+      },
+      dynamics: {
+        name: "Microsoft Dynamics 365 CRM",
+        icon: "🔷",
+        url: "https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
+        subdomainLabel: "Dynamics Environment URL",
+        subdomainPlaceholder: "org123.crm.dynamics.com",
+        userPlaceholder: "admin@company.onmicrosoft.com",
+        scopes: ["Read & Write Dynamics CRM Entities", "Access Sales & Customer Service Hub", "Graph API Integration"]
+      },
+      msteams: {
+        name: "Microsoft Teams",
+        icon: "👥",
+        url: "https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
+        subdomainLabel: "Microsoft 365 Tenant ID",
+        subdomainPlaceholder: "common or Tenant ID",
+        userPlaceholder: "admin@company.onmicrosoft.com",
+        scopes: ["Send Channel Alerts as Rishan Bot", "Read Meeting Transcripts & Summaries", "Manage Team Webhooks"]
+      },
+      zendesk: {
+        name: "Zendesk Support",
+        icon: "✳️",
+        url: "https://your-company.zendesk.com/oauth/authorizations/new",
+        subdomainLabel: "Zendesk Subdomain",
+        subdomainPlaceholder: "company.zendesk.com",
+        userPlaceholder: "agent@company.com",
+        scopes: ["Read & Write Support Tickets", "Manage User Profiles & Agents", "Webhook Trigger Access"]
+      },
+      jira: {
+        name: "Jira Software Cloud",
+        icon: "🔷",
+        url: "https://auth.atlassian.com/authorize",
+        subdomainLabel: "Atlassian Site URL",
+        subdomainPlaceholder: "company.atlassian.net",
+        userPlaceholder: "dev@company.com",
+        scopes: ["Read & Create Jira Issues & Sprints", "Access Project Boards", "REST API v3 Triggering"]
+      },
+      trekksoft: {
+        name: "TrekkSoft Swiss Booking API",
+        icon: "📅",
+        url: "https://admin.trekksoft.com/en/api",
+        subdomainLabel: "TrekkSoft Merchant ID",
+        subdomainPlaceholder: "CH-BERN-8821",
+        userPlaceholder: "api@trekksoft.com",
+        scopes: ["Real-time Tour Booking Stream", "Access Guest Schedules & Seats", "TrekkSoft Webhook Listener"]
+      },
+      bexio: {
+        name: "bexio Swiss Accounting",
+        icon: "🧾",
+        url: "https://office.bexio.com/oauth/authorize",
+        subdomainLabel: "bexio Account Number",
+        subdomainPlaceholder: "BX-994820",
+        userPlaceholder: "finance@company.ch",
+        scopes: ["Read & Create bexio Invoices", "Sync Contact Records & AR/AP", "Swiss QR-Bill Payment Generation"]
+      },
+      sharepoint: {
+        name: "Microsoft SharePoint RAG",
+        icon: "📋",
+        url: "https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
+        subdomainLabel: "SharePoint Site URL",
+        subdomainPlaceholder: "company.sharepoint.com/sites/SOPs",
+        userPlaceholder: "admin@company.onmicrosoft.com",
+        scopes: ["Read Document Libraries for RAG Search", "Vector Embed Indexing", "Enterprise Knowledge Retrieval"]
+      },
+      outlook: {
+        name: "Microsoft Outlook Mail",
+        icon: "✉️",
+        url: "https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
+        subdomainLabel: "Mailbox Type",
+        subdomainPlaceholder: "Shared or Primary Admin Mailbox",
+        userPlaceholder: "sales@company.com",
+        scopes: ["Draft Outlook Follow-up Emails", "Read Customer Inbound Queries", "HITL Approved Mail Sending"]
+      },
+      brevo: {
+        name: "Brevo Marketing API",
+        icon: "🚀",
+        url: "https://app.brevo.com/settings/keys/api",
+        subdomainLabel: "Brevo Account ID",
+        subdomainPlaceholder: "Brevo-Account-9921",
+        userPlaceholder: "marketing@company.com",
+        scopes: ["Manage Email Marketing Lists", "Send Transactional Emails", "Campaign Analytics & Tracking"]
+      }
+    };
+
+    let activeOAuthAppId = null;
+
+    function openAppOAuthLogin(appId) {
+      const app = OAUTH_APP_DATA[appId] || {
+        name: appId.toUpperCase(),
+        icon: "🔐",
+        url: `https://auth.${appId}.com/oauth2/authorize`,
+        subdomainLabel: "Account Subdomain",
+        subdomainPlaceholder: `${appId}.company.com`,
+        userPlaceholder: `user@${appId}.com`,
+        scopes: ["Read & write application data via OAuth 2.0", "Execute background automated triggers"]
+      };
+
+      activeOAuthAppId = appId;
+      document.getElementById('oauthUrlText').innerText = app.url;
+      document.getElementById('oauthAppIcon').innerText = app.icon;
+      document.getElementById('oauthAppName').innerText = app.name;
+      document.getElementById('oauthSubdomainLabel').innerText = app.subdomainLabel;
+      document.getElementById('oauthSubdomainInput').placeholder = app.subdomainPlaceholder;
+      document.getElementById('oauthUserInput').placeholder = app.userPlaceholder;
+      document.getElementById('oauthSubmitBtn').innerText = `Log In to ${app.name} →`;
+
+      document.getElementById('oauthStep2Icon').innerText = app.icon;
+      document.getElementById('oauthStep2AppName').innerText = app.name;
+
+      const scopeList = document.getElementById('oauthScopeList');
+      if (scopeList) {
+        scopeList.innerHTML = app.scopes.map(s => `<li class="flex items-center space-x-2"><span class="text-emerald-500 font-bold">✓</span><span>${s}</span></li>`).join('');
+      }
+
+      document.getElementById('oauthStep1').classList.remove('hidden');
+      document.getElementById('oauthStep2').classList.add('hidden');
+      document.getElementById('appOAuthModal').classList.remove('hidden');
+    }
+
+    function closeAppOAuthModal() {
+      const modal = document.getElementById('appOAuthModal');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    function submitOAuthStep1(e) {
+      e.preventDefault();
+      document.getElementById('oauthStep1').classList.add('hidden');
+      document.getElementById('oauthStep2').classList.remove('hidden');
+    }
+
+    function confirmOAuthConnection() {
+      closeAppOAuthModal();
+      const connectedApps = JSON.parse(localStorage.getItem('rishan_connected_apps') || '{}');
+      if (activeOAuthAppId) {
+        connectedApps[activeOAuthAppId] = true;
+        localStorage.setItem('rishan_connected_apps', JSON.stringify(connectedApps));
+
+        const card = document.querySelector(`.app-card[data-id="${activeOAuthAppId}"]`);
+        if (card && typeof updateCardToConnected === 'function') {
+          updateCardToConnected(card);
+        }
+      }
+
+      const appObj = OAUTH_APP_DATA[activeOAuthAppId];
+      const appName = appObj ? appObj.name : 'Integration';
+      if (typeof showToast === 'function') {
+        showToast(`Authenticated ${appName} via OAuth 2.0! 🔒`, '✅');
+      }
+    }
+  </script>
+
+  <!-- Footer Section -->
+  <footer id="privacy" class="border-t border-[#E8E4DB] bg-[#FFFDF9] py-8 text-center text-xs text-[#858075]">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
+      <div>
+        <span class="font-black text-[#0EA5E9]">_rishan</span> AI Agents Platform © 2026. All rights reserved.
+      </div>
+      <div class="flex space-x-6 font-semibold">
+        <a href="dashboard.html" class="hover:text-[#0EA5E9]">Dashboard</a>
+        <a href="explore.html" class="hover:text-[#0EA5E9]">Explore Apps</a>
+        <a href="resources.html" class="hover:text-[#0EA5E9]">Resources</a>
+        <a href="#privacy" class="hover:text-[#0EA5E9]">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- User Profile & Settings Modal -->
+  <div id="userProfileModal" class="hidden fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-[#1E1E1E] border border-[#E8E4DB] dark:border-[#333] w-full max-w-2xl rounded-3xl shadow-2xl overflow-hidden text-[#1E1E1E] dark:text-[#E3E3E3] font-sans relative animate-fadeIn">
+      
+      <!-- Modal Header -->
+      <div class="bg-[#FAF8F5] dark:bg-[#181818] px-6 py-4 border-b border-[#E8E4DB] dark:border-[#2A2A2A] flex items-center justify-between">
+        <div class="flex items-center space-x-2.5">
+          <span class="text-xl">👤</span>
+          <div>
+            <h3 class="font-extrabold text-sm text-[#1E1E1E] dark:text-white">User Profile & Platform Settings</h3>
+            <p class="text-[11px] text-[#6E6A60] dark:text-gray-400">Manage account details, AI agent preferences & security controls</p>
+          </div>
+        </div>
+        <button onclick="closeModal('userProfileModal')" class="text-gray-400 hover:text-[#0EA5E9] text-lg font-bold p-1 rounded-full transition">✕</button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="p-6 sm:p-8 space-y-6 max-h-[78vh] overflow-y-auto">
+        
+        <!-- Profile Identity Card -->
+        <div class="bg-[#FFFDF9] dark:bg-[#252525] border border-[#E8E4DB] dark:border-[#3A3A3A] p-5 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div class="flex items-center space-x-4">
+            <div id="profileAvatarDisplay" class="w-14 h-14 rounded-2xl bg-sky-100 text-[#0EA5E9] flex items-center justify-center text-2xl font-bold border-2 border-[#0EA5E9] shrink-0">
+              👤
+            </div>
+            <div>
+              <h4 id="profileNameDisplay" class="font-black text-base text-[#1E1E1E] dark:text-white">Rishan</h4>
+              <p id="profileEmailDisplay" class="text-xs text-[#6E6A60] dark:text-gray-400 font-medium">rishan@rishan.ai</p>
+              <div class="flex items-center space-x-2 mt-1">
+                <span id="profileRoleBadge" class="text-[10px] bg-[#0EA5E9]/10 text-[#0EA5E9] px-2 py-0.5 rounded-full font-bold uppercase">Business Owner</span>
+                <span class="text-[10px] bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-400 px-2 py-0.5 rounded-full font-bold">Verified Account</span>
+              </div>
+            </div>
+          </div>
+          <button onclick="handleLogout()" class="border border-red-200 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/40 px-4 py-2 rounded-xl text-xs font-bold transition shrink-0">
+            Log Out
+          </button>
+        </div>
+
+        <!-- Editable Profile Fields -->
+        <div class="space-y-4 border-t border-[#E8E4DB] dark:border-[#2A2A2A] pt-5">
+          <h4 class="text-xs font-black text-[#858075] dark:text-gray-400 uppercase tracking-wider">Account Details</h4>
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-[#1E1E1E] dark:text-gray-300 mb-1">Full Name</label>
+              <input type="text" id="profileNameInput" value="Rishan" class="w-full bg-[#FAF8F5] dark:bg-[#2A2A2D] border border-[#D5D0C5] dark:border-[#3F3F46] rounded-xl px-3.5 py-2.5 text-xs font-semibold text-[#1E1E1E] dark:text-white focus:outline-none focus:border-[#0EA5E9]">
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-[#1E1E1E] dark:text-gray-300 mb-1">Email Address</label>
+              <input type="email" id="profileEmailInput" value="rishan@rishan.ai" class="w-full bg-[#FAF8F5] dark:bg-[#2A2A2D] border border-[#D5D0C5] dark:border-[#3F3F46] rounded-xl px-3.5 py-2.5 text-xs font-semibold text-[#1E1E1E] dark:text-white focus:outline-none focus:border-[#0EA5E9]">
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-[#1E1E1E] dark:text-gray-300 mb-1">Department / Role</label>
+              <select id="profileRoleSelect" class="w-full bg-[#FAF8F5] dark:bg-[#2A2A2D] border border-[#D5D0C5] dark:border-[#3F3F46] rounded-xl px-3.5 py-2.5 text-xs font-semibold text-[#1E1E1E] dark:text-white focus:outline-none focus:border-[#0EA5E9]">
+                <option value="Business Owner">Business Owner</option>
+                <option value="RevOps Lead">RevOps Lead</option>
+                <option value="Marketing Director">Marketing Director</option>
+                <option value="IT Administrator">IT Administrator</option>
+                <option value="Sales Executive">Sales Executive</option>
+                <option value="HR Manager">HR Manager</option>
+                <option value="AI Workforce Engineer">AI Workforce Engineer</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-[#1E1E1E] dark:text-gray-300 mb-1">Profile Avatar Emoji</label>
+              <select id="profileAvatarSelect" onchange="updateProfileAvatarPreview()" class="w-full bg-[#FAF8F5] dark:bg-[#2A2A2D] border border-[#D5D0C5] dark:border-[#3F3F46] rounded-xl px-3.5 py-2.5 text-xs font-semibold text-[#1E1E1E] dark:text-white focus:outline-none focus:border-[#0EA5E9]">
+                <option value="👤">👤 Default User</option>
+                <option value="👨‍💼">👨‍💼 Executive / Leader</option>
+                <option value="👩‍💻">👩‍💻 Engineer / Developer</option>
+                <option value="⚡">⚡ Automation Specialist</option>
+                <option value="🚀">🚀 Founder / CEO</option>
+                <option value="🤖">🤖 AI Agent Manager</option>
+                <option value="💼">💼 Operations Lead</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- AI Agent Workforce Preferences -->
+        <div class="space-y-4 border-t border-[#E8E4DB] dark:border-[#2A2A2A] pt-5">
+          <h4 class="text-xs font-black text-[#858075] dark:text-gray-400 uppercase tracking-wider">AI Agent & Security Preferences</h4>
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-[#1E1E1E] dark:text-gray-300 mb-1">Preferred Orchestrator Model</label>
+              <select id="profileModelSelect" class="w-full bg-[#FAF8F5] dark:bg-[#2A2A2D] border border-[#D5D0C5] dark:border-[#3F3F46] rounded-xl px-3.5 py-2.5 text-xs font-semibold text-[#1E1E1E] dark:text-white focus:outline-none focus:border-[#0EA5E9]">
+                <option value="Claude 3.5 Sonnet">Claude 3.5 Sonnet (Recommended)</option>
+                <option value="Gemini 1.5 Pro">Gemini 1.5 Pro</option>
+                <option value="GPT-4o">GPT-4o</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-[#1E1E1E] dark:text-gray-300 mb-1">HITL Safety Policy</label>
+              <select id="profileHitlSelect" class="w-full bg-[#FAF8F5] dark:bg-[#2A2A2D] border border-[#D5D0C5] dark:border-[#3F3F46] rounded-xl px-3.5 py-2.5 text-xs font-semibold text-[#1E1E1E] dark:text-white focus:outline-none focus:border-[#0EA5E9]">
+                <option value="strict">Strict Audit (Approve High & Medium Risk)</option>
+                <option value="moderate">Balanced (Approve High Risk Only)</option>
+                <option value="automated">Autonomous (Auto-Approve Verified Workflows)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Connected Accounts Badges -->
+        <div class="space-y-3 border-t border-[#E8E4DB] dark:border-[#2A2A2A] pt-5">
+          <h4 class="text-xs font-black text-[#858075] dark:text-gray-400 uppercase tracking-wider">Connected Accounts & Apps</h4>
+          <div class="flex flex-wrap gap-2">
+            <span class="bg-[#FAF8F5] dark:bg-[#252525] border border-[#E8E4DB] dark:border-[#3A3A3A] px-3 py-1.5 rounded-xl text-xs font-bold text-[#1E1E1E] dark:text-white flex items-center space-x-1">
+              <span>☁️</span> <span>Salesforce</span> <span class="text-emerald-500 font-extrabold ml-1">✓</span>
+            </span>
+            <span class="bg-[#FAF8F5] dark:bg-[#252525] border border-[#E8E4DB] dark:border-[#3A3A3A] px-3 py-1.5 rounded-xl text-xs font-bold text-[#1E1E1E] dark:text-white flex items-center space-x-1">
+              <span>💼</span> <span>NetSuite</span> <span class="text-emerald-500 font-extrabold ml-1">✓</span>
+            </span>
+            <span class="bg-[#FAF8F5] dark:bg-[#252525] border border-[#E8E4DB] dark:border-[#3A3A3A] px-3 py-1.5 rounded-xl text-xs font-bold text-[#1E1E1E] dark:text-white flex items-center space-x-1">
+              <span>💬</span> <span>Slack</span> <span class="text-emerald-500 font-extrabold ml-1">✓</span>
+            </span>
+            <span class="bg-[#FAF8F5] dark:bg-[#252525] border border-[#E8E4DB] dark:border-[#3A3A3A] px-3 py-1.5 rounded-xl text-xs font-bold text-[#1E1E1E] dark:text-white flex items-center space-x-1">
+              <span>✉️</span> <span>M365 Outlook</span> <span class="text-emerald-500 font-extrabold ml-1">✓</span>
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="bg-[#FAF8F5] dark:bg-[#181818] px-6 py-4 border-t border-[#E8E4DB] dark:border-[#2A2A2A] flex items-center justify-between">
+        <button onclick="closeModal('userProfileModal')" class="border border-[#D5D0C5] text-[#6E6A60] dark:text-gray-300 px-4 py-2 rounded-xl text-xs font-bold hover:bg-gray-100 dark:hover:bg-[#2A2A2A] transition">
+          Cancel
+        </button>
+        <button onclick="saveUserProfileSettings()" class="bg-[#0EA5E9] hover:bg-[#E04500] text-white px-6 py-2 rounded-xl text-xs font-black shadow-md transition">
+          Save Profile Changes
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Floating Sales Chat Widget -->
+  <button onclick="openFeatureModal('contact-sales')" class="fixed bottom-6 right-6 z-40 bg-[#1E1E1E] hover:bg-[#333333] text-white px-5 py-3 rounded-full font-bold text-xs shadow-2xl flex items-center space-x-2.5 transition transform hover:scale-105 border border-[#0EA5E9]/30">
+    <span class="text-base text-[#0EA5E9]">💬</span>
+    <span>Chat with Sales</span>
+  </button>
+</body>
+</html>
